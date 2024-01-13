@@ -9,4 +9,4 @@ I'm a third-year CS major. During my free time, I enjoy spending time with frien
 * We need to consider which is the best datbase we could use to store our data.
 * For signing in/up, I would suggest to use Google OAuth.
 
-Note: these ideas are to be discussed with my team to see if these are viable and could be implemented.
+Note: these ideas are to be discussed with my team to see if these are viable and could be implemented to our project.
