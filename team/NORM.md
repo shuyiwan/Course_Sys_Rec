@@ -1,4 +1,4 @@
-#Norms
+# Norms
 
 - Arrive on time to all meetings, in class or out of class
 - Communicate on slack frequently
