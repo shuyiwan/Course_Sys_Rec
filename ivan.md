@@ -1,4 +1,4 @@
-# Name: Ivan West
+# Name: Ivan Hernandez
 ## About me: 
 Hello everyone - I'm a third-year CS major! I am interested in the areas of Software Engineering, Product Management and Entrepenurship. During my free time, I enjoy spending time with friends, watching movies/series, and listening to music. 
 
