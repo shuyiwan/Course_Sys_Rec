@@ -15,13 +15,13 @@ Leo: Search for some API that possibly can be used
 
 Mariana: Get familiar with React, and watch tutorial videos
 
-Katz: Research on backend and compare pros and cons
+Katz: Research on backend and compare the pros and cons
 
 Ivan: Get familiar with React, and watch tutorial videos
 
 Kevin:  Research on backend
 
-Claire: Search similar products and watch tutorials for React
+Claire: Research similar products and watch tutorials for React
 
 Shuyi: Get more familiar with React and backend
 
@@ -36,7 +36,7 @@ Decide MVP:
 
 2. functions
 
-   * Log in (Google), 
+   * Logging in (Google), 
 
    * Search bar(enter Keywords), and get courses that include the keywords)
 
