@@ -1,0 +1,29 @@
+.App-link {
+  color: #61dafb;
+}
+
+.helloWorld{
+  text-align: center;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  font-size: calc(55px + 2vmin);
+  color: rgb(3, 3, 3);
+  
+}
+
+.loginButton{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background-color: rgb(60, 63, 62);
+}
+
+.searchBarContainer{
+  text-align: center;
+  position: absolute;
+  top: 55%;
+  left: 40%;
+}
