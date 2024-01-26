@@ -37,5 +37,7 @@ Continue working with Lab02
 ## Plans for today:
 
 Work on Lab02.
+
 Update Kanban Board.
+
 Add issues to the user stories.
