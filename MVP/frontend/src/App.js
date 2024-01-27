@@ -1,8 +1,8 @@
-import './App.css';
-import './index.css';
+import './Styles/App.css';
+import './Styles/index.css';
 import Navbar from './Components/Navbar'
 import About from './Pages/About'
-import Courses from './Pages/Courses'
+import Search from './Pages/Search'
 import CourseCart from './Pages/CourseCart';
 import Home from './Pages/Home'
 import {Route, Routes} from 'react-router-dom'
@@ -19,7 +19,7 @@ function App() {
         <div>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/courses" element={<Courses/>}/>
+            <Route path="/search" element={<Search/>}/>
             <Route path="/coursecart" element={<CourseCart/>}/>
             <Route path="/about" element={<About/>}/>
           </Routes>
