@@ -1,5 +1,5 @@
-import './App.css';
-import './index.css';
+import './Styles/App.css';
+import './Styles/index.css';
 import Navbar from './Components/Navbar'
 import About from './Pages/About'
 import Search from './Pages/Search'
