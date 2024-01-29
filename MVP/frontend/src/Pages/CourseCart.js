@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CourseCart.css'; // Import the CSS file
+import '../Styles/CourseCart.css'; // Import the CSS file
 
 export default function CourseCart() {
     const [cartItems, setCartItems] = useState([
