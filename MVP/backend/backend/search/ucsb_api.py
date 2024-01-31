@@ -54,7 +54,7 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "") -> dict:
     return data
 
 if __name__ == "__main__":
-    # Example way to query; this should return a list of 
+    # Example way to query; this should return a list of courses and descriptions
     query = query_UCSB_classes("20241", "CMPSC")
     for i in query["classes"]:
         print(i["courseId"])
