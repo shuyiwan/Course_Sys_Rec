@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "search"
 ]
 
 MIDDLEWARE = [
@@ -74,14 +75,14 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "saved_courses_db",
-        "USER": "team4",
-        "PASSWORD": "cs148winter",
-        "HOST": "localhost",
-        "PORT": "3306",
-    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "saved_courses_db",
+    #     "USER": "team4",
+    #     "PASSWORD": "cs148winter",
+    #     "HOST": "localhost",
+    #     "PORT": "3306",
+    # }
 }
 
 
