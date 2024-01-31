@@ -27,10 +27,6 @@ function App() {
       </>
       
       <button className = "loginButton">Login</button>
-
-      <div className="helloWorld">
-        MVP
-      </div>
       
 
     </div>

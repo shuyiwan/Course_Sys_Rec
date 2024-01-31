@@ -1,0 +1,9 @@
+.searchResult{
+    box-sizing: border-box;
+    padding: 10px 20px;
+    font-family: Helvetica, sans-serif;
+}
+
+.searchResult:hover{
+    background-color: #efefef;
+}
