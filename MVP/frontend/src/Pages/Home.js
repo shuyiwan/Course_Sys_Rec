@@ -9,10 +9,10 @@ export default function Home(){
     console.log(results)
     return (
         <div>
-            <p className='searchBarContainer'>
-            <SearchBar setResult={setResult}/>
-            <SearchResultList results={results}/> 
-            </p>
+            <div className='searchBarContainer'>
+                <SearchBar setResult={setResult}/>
+                <SearchResultList results={results}/> 
+            </div>
         </div>
         
 
