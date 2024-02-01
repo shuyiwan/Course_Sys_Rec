@@ -1,5 +1,5 @@
 import SearchBar from '../Components/SearchBar'
-import React, {useeffect, useState} from "react"
+import React, {useState} from "react"
 import SearchResultList from '../Components/SearchResultList'
 import "../Styles/Pages.css"
 

@@ -1,3 +1,13 @@
+import SearchPageList from '../Components/SearchPageList.js'
+import searchResult from '../Components/DataTest.json'
+import "../Styles/Pages.css"
+
 export default function Course(){
-    return <h1>Course Page Not Implemented yet</h1>
+    console.log(searchResult)
+    return (
+        <div className='searchBarContainer'>
+            <SearchPageList results={searchResult}/> 
+        </div>
+    
+    )
 }
