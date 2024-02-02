@@ -25,8 +25,8 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "") -> dict:
     # *** Query Parameters ***
     minUnits: int = 4
     maxUnits: int = 12
-    pageNumber: int = 1
-    pageSize: int = 30
+    pageNumber: int = 1 # to be modified
+    pageSize: int = 30 # to be modified
     includeClassSections: bool = True
 
     # all of the valid parameters found on the api should be input into the url

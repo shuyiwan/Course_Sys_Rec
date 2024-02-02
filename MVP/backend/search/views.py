@@ -23,9 +23,16 @@ def search_keywords(request):
     if not subcode:
         return JsonResponse({'error': 'No search subject code provided.'}, status=400)
     
+    # return error if the subject_code end with "W" since we will handle the online 
+    # courses together with regular courses.
+    if subcode[-1] == "W":
+        return JsonResponse({'error': 'Invalid subject code.'}, status=400)
+    
     # get the subject code for online course e.g. "CMPSCW"
-    assert subcode[-1] != "W"
     subcode_W = subcode + "W" 
+
+    # pre-process the keyword to remove all whitespace
+    keyword = keyword.replace(" ", "")
 
     # get the python dictionary return by calling ucsb-api
     # Since the online courses have different subject_code, we need to
