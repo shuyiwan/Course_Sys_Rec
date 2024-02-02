@@ -25,4 +25,6 @@ This web app aims to help student to pick the right course and succeed later in 
 * **Students** that consider which courses to take in the next quarter and need help managing their courses.
 * **Maintainers** that need to modify the courses& courses' descriptions and other information listed on the website.
 
+## Setup:
 
+The instructions to get the backend setup can be located [here](MVP/backend/README.md#setting-up-the-backend).
