@@ -86,9 +86,12 @@ Once both the Python environment and MySQL is setup, it is finally time to get t
 ```
 # Make sure that you've activated your virtual environment
 
-
-
+python manage.py migrate
+python manage.py runserver
 ```
+
+That should be it! If everything is set up correctly, Django should be running an app at `http://127.0.0.1:8000/`.
+
 
 ## The Backend API
 
