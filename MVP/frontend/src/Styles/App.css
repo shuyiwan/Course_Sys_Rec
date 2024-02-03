@@ -20,10 +20,3 @@
   color: white;
   background-color: rgb(60, 63, 62);
 }
-
-.searchBarContainer{
-  text-align: center;
-  position: absolute;
-  top: 55%;
-  left: 40%;
-}
