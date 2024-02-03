@@ -14,7 +14,6 @@ function LoginButton () {
 
     useEffect(() => {
         if (user) {
-            console.log(123)
             axios
                 .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
                     headers: {
