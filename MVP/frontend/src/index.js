@@ -9,12 +9,11 @@ import './Styles/style.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <GoogleOAuthProvider clientId="11264857835-47gag4nl0cm7f5noogp0iv6pdu39eejf.apps.googleusercontent.com">
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>  
-    </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>  
+  </React.StrictMode>
   </GoogleOAuthProvider>,
-  document.getElementById('root')
+  // document.getElementById('root')
 );
-
