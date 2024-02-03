@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "title": "Introduction to React",
+      "description": "Learn the basics of React, including components, state, and props.",
+      "instructor": "Jane Doe"
+    },
+    {
+      "id": 2,
+      "title": "Advanced React",
+      "description": "Dive deeper into React with hooks, context API, and advanced patterns.",
+      "instructor": "John Smith"
+    },
+    {
+      "id": 3,
+      "title": "React Native Basics",
+      "description": "Build mobile applications using React Native and explore its core concepts.",
+      "instructor": "Alice Johnson"
+    }
+  ]
