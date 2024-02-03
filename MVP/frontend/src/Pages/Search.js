@@ -5,9 +5,9 @@ import "../Styles/Pages.css"
 export default function Course(){
     console.log(searchResult)
     return (
-        <div className='searchBarContainer'>
+        
             <SearchPageList results={searchResult}/> 
-        </div>
+        
     
     )
 }
