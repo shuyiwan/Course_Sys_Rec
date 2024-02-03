@@ -31,10 +31,18 @@ I also think I could have done a better job facilitating the meeting. There were
 
 Based on what I learned, I would recommend the next retro leader prepares guiding questions in addition to the retro template. Because this is a time for you to listen, think about your answers to the template questions in advance and then develop leading questions that could be used to guide the conversation if it becomes stagnant. Also, maybe do some background research to gain an understanding of some of the technical skills required by certain tasks your teammates are completing. We all have different skill sets and experience levels, but as a leader, it’s important to have a broad understanding of the technical aspects of the individual components of a product, since you are responsible for those components successfully integrating together.
 
-## Experiment/Change
+## Change
 
 The one Stop we had in Start/Stop/Continue was that we need to stop assigning issues on Wednesday. Instead, we should plan ahead and have issues delegated at the beginning of the week. That way, we are prepared and have time to ask questions if necessary before the deadline. This ensures that we produce quality work instead of rushing.
 
 We implemented this change on Monday, and I think it has made our team function better. We’ve been able to have more discussions surrounding the issues and how we need to work together to make each component work. This change gave us an extra few days to have these important conversations and delegate roles.
 
 We are going to keep this change. We also talked about doing code reviews earlier, and this change helps us accomplish this goal. In addition, we wanted to make sure that we have a weekly to-do list and that we can customize it as needed to ensure all the tasks get finished in time. This is something that goes hand-in-hand with our change, and overall, we are a lot more organized and clear on roles and responsibilities since we’ve started assigning issues early in the week.
+
+## Experiment and Outcome
+
+Experiment: Add more instructions to issues and checkpoints.
+
+Measurement: If the developer(s) report a more pleasant sprint.
+
+Outcome: For the issues that require complicated implement, the developers benefited from adding more instructions. We had a clearer overview of each issue in the project and its dependencies. The code reviewer also benefited from it by further understanding the issue. For the issues that don't need complex implementation, adding more instructions doesn't have significant benefits; but it still helped team members to understand and organize the issues in the whole project.
