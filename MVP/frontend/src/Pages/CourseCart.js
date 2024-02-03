@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 import '../Styles/CourseCart.css'; // Import the CSS file
 
 export default function CourseCart() {
@@ -33,7 +34,8 @@ export default function CourseCart() {
                 ))}
             </div>
 
-            <a href="searchpage.html">Continue Shopping</a>
+            {/* Use Link to navigate back to the home page */}
+            <Link to="/">Continue Shopping</Link>
 
             <button id="checkout-button">Checkout</button>
         </div>
