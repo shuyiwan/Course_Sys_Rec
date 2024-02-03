@@ -46,3 +46,8 @@
 - Still trying to make plans concrete as far as functionality/design.
 - Working together to create the MVP.
 - Especially need to review Django to set up subdirectories and begin developing the web application.
+
+## Interaction with Help Channel
+- `Participant 1`: Yicong Yan   `Interaction`: shared a react tutorial video in #react_native_help `Link`: https://ucsb-148-w24.slack.com/archives/C06FK0HBTTN/p1706749074959009
+- `Participant 2`: Kevin Nguyen `Interaction`: responded a post in #git_help about deployment `Link`: https://ucsb-148-w24.slack.com/archives/C06ERBQ35UZ/p1705538534987249
+- `Participant 3`: Leo Guo      `Interaction`: asked about git pull & fectch in #git_help `Link`: https://ucsb-148-w24.slack.com/archives/C06ERBQ35UZ/p1706739746319439
