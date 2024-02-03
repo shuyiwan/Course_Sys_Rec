@@ -14,7 +14,6 @@ export default function CourseCart() {
     ]);
 
     function removeItem(index) {
-        // Implement logic to remove the corresponding item from the cart
         const updatedCart = [...cartItems];
         updatedCart.splice(index, 1);
         setCartItems(updatedCart);
@@ -24,34 +23,19 @@ export default function CourseCart() {
         <div>
             <h1>Shopping Cart</h1>
 
-            {/* Shopping Cart Content */}
             <div id="shopping-cart">
-                {/* Mapping through cart items */}
                 {cartItems.map((item, index) => (
                     <div className="cart-item" key={index}>
+                        <button className="remove-item" onClick={() => removeItem(index)}>Remove</button>
                         <h2>{item.name}</h2>
                         <p>{item.description}</p>
-                        <button className="remove-item" onClick={() => removeItem(index)}>Remove</button>
                     </div>
                 ))}
             </div>
 
-            {/* Continue Shopping Link */}
             <a href="searchpage.html">Continue Shopping</a>
 
-            {/* Checkout Button */}
             <button id="checkout-button">Checkout</button>
-
-            {/* Add your JavaScript files here for dynamic behavior */}
-            <script>
-                {`
-                    function removeItem(index) {
-                        // Implement logic to remove the corresponding item from the cart
-                        var cartItem = document.getElementsByClassName('cart-item')[index];
-                        cartItem.parentNode.removeChild(cartItem);
-                    }
-                `}
-            </script>
         </div>
     );
 }
