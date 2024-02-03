@@ -52,19 +52,42 @@ def search_keywords(request):
     regex = re.compile(keyword, re.IGNORECASE)
 
     # search classes that contain keywords
-    selected = dict()
-    for i in query["classes"]:
-        
-        # if the course descriptions contain the keyword, we add this course to 
-        # the dictionary 'selected'
-        # with key = courseID and value = description
-        if regex.search(i["description"]):
-            selected[i["courseId"]] = i["description"]
+    selected = [] # will contain all the matched classes. This list will be converted 
+                  # to json and returned to frontend after searching.
     
+    course_index = 1 # used in React
+    for i in query["classes"]:
+
+        # if the course descriptions contain the keyword, we will add this course to the
+        # list.
+        # We add the information of this course into the dict, and then add this
+        # dict to "selected"
+        if regex.search(i["description"]):
+            each_class = dict()
+            each_class["ID"] = course_index
+            each_class["courseID"] = i["courseId"]
+            each_class["title"] = i["title"]
+            each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
+            each_class["description"] = i["description"]
+
+            selected.append(each_class)
+            course_index += 1
+
+    # search the online classes
     for i in query_W["classes"]:
         
         if regex.search(i["description"]):
-            selected[i["courseId"]] = i["description"]
+            each_class = dict()
+            each_class["ID"] = course_index
+            each_class["courseID"] = i["courseId"]
+            each_class["title"] = i["title"]
+            each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
+            each_class["description"] = i["description"]
         
-    # return a json
-    return JsonResponse(selected)
+            selected.append(each_class)
+            course_index += 1
+        
+    # return a json, "safe = False" so that it can handle the data that 
+    # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
+    # so that it looks better than all the course cluster together.
+    return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})
