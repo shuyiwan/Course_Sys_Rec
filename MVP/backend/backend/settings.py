@@ -37,9 +37,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "search",
+    'corsheaders' # for the setting of package django-cors-headers
+                  # so that it can handle the requests from React during development
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # for the setting of package django-cors-headers
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -125,3 +129,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Custom setting
+CORS_ALLOW_ALL_ORIGINS = True # allow django backend to accept requests from anywhere 
+                              # for development 
+
