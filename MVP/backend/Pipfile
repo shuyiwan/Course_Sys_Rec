@@ -7,7 +7,7 @@ name = "pypi"
 django = "*"
 requests = "*"
 python-dotenv = "*"
-mysqlclient = "*"
+mysqlclient = "==2.2.3"
 django-cors-headers = "*"
 
 [dev-packages]

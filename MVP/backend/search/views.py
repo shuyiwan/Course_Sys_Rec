@@ -67,7 +67,10 @@ def search_keywords(request):
             each_class["ID"] = course_index
             each_class["courseID"] = i["courseId"]
             each_class["title"] = i["title"]
-            each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
+            if not i["classSections"][0]["instructors"]:
+                each_class["instructor"] = "UNKNOWN"
+            else:
+                each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
             each_class["description"] = i["description"]
 
             selected.append(each_class)
