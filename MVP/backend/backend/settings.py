@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "search",
-    "shopping_cart",
     'corsheaders' # for the setting of package django-cors-headers
                   # so that it can handle the requests from React during development
 ]
