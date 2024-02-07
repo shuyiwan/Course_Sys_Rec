@@ -114,14 +114,14 @@ For example: calling the URL http://127.0.0.1:8000/search/?keyword=project&quart
             "courseID": "CMPSC   148  ",
             "title": "COMP SCI PROJECT",
             "instructor": "HOLLERER T",
-            "description": "Team-based project development. Topics include software engineering and pro fessional development practices, interface design,        advanced library support ; techniques for team oriented design and development, testing and test dri ven development, and software reliability and            robustness. Students present and demonstrate final projects."
+            "description": "Team-based project development. Topics include software engineering and pro fessional development practices, interface design,         advanced library support ; techniques for team oriented design and development, testing and test dri ven development, and software reliability and            robustness. Students present and demonstrate final projects."
         },
         {
-        "ID": 2,
-        "courseID": "CMPSC   196B ",
-        "title": "ADV UGRAD RESEARCH",
-        "instructor": "TBD",
-        "description": "Advanced research for undergraduate students, by petition after completing a minimum of 4 units of CMPSC 196 for a letter grade. The     student will prop ose a specific research project and make a public presentation of final res ults. Evaluation and grade will be based on feedback from       faculty advisor a nd one other faculty member."
+            "ID": 2,
+            "courseID": "CMPSC   196B ",
+            "title": "ADV UGRAD RESEARCH",
+            "instructor": "TBD",
+            "description": "Advanced research for undergraduate students, by petition after completing a minimum of 4 units of CMPSC 196 for a letter grade.       The student will prop ose a specific research project and make a public presentation of final res ults. Evaluation and grade will be based on feedback        from faculty advisor a nd one other faculty member."
         }
     ]
     ```
