@@ -27,3 +27,4 @@ yarn-error.log*
 *.sqlite3
 .idea
 __pycache__
+venv

@@ -9,8 +9,8 @@ from search import ucsb_api
 @require_http_methods(["GET"])  # Make sure it only handles the GET request
 def search_keywords(request):
     # get the keyword from url. 
-    # For example http://www.random.com/search/?keyword=calculus
-    # if keyword is not in url, set 'keyword' to ''
+    # For example http://127.0.0.1:8000/search/?keyword=project&quarter=20241&subject_code=CMPSC
+    # if it cannot find parameters is not in url, set them to ''
     keyword = request.GET.get('keyword', '')
     quarter = request.GET.get('quarter', '')
     subcode = request.GET.get('subject_code', '')
@@ -67,7 +67,12 @@ def search_keywords(request):
             each_class["ID"] = course_index
             each_class["courseID"] = i["courseId"]
             each_class["title"] = i["title"]
-            each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
+
+            # check if the "instructors" list is empty, if so then set "instructor" to "TBD"
+            if not i["classSections"][0]["instructors"]:
+                each_class["instructor"] = "TBD"
+            else:
+                each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
             each_class["description"] = i["description"]
 
             selected.append(each_class)
@@ -81,7 +86,12 @@ def search_keywords(request):
             each_class["ID"] = course_index
             each_class["courseID"] = i["courseId"]
             each_class["title"] = i["title"]
-            each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
+
+            # check if the "instructors" list is empty, if so then set "instructor" to "TBD"
+            if not i["classSections"][0]["instructors"]:
+                each_class["instructor"] = "TBD"
+            else:
+                each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
             each_class["description"] = i["description"]
         
             selected.append(each_class)
