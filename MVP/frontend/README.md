@@ -1,3 +1,14 @@
+# Read Me First
+Here is the instruction for viewing the frontend documentation:
+1. cd into MVP/frontend via terminal
+2. type `npm install`
+3. type `npm start`
+4. Then you will be redirected to your broswer (your localhost)
+5. Then you can check the frontend part! Have fun :-D
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
