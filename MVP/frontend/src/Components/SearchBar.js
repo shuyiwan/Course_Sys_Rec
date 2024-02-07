@@ -19,7 +19,7 @@ export default function SearchBar({setResult}){
  
     const handleChange = (value) =>{
         setUserInput(value);
-        fetchData(value);
+        fetchData(value);//need to be put in handleEnter
     }
 
     return (
