@@ -6,6 +6,8 @@ from django.views.decorators.http import require_http_methods
 from django.shortcuts import render
 from search import ucsb_api 
 
+
+### The function to handle the search request
 @require_http_methods(["GET"])  # Make sure it only handles the GET request
 def search_keywords(request):
     # get the keyword from url. 
