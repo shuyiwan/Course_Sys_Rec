@@ -42,7 +42,7 @@ def add_classes(request):
 
     # Check if this class is already added for this user
     if models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id).exists():
-        return JsonResponse({'Success': f'{courseID} is already added for {email}'})
+        return JsonResponse({'Failure': f'{courseID} is already added for {email}'})
     
     new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
                     # object and link the user to this course
