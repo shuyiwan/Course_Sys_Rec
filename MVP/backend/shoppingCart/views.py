@@ -3,6 +3,7 @@ import requests
 from django.shortcuts import render
 from shoppingCart import models
 from django.http import JsonResponse
+from django.db import IntegrityError
 from django.views.decorators.http import require_http_methods
 
 # Create your views here.
@@ -38,12 +39,18 @@ def add_classes(request):
     # add class to db
     # To link the class with the user, we need to fetch the user from db first
     user = models.User.objects.get(email = email)
-    new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
+
+    # if user have added this course before, then return an error json
+    try:
+        new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
                 # object and link the user to this course
-    new_class.save() # add one row to for this class to the SavedCourses table
+        new_class.save() # add one row to for this class to the SavedCourses table
+    except IntegrityError:
+        return JsonResponse({'Failure': 'Cannot add the same class multiple times.'})
+    
 
     # if everything works well, return a json response indicating that the class is saved
-    return JsonResponse({'success': f'{courseID} is added for user {email}'})
+    return JsonResponse({'Success': f'{courseID} is added for user {email}'})
 
 
 
