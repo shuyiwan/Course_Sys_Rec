@@ -25,6 +25,7 @@ export default function SearchBar({setResult}){
         .then((response) => response.json())
         .then((jsonFile) => {
             navigate('/search',{state: {jsonFile}})
+            console.log(jsonFile)
         })
 
     }
