@@ -17,8 +17,8 @@ def add_classes(request):
 
     # For this version, we only add one class to db per request.
 
-    # get the keyword from url. 
-    # For example http://127.0.0.1:8000/shoppingCart/?username=randompeople&courseID=CS154
+    # get the email from url. 
+    # For example http://127.0.0.1:8000/shoppingCart/?email=test@ucsb.edu&courseID=CS154
     # if it cannot find parameters is not in url, set them to ''
     email = request.GET.get('email', '')
     courseID = request.GET.get('courseID', '')

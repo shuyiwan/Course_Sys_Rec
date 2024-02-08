@@ -22,17 +22,16 @@ from django.db import models
 # row. 
 
 class User(models.Model):
-    # username = models.CharField(max_length=30, unique = True) 
-    # The username should be unique
+    # The email should be unique for each user
     email = models.EmailField(blank = True, null = True, unique = True)
 
     def __str__(self):
-        return self.username
+        return self.email
 
 class SavedCourses(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='saved_courses')
     # Forgign key is used to link the class to a user in User table.
-    
+
     # on_delete: when a user is deleted from table, all his saved courses will be
     # automatically deleted as well
     # related_name: help us to find all the courses for a users
