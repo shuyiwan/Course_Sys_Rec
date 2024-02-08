@@ -1,0 +1,27 @@
+.dropdown-container {
+    /* display: flex; */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: calc(5px + 2vmin);
+}
+
+.dropdown-button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center the text horizontally */
+    line-height: 2;
+}
+
+.round-image {
+    border-radius: 50%; /* Make the image round */
+  }
+  
+.small-image {
+width: 50px; /* Set the width to make it smaller */
+height: 50px; /* Set the height to make it smaller */
+}
