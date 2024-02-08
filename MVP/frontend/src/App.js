@@ -5,11 +5,10 @@ import About from './Pages/About'
 import Search from './Pages/Search'
 import CourseCart from './Pages/CourseCart';
 import Home from './Pages/Home'
+import LoginButton from './Components/LoginButton'
 import {Route, Routes} from 'react-router-dom'
 
-
 function App() {
-
 
   return (
     
@@ -25,17 +24,10 @@ function App() {
           </Routes>
         </div>
       </>
-      
-      <button className = "loginButton">Login</button>
-
-      <div className="helloWorld">
-        MVP
-      </div>
-      
-
-    </div>
-
     
+      <LoginButton/>
+
+    </div>   
   );
 }
 

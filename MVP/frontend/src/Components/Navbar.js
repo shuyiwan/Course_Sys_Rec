@@ -7,7 +7,8 @@ export default function Navbar(){
         </Link>
 
         <ul>
-            <CustomLink to = '/search'>Search</CustomLink>
+            {/* uncomment the next line only when you need to test the search page */}
+            {/* <CustomLink to = '/search'>Search</CustomLink> */}
             <CustomLink to = '/coursecart'>CourseCart</CustomLink>
             <CustomLink to = '/about'>About</CustomLink>
         </ul>

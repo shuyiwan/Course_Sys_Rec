@@ -1,0 +1,14 @@
+.SearchPageResult{
+    box-sizing: border-box;
+    padding: 100px 30px;
+    font-family: Helvetica, sans-serif;
+    border-radius: 20px;
+    justify-content: center;
+    border-style: solid;
+    min-width: 500px;
+    max-width: 500px;
+}
+
+.SearchPageResult:hover{
+    background-color: #efefef;
+}
