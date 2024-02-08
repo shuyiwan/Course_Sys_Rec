@@ -8,6 +8,7 @@
     border-style: solid;
     min-width: 500px;
     transition: transform 0.3s ease-in-out; 
+    max-width: 500px;
 }
 
 .SearchPageResult:hover {

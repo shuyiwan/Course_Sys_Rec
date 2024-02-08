@@ -1,7 +1,8 @@
 import React from "react";
 import '../Styles/SearchPageResult.css';
 
-export default function SearchPageResult({ result }) {
+export default function SearchPageResult({result}){
+
     return (
         <div className="SearchPageResult">
             <p>{result.courseID}</p>
@@ -15,3 +16,4 @@ export default function SearchPageResult({ result }) {
         </div>
     );
 }
+

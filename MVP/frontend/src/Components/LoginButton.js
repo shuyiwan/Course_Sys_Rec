@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import '../Styles/App.css';
+import '../Styles/Login.css';
+import './UserTab.js';
 import axios from 'axios';
+import UserTab from './UserTab.js';
 
 function LoginButton () {
     const [ user, setUser ] = useState(null);
@@ -37,9 +40,7 @@ function LoginButton () {
     return (
         profile ? (
             <div>
-                <img src={profile.picture} alt="user pic" />
-                <p>Hi, {profile.name} 😊!</p>
-                <button className='loginButton' onClick={logOut}>Log out</button>
+                <UserTab myprofile = {profile} logOut={logOut}/>
             </div>
         ) : (
             <button className='loginButton' onClick={login}>Login</button>
