@@ -6,8 +6,8 @@ export default function SearchResultList({results}){
     
     return (
         <div className="resultList">
-        {results.map((result, id) => {
-          return <SearchResult result={result} key={id} />;
+        {results.map((result, ID) => {
+          return <SearchResult result={result} key={ID} />;
         })}
         </div>
     )

@@ -6,7 +6,6 @@ import "../Styles/Pages.css"
 export default function Home(){
       
     const [results, setResult] = useState([])
-    console.log(results)
     return (
         <div>
             <div className='searchBarContainer'>
@@ -14,8 +13,6 @@ export default function Home(){
                 <SearchResultList results={results}/> 
             </div>
         </div>
-        
-
 
     )
 }
