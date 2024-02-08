@@ -18,17 +18,6 @@ export default function SearchBar({setResult}){
 
     }
     //backend API call for search page
-    const fetchDataPage = (value) =>{
-        
-        let url = 'https://intermittence.pythonanywhere.com/search/?keyword='+value+'&quarter=20241&subject_code=CMPSC';
-        fetch(url)
-        .then((response) => response.json())
-        .then((jsonFile) => {
-            navigate('/search',{state: {jsonFile}})
-        })
-
-    }
- 
     const handleChange = (value) =>{
         setUserInput(value);
         if (value.length === 0) {
@@ -47,7 +36,7 @@ export default function SearchBar({setResult}){
                 setResult([]);
             }
             else{
-                fetchDataPage(value)
+                navigate('/search',{state: {value}})
             }
         }
     }
