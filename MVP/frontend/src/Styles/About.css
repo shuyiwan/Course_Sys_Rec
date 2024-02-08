@@ -1,4 +1,4 @@
-/* Remove individual background from title bar */
+
 .title-bar {
     color: white;
     text-align: center;
@@ -10,28 +10,28 @@
 
 .title-bar h1 {
     margin: 0;
-    font-size: 2.5rem; /* Increased font size */
-    font-weight: bold; /* Make text bold */
+    font-size: 2.5rem; 
+    font-weight: bold; 
 }
 
-/* Mission Statement title */
+
 .mission-title {
-    color: black; /* Black color for the title */
-    font-size: 1.8rem; /* Adjust size as needed */
-    text-align: center; /* Center align the title */
-    margin-top: 20px; /* Space from the title bar */
+    color: black; 
+    font-size: 1.8rem; 
+    text-align: center; 
+    margin-top: 20px; 
 }
 
-/* Mission Statement text */
+
 .mission-text {
-    color: black; /* Black color for the text */
-    font-size: 1.2rem; /* Adjust size as needed */
-    text-align: center; /* Center align the text */
-    margin: 20px auto; /* Margin for top, bottom and auto for sides */
-    width: 60%; /* Adjust width as needed */
+    color: black; 
+    font-size: 1.2rem; 
+    text-align: center; 
+    margin: 20px auto; 
+    width: 60%; 
 }
 
-/* Page background settings */
+
 .about-container {
     background-image: url('forest_1.jpg');
     background-size: cover;
@@ -39,10 +39,10 @@
     min-height: 100vh;
 }
 
-/* Adjustments for side-by-side block layout */
+
 .blocks-container {
     display: flex;
-    justify-content: space-around; /* Evenly space blocks in a row */
+    justify-content: space-around; 
     padding: 20px;
 }
 
@@ -51,112 +51,110 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    width: 30%; /* Adjust width as needed to fit three side by side */
+    width: 30%; 
     cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
 .block:hover,
-.block:focus, /* Add focus for accessibility */
-.block:active { /* Add active to handle clicks */
-    transform: scale(1.05); /* Slightly larger zoom effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect on hover/click */
+.block:focus, 
+.block:active { 
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 @media (max-width: 768px) {
     .blocks-container {
-        flex-direction: column; /* Stack blocks vertically on small screens */
+        flex-direction: column; 
         align-items: center;
     }
 
     .block {
-        width: 80%; /* Full width for smaller screens */
-        margin-bottom: 20px; /* Add some space between stacked blocks */
+        width: 80%; 
+        margin-bottom: 20px; 
     }
 }
 
-/* Styles for the active (magnified) block */
+
 .block.active {
-    transform: scale(2.0); /* Scale up the block */
-    position: fixed; /* Changed to fixed positioning */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%) scale(2.0); /* Adjust for centering and scaling */
-    z-index: 10; /* Ensure it's above other content */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
-    width: auto; /* Adjust width to content */
-    max-width: 90%; /* Ensure it doesn't overflow the viewport */
-    max-height: 90%; /* Ensure it doesn't overflow the viewport */
-    overflow: auto; /* Add scroll for overflow content */
+    transform: scale(2.0);
+    position: fixed; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%) scale(2.0); 
+    z-index: 10; 
+    transition: transform 0.3s ease-in-out; 
+    width: auto; 
+    max-width: 90%; 
+    max-height: 90%; 
+    overflow: auto; 
 }
 
-/* Close button styling within the active block */
+
 .close-button {
     position: absolute;
-    top: 10px; /* Adjusted position */
-    right: 10px; /* Adjusted position */
-    /* Other styles remain unchanged */
+    top: 10px; 
+    right: 10px; 
 }
 
-/* Additional style for "Our Team" block background */
-.block.team-block { /* Assuming .team-block is added to the "Our Team" block */
-    background-image: url('team_1.jpg'); /* Path to your image */
+
+.block.team-block {
+    background-image: url('team_1.jpg');
     background-size: cover;
     background-position: center;
 }
 
-/* Styles for the team members container */
+
 .team-members-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 10px; /* Space between items */
-    margin-top: 20px; /* Space from the block title */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    margin-top: 20px; 
 }
 
-/* Styles for individual team members */
 .team-member {
-    background: #e0e0e0; /* Light grey background */
-    padding: 10px; /* Padding inside each member container */
-    text-align: center; /* Center the text */
-    border-radius: 5px; /* Slightly rounded corners */
+    background: #e0e0e0; 
+    padding: 10px; 
+    text-align: center; 
+    border-radius: 5px; 
 }
 
 
 
-/* Additional style for "Our History" block background */
-.block.history-block { /* Assuming .history-block is added to the "Our History" block */
-    background-image: url('history.jpg'); /* Path to your image */
+
+.block.history-block { 
+    background-image: url('history.jpg'); 
     background-size: cover;
     background-position: center;
 }
 
-.block.service-block { /* Assuming .service-block is added to the "Our Service" block */
-    background-image: url('service.jpg'); /* Path to your image */
+.block.service-block { 
+    background-image: url('service.jpg'); 
     background-size: cover;
     background-position: center;
 }
 
-/* Style for "Our Service" block sentences alignment */
+
 .service-details {
-    text-align: left; /* Align sentences to the left */
+    text-align: left;
 }
 
-/* Styles for "Our Service" details with custom bullet points */
+
 .service-details ul {
-    padding: 0; /* Remove default padding */
-    list-style-type: none; /* Remove default list styling */
+    padding: 0; 
+    list-style-type: none; 
 }
 
 .service-details li {
-    margin-bottom: 10px; /* Space between sentences */
-    position: relative; /* To position the pseudo-element */
-    padding-left: 15px; /* Adjusted space for the pseudo-element and alignment */
+    margin-bottom: 10px; 
+    position: relative; 
+    padding-left: 15px; 
 }
 
 .service-details li::before {
-    content: '|'; /* Use '|' as the bullet point */
+    content: '|'; 
     position: absolute;
     left: 0;
-    color: black; /* Color of the vertical bar */
-    font-weight: bold; /* Make the bar bold if desired */
+    color: black; 
+    font-weight: bold; 
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import '../Styles/About.css'; // Ensure the path is correct
+import '../Styles/About.css';
 
 export default function About() {
     const [activeBlock, setActiveBlock] = useState(null);
