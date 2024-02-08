@@ -40,13 +40,13 @@ def add_classes(request):
     # To link the class with the user, we need to fetch the user from db first
     user = models.User.objects.get(email = email)
 
-    # if user have added this course before, then return an error json
-    try:
-        new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
-                # object and link the user to this course
-        new_class.save() # add one row to for this class to the SavedCourses table
-    except IntegrityError:
-        return JsonResponse({'Failure': 'Cannot add the same class multiple times.'})
+    # Check if this class is already added for this user
+    if models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id).exists():
+        return JsonResponse({'Success': f'{courseID} is already added for {email}'})
+    
+    new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
+                    # object and link the user to this course
+    new_class.save() # add one row to for this class to the SavedCourses table
     
 
     # if everything works well, return a json response indicating that the class is saved
