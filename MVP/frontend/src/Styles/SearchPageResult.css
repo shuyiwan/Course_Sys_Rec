@@ -1,14 +1,46 @@
-.SearchPageResult{
+.SearchPageResult {
+    position: relative;
     box-sizing: border-box;
-    padding: 100px 30px;
+    padding: 65px 50px;
     font-family: Helvetica, sans-serif;
     border-radius: 20px;
     justify-content: center;
     border-style: solid;
     min-width: 500px;
+    transition: transform 0.3s ease-in-out; 
     max-width: 500px;
 }
 
-.SearchPageResult:hover{
+.SearchPageResult:hover {
     background-color: #efefef;
+    transform: scale(1.02); 
+}
+
+.AddToCartButton {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; 
+    height: 30px;
+    line-height: 30px; 
+    text-align: center;
+    border-radius: 50%; 
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out; 
+}
+
+.AddToCartButton:hover {
+    background-color: #0056b3;
+}
+
+.AddToCartButton:focus {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px #5a01a7; 
+    transition: box-shadow 0.7s; 
 }
