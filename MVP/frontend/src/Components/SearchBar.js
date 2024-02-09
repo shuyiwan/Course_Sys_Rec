@@ -20,23 +20,32 @@ export default function SearchBar({setResult}){
     //backend API call for search page
     const handleChange = (value) =>{
         setUserInput(value);
-        if (value.length === 0) {
-            console.log(value);
+        if(value.trim() === ''){
             setResult([]);
         }
         else{
-            fetchData(value);
-        }
-        
+            if (value.length === 0) {
+                console.log(value);
+                setResult([]);
+            }
+            else{
+                fetchData(value);
+            }
+        }    
     }
 
     const handleEnter = (value, event) =>{
         if (event.key === 'Enter') {
-            if (value.length === 0) {
+            if(value.trim() === ''){
                 setResult([]);
             }
             else{
-                navigate('/search',{state: {value}})
+                if (value.length === 0) {
+                    setResult([]);
+                }
+                else{
+                    navigate('/search',{state: {value}})
+                }
             }
         }
     }
