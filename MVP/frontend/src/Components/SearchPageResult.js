@@ -1,11 +1,10 @@
-import React from "react"
-import '../Styles/SearchPageResult.css'
+import React from "react";
+import '../Styles/SearchPageResult.css';
 
 export default function SearchPageResult({result}){
 
     return (
         <div className="SearchPageResult">
-            
             <p>{result.courseID}</p>
             <br />
             <p>{result.title}</p>
@@ -13,6 +12,8 @@ export default function SearchPageResult({result}){
             <p>Description: {result.description}</p>
             <br />
             <p>Instructor: {result.instructor}</p>
+            <button className="AddToCartButton">+</button>
         </div>
-    )
+    );
 }
+
