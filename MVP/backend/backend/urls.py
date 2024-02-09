@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from search import views
+from search import views as search_views
+from shoppingCart import views as sc_views
+#import search
+#import shoppingCart
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("search/", views.search_keywords, name="search_keywords") # add url path for search feature
+    path("search/", search_views.search_keywords, name="search_keywords"), # add url path for search feature
+    path("shoppingCart/", sc_views.add_classes, name="add_classes") # add url path for adding classes to cart
 ]
