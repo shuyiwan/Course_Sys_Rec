@@ -6,7 +6,7 @@ import "../Styles/Pages.css"
 export default function Course(){
     let location = useLocation();
     let keyword = location.state.value
-    const [results, setResults] = useState({})
+    const [results, setResults] = useState({name: 'downloading'})
 
     useEffect(()=> {
         const fetchData = async (value) =>{
@@ -18,7 +18,7 @@ export default function Course(){
             })
         }
         fetchData(keyword)
-    },[])
+    })
 
     console.log(results)
 
@@ -27,12 +27,19 @@ export default function Course(){
     if(isJsonEmpty){
         return (
             <div className='loadingMessage'>
-               Loading.....
+               Course not found
             </div> 
         )
     }
 
     else{
+        if (results.name === "downloading"){
+            return (
+                <div className='loadingMessage'>
+                   Loading.....
+                </div> 
+            )
+        }
         return (
             <SearchPageList results={results}/> 
         )
