@@ -55,5 +55,27 @@ def add_classes(request):
 
 
 
+### The function to retrieved the courses
+@require_http_methods(["GET"])  # Make sure it only handles the GET request, We will change
+                                # it to POST after MVP
+def retrieve_classes(request):
+
+    # get the email from url. 
+    # For example http://127.0.0.1:8000/shoppingCart/retrieve/?email=test@ucsb.edu
+    # if it cannot find parameters is not in url, set them to ''
+    email = request.GET.get('email', '')
+
+    # return error if any of the keywords is empty
+    if not email:
+        return JsonResponse({'Failure': 'No email provided.'}, status=400)
+    
+    # check if the user name is in User table, if not we return an error message
+    if not models.User.objects.filter(email=email).exists():
+        return JsonResponse({'Failure': f'User {email} does not exist.'}, status=400)
+    
+    user= models.User.objects.get(email=email)
+    all_classes = models.SavedCourses.saved_courses.all()
+    
+    
 
 
