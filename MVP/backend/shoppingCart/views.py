@@ -66,7 +66,7 @@ def retrieve_classes(request):
     if not email:
         return JsonResponse({'Failure': 'No email provided.'}, status=400)
 
-    # check if the user name is in User table, if not we return an error message
+    # check if this user is in User table, if not we return an error message
     if not models.User.objects.filter(email=email).exists():
         return JsonResponse({'Failure': f'User {email} does not exist.'}, status=400)
     
