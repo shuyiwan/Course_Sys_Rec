@@ -28,7 +28,7 @@ def add_classes(request):
     if not email:
         return JsonResponse({'error': 'No email provided.'}, status=400)
     if not courseID:
-        return JsonResponse({'error': 'No courseID quarter provided.'}, status=400)
+        return JsonResponse({'error': 'No courseID provided.'}, status=400)
     
     # check if the user name is in User table, if not we need create a user
     # and add it to the table
