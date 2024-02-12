@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from search import views as search_views
 from shoppingCart import views as sc_views
-#import search
-#import shoppingCart
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("search/", search_views.search_keywords, name="search_keywords"), # add url path for search feature
-    path("shoppingCart/", sc_views.add_classes, name="add_classes") # add url path for adding classes to cart
+    path("search/", search_views.search_keywords, name="search_keywords"), # url path for search feature
+    path("shoppingCart/add/", sc_views.add_classes, name="add_classes"), # url path for adding classes to cart
+    path("shoppingCart/retrieve/", sc_views.retrieve_classes, name="retrieve_classes") # url path for retrieving classes
 ]
