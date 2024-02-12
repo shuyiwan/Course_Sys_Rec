@@ -13,3 +13,5 @@
 |Fri 2/02   | Ivan Hernandez    | Led lab04 discussion for  sprint 03, daily scrum
 |Mon 2/05   | Mariana Rosillo   | Led lec07 discussion for  sprint 04, daily scrum
 |Wed 2/07   | Yicong Yan        | Led lec08 discussion for  sprint 04, daily scrum
+|Fri 2/09   | N/A               | MVP Presentations -- we all participated
+|Mon 2/12   | Kevin Nguyen      | Led lec09 discussion for  sprint 05, daily scrum
