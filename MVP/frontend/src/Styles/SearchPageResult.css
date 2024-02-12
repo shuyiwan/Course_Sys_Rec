@@ -1,7 +1,7 @@
 .SearchPageResult {
     position: relative;
     box-sizing: border-box;
-    padding: 65px 50px;
+    padding: 65px 50px; 
     font-family: Helvetica, sans-serif;
     border-radius: 20px;
     justify-content: center;
@@ -43,4 +43,21 @@
     outline-style: solid;
     box-shadow: 0 0 0 4px #5a01a7; 
     transition: box-shadow 0.7s; 
+}
+
+.ReturnButton {
+    position: fixed; 
+    left: 20px; 
+    top: 70px; 
+    background: url('return.png') no-repeat center center; 
+    background-size: contain; 
+    width: 50px; 
+    height: 50px; 
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.ReturnButton:hover {
+    transform: scale(1.1); 
 }
