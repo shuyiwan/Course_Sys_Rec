@@ -37,5 +37,3 @@ MVP and MVP demo.
 Work on Lab05 -- unit test and AI documentation
 
 Update Kanban Board -- ad more issues and stories.
-
-Get Sprint planning 02.md ready.
