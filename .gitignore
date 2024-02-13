@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/MVP/frontend/node_modules
-/MVP/frontend/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
