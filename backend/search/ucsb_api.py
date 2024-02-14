@@ -7,10 +7,8 @@ import os
 from dotenv import load_dotenv
 from search import models
 import time
-
-# .env file containing UCSB api keys should be located in the root folder of backend
-load_dotenv() # uses absolute path
-uscb_api_consumer_key = os.getenv('uscb_api_consumer_key') # ask Kevin for the key
+from django.conf import settings
+import json
 
 """
 Information about the API can be found here: 
@@ -41,14 +39,13 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1)
         f"&includeClassSections={includeClassSections}"
         f"&subjectCode={subjectCode}"
     )
-
     print(url)
 
     # let the UCSB api know what this application is
     headers: dict = {
         "accept": "application/json",
         "ucsb-api-version": "3.0",
-        "ucsb-api-key": uscb_api_consumer_key
+        "ucsb-api-key": settings.USCB_API_CONSUMER_KEY
     }
 
     # send our request and receive the payload
@@ -66,13 +63,13 @@ def populate_courses_db():
     max_pages = 5
     years = ['2024']
     quarters = ['1', '2', '3', '4']
-    subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL", 
-    "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC", 
-    "CMPTG", "CNCSP", "DANCE", "DYNS", "EARTH", "EACS", "EEMB", "ECON", "ED", "ECE", "ENGR", 
-    "ENGL", "EDS", "ESM", "ENV S", "ESS", "ES", "FEMST", "FAMST", "FR", "GEN S", "GEOG", 
-    "GER", "GPS", "GLOBL", "GRAD", "GREEK", "HEB", "HIST", "INT", "ITAL", "JAPAN", "KOR", 
-    "LATIN", "LAIS", "LING", "LIT", "MARSC", "MARIN", "MATRL", "MATH", "ME", "MAT", "ME ST", 
-    "MES", "MS", "MCDB", "MUS", "MUS A", "PHIL", "PHYS", "POL S", "PORT", "PSY", "RG ST", 
+    subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL",
+    "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC",
+    "CMPTG", "CNCSP", "DANCE", "DYNS", "EARTH", "EACS", "EEMB", "ECON", "ED", "ECE", "ENGR",
+    "ENGL", "EDS", "ESM", "ENV S", "ESS", "ES", "FEMST", "FAMST", "FR", "GEN S", "GEOG",
+    "GER", "GPS", "GLOBL", "GRAD", "GREEK", "HEB", "HIST", "INT", "ITAL", "JAPAN", "KOR",
+    "LATIN", "LAIS", "LING", "LIT", "MARSC", "MARIN", "MATRL", "MATH", "ME", "MAT", "ME ST",
+    "MES", "MS", "MCDB", "MUS", "MUS A", "PHIL", "PHYS", "POL S", "PORT", "PSY", "RG ST",
     "RENST", "RUSS", "SLAV", "SOC", "SPAN", "SHS", "PSTAT", "TMP", "THTR", "WRIT", "W&L",]
 
     for year in years:
@@ -88,13 +85,16 @@ def populate_courses_db():
 
                     # fetch the page
                     query = query_UCSB_classes(UCSB_quarter, code, page_number)
+                    # print query as a formatted dictionary like a json
+                    print(json.dumps(query, indent=4))
+
 
                     # sleep for 2 seconds to avoid overloading the api
                     time.sleep(2)
 
                     # keep track of page statistics
-                    assert query["pageNumber"] == str(page_number)
-                    queried_courses += int(query["pageSize"])
+                    assert query["pageNumber"] == page_number
+                    queried_courses += query["pageSize"]
                     total_courses = query["total"]
 
                     # store the classes in the query
@@ -106,7 +106,7 @@ def populate_courses_db():
                             data = i
                         )
                         course.save()
-                    
+
                     # check if we have reached the total number of courses
                     if (queried_courses >= total_courses):
                         break
