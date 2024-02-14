@@ -9,48 +9,52 @@ from django.forms.models import model_to_dict
 # Create your views here.
 
 ### The function to handle the request of save courses to cart.
-@require_http_methods(["GET"])  # Make sure it only handles the GET request, We will change
-                                # it to POST after MVP
+@require_http_methods(["POST"])  # Make sure it only handles the POST request.
 def add_classes(request):
 
     # This is a basic version of adding classes. We just get the email and the 
     # courseId of the class the user what to save to cart
 
-    # For this version, we only add one class to db per request.
+    # We can add multiple classes to db per request.
 
     # get the email from url. 
-    # For example http://127.0.0.1:8000/shoppingCart/?email=test@ucsb.edu&courseID=CS154
-    # if it cannot find parameters is not in url, set them to ''
-    email = request.GET.get('email', '')
-    courseID = request.GET.get('courseID', '')
+    # For example http://127.0.0.1:8000/shoppingCart/add/
 
-    # return error if any of the keywords is empty
-    if not email:
-        return JsonResponse({'error': 'No email provided.'}, status=400)
-    if not courseID:
-        return JsonResponse({'error': 'No courseID provided.'}, status=400)
-    
-    # check if the user name is in User table, if not we need create a user
-    # and add it to the table
-    if not models.User.objects.filter(email=email).exists():
-        new_user = models.User(email = email) # create a user object
-        new_user.save() # This will add one row for this user into the User table
+    courses_list = json.loads(request.body)
+    num_courses = len(courses_list)
 
-    # add class to db
-    # To link the class with the user, we need to fetch the user from db first
-    user = models.User.objects.get(email = email)
+    # keep track of the courses that are already added
+    existing_courses = []
+    for i in courses_list:
+        email = i["email"]
+        courseID = i["courseID"]
 
-    # Check if this class is already added for this user
-    if models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id).exists():
-        return JsonResponse({'Failure': f'{courseID} is already added for {email}'})
-    
-    new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
-                    # object and link the user to this course
-    new_class.save() # add one row to for this class to the SavedCourses table
-    
+        # check if the user name is in User table, if not we need create a user
+        # and add it to the table
+        if not models.User.objects.filter(email=email).exists():
+            new_user = models.User(email = email) # create a user object
+            new_user.save() # This will add one row for this user into the User table
 
-    # if everything works well, return a json response indicating that the class is saved
-    return JsonResponse({'Success': f'{courseID} is added for user {email}'})
+        # add class to db
+        # To link the class with the user, we need to fetch the user from db first
+        user = models.User.objects.get(email = email)
+
+
+        # Check if this class is already added for this user
+        if not models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id).exists():
+            new_class = models.SavedCourses(courseID = courseID, user = user) # create the course
+                        # object and link the user to this course
+            new_class.save() # add one row to for this class to the SavedCourses table
+        else:
+            existing_courses.append(courseID)
+
+    if not existing_courses:
+        return JsonResponse({'Success': 'All of the courses are saved.'})
+    elif len(existing_courses) == num_courses:
+        return JsonResponse({'Failure': 'All of the courses are already in the cart'})
+    else: 
+        return JsonResponse({'Success': ", ".join(existing_courses) + ' are already in' +
+                              ' the cart, and the new courses are saved'})
 
 
 ### The function to retrieved the courses
