@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import '../Styles/CourseCart.css'; // Import the CSS file
+import testData from '../Components/DataTest.json';
 
 export default function CourseCart() {
-    const [cartItems, setCartItems] = useState([
-        {
-            name: "Course Name 1",
-            description: "Course Description 1",
-        },
-        {
-            name: "Course Name 2",
-            description: "Course Description 2",
-        },
-    ]);
+    const [cartItems, setCartItems] = useState(testData);
+    useEffect(() => {
+        setCartItems(testData);   
+    },[])
 
     function removeItem(index) {
         const updatedCart = [...cartItems];
@@ -24,19 +19,18 @@ export default function CourseCart() {
         <div>
 
             <div id="shopping-cart">
-                {cartItems.map((item, index) => (
-                    <div className="cart-item" key={index}>
-                        <button className="remove-item" onClick={() => removeItem(index)}>Remove</button>
-                        <h2>{item.name}</h2>
-                        <p>{item.description}</p>
+                {cartItems.map((course, id) => (
+                    <div className="cart-item" key={id}>
+                        <button className="remove-item" onClick={() => removeItem(id)}>Remove</button>
+                        <h2>{course.title}</h2>
+                        <p>{course.description}</p>
                     </div>
                 ))}
             </div>
 
-            {/* Use Link to navigate back to the home page */}
-            <Link to="/">Continue Shopping</Link>
+            <Link to="/search">Back to Search</Link>
 
-            <button id="checkout-button">Checkout</button>
+            <button id="checkout-button">Download PDF</button>
         </div>
     );
 }
