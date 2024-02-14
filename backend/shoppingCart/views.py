@@ -17,14 +17,15 @@ def add_classes(request):
 
     # We can add multiple classes to db per request.
 
-    # get the email from url. 
-    # For example http://127.0.0.1:8000/shoppingCart/add/
+    # URL: http://127.0.0.1:8000/shoppingCart/add/
 
     courses_list = json.loads(request.body)
     num_courses = len(courses_list)
 
-    # keep track of the courses that are already added
+    # keep track of the courses that are already added, we will return which courses are
+    # already there to frontend.
     existing_courses = []
+    
     for i in courses_list:
         email = i["email"]
         courseID = i["courseID"]
@@ -46,6 +47,7 @@ def add_classes(request):
                         # object and link the user to this course
             new_class.save() # add one row to for this class to the SavedCourses table
         else:
+            # if this class is already there, then add this class to the list
             existing_courses.append(courseID)
 
     if not existing_courses:
