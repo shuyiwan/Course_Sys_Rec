@@ -5,6 +5,8 @@ Internal scraper used to query course information from the UCSB API
 import requests
 import os
 from dotenv import load_dotenv
+from search import models
+import time
 
 # .env file containing UCSB api keys should be located in the root folder of backend
 load_dotenv() # uses absolute path
@@ -14,7 +16,7 @@ uscb_api_consumer_key = os.getenv('uscb_api_consumer_key') # ask Kevin for the k
 Information about the API can be found here: 
 <https://developer.ucsb.edu/content/academic-curriculums#/>
 """
-def query_UCSB_classes(quarter: str, subjectCode: str = "") -> dict:
+def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1) -> dict:
     # quarter is required to query the UCSB api
     # quarter follows YYYYQ format; Q is an integer [W = 1, S = 2, M = 3, F = 4]
     assert quarter
@@ -23,9 +25,8 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "") -> dict:
     assert int(quarter[-1]) >= 1 and int(quarter[-1]) <= 4
 
     # *** Query Parameters ***
-    minUnits: int = 4
+    minUnits: int = 1
     maxUnits: int = 12
-    pageNumber: int = 1 # to be modified
     pageSize: int = 30 # to be modified
     includeClassSections: bool = True
 
@@ -52,6 +53,34 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "") -> dict:
     response: requests.Response = requests.get(url, headers=headers)
     data: dict = response.json()
     return data
+
+def populate_courses_db():
+    """
+    This function should only be run once during startup to get required courses in your DB
+    This function will take a while to complete
+    Once run, it will not run again, even for future restarts of the server as long as the DB doesn't erase data
+    """
+
+    years = ['2024']
+    quarters = ['1', '2', '3', '4']
+    subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL", 
+    "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC", 
+    "CMPTG", "CNCSP", "DANCE", "DYNS", "EARTH", "EACS", "EEMB", "ECON", "ED", "ECE", "ENGR", 
+    "ENGL", "EDS", "ESM", "ENV S", "ESS", "ES", "FEMST", "FAMST", "FR", "GEN S", "GEOG", 
+    "GER", "GPS", "GLOBL", "GRAD", "GREEK", "HEB", "HIST", "INT", "ITAL", "JAPAN", "KOR", 
+    "LATIN", "LAIS", "LING", "LIT", "MARSC", "MARIN", "MATRL", "MATH", "ME", "MAT", "ME ST", 
+    "MES", "MS", "MCDB", "MUS", "MUS A", "PHIL", "PHYS", "POL S", "PORT", "PSY", "RG ST", 
+    "RENST", "RUSS", "SLAV", "SOC", "SPAN", "SHS", "PSTAT", "TMP", "THTR", "WRIT", "W&L",]
+
+    for quarter in quarters:
+        query = query_UCSB_classes(quarter)
+        for i in query["classes"]:
+            course = models.Cached_Courses(
+                courseID = i["courseId"],
+                quarter = quarter,
+                data = i
+            )
+            course.save()
 
 if __name__ == "__main__":
     # Example way to query; this should return a list of courses and descriptions
