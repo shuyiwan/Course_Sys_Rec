@@ -18,3 +18,15 @@
   left: 40%;
   font-size: 100px;
 }
+
+
+.homePageContainer {
+  background-color: #93C5FD; 
+}
+
+/* support dark mode 
+@media (prefers-color-scheme: dark) {
+  .homePageContainer {
+      background-color: #1E40AF;
+  }
+}*/
