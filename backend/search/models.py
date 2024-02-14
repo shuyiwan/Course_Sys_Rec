@@ -1,14 +1,16 @@
 from django.db import models
 
 class Cached_Courses(models.Model):
-    # quarter follows YYYYQ format; Q is an integer [W = 1, S = 2, M = 3, F = 4]
-    quarter = models.CharField(max_length=5)
     courseID = models.CharField(max_length=30)
+
+    # 1 = Fall, 2 = Winter, 3 = Spring, 4 = Summer
+    quarter = models.IntegerField(validators = [MinValueValidator(1), MaxValueValidator(4)])
+    year = models.IntegerField(validators = [validate_four_digit_number])
     data = models.JSONField()
 
     # all rows must be unique
     class Meta:
-        unique_together = ('courseID', 'quarter')
+        unique_together = ('courseID', 'quarter', 'year')
 
     def __str__(self):
         return f"{self.courseID} {self.quarter}"

@@ -42,6 +42,8 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1)
         f"&subjectCode={subjectCode}"
     )
 
+    print(url)
+
     # let the UCSB api know what this application is
     headers: dict = {
         "accept": "application/json",
@@ -61,6 +63,7 @@ def populate_courses_db():
     Once run, it will not run again, even for future restarts of the server as long as the DB doesn't erase data
     """
 
+    max_pages = 5
     years = ['2024']
     quarters = ['1', '2', '3', '4']
     subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL", 
@@ -72,15 +75,41 @@ def populate_courses_db():
     "MES", "MS", "MCDB", "MUS", "MUS A", "PHIL", "PHYS", "POL S", "PORT", "PSY", "RG ST", 
     "RENST", "RUSS", "SLAV", "SOC", "SPAN", "SHS", "PSTAT", "TMP", "THTR", "WRIT", "W&L",]
 
-    for quarter in quarters:
-        query = query_UCSB_classes(quarter)
-        for i in query["classes"]:
-            course = models.Cached_Courses(
-                courseID = i["courseId"],
-                quarter = quarter,
-                data = i
-            )
-            course.save()
+    for year in years:
+        for quarter in quarters:
+            for code in subject_codes:
+                # convert the quarter to UCSB format
+                UCSB_quarter = f"{year}{quarter}"
+                queried_courses = 0
+                total_courses = 1000000
+
+                # UCSB API stores its courses in multiple pages, meaning we need to loop through each page
+                for page_number in range(1, max_pages):
+
+                    # fetch the page
+                    query = query_UCSB_classes(UCSB_quarter, code, page_number)
+
+                    # sleep for 2 seconds to avoid overloading the api
+                    time.sleep(2)
+
+                    # keep track of page statistics
+                    assert query["pageNumber"] == str(page_number)
+                    queried_courses += int(query["pageSize"])
+                    total_courses = query["total"]
+
+                    # store the classes in the query
+                    for i in query["classes"]:
+                        course = models.Cached_Courses(
+                            courseID = i["courseId"],
+                            year = int(year),
+                            quarter = int(quarter),
+                            data = i
+                        )
+                        course.save()
+                    
+                    # check if we have reached the total number of courses
+                    if (queried_courses >= total_courses):
+                        break
 
 if __name__ == "__main__":
     # Example way to query; this should return a list of courses and descriptions
