@@ -82,6 +82,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "saved_courses_db",
+        'TEST': {
+            'NAME': 'tests_saved_courses_db',
+        }, # using for testing in a diff db
         "USER": "team4",
         "PASSWORD": "cs148winter",
         "HOST": "localhost",
