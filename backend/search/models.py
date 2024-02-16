@@ -16,4 +16,4 @@ class CachedCourses(models.Model):
         unique_together = ('courseID', 'quarter', 'year')
 
     def __str__(self):
-        return f"{self.courseID} {self.quarter}"
+        return f"course={self.courseID}, department={self.department}, quarter={self.quarter}, year={self.year}"
