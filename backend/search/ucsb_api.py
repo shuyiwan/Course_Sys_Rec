@@ -79,8 +79,7 @@ def fetch_all_courses() -> None:
                 queried_courses = 0
                 total_courses = get_total_courses(UCSB_quarter, code)
 
-                # skip if the DB has already stored the same amount of total courses for the given quarter and code
-                if models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code).count() == total_courses:
+                if already_stored_department(year, quarter, code, total_courses):
                     print(f"Skipped Department: {UCSB_quarter} {code}")
                     continue
                 print(f"Querying Department: {UCSB_quarter} {code} {total_courses}")
@@ -135,6 +134,12 @@ def store_courses(query: dict, year: str, quarter: str, code: str) -> None:
         )
         course.save()
         print(f"Stored: {i['courseId']}")
+
+def already_stored_department(year: str, quarter: str, code: str, total_courses: int) -> bool:
+    """
+    Returns true if the entire department has already been stored
+    """
+    return models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code).count() >= total_courses
 
 
 if __name__ == "__main__":

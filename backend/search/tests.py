@@ -3,7 +3,7 @@ from unittest.mock import patch, call # for testing print statements
 from search import models, ucsb_api
 
 
-class storeCoursesTest(TestCase):
+class StoreCoursesTest(TestCase):
     '''
     This class tests that store_courses prints the correct message depending on what 
     queries are passed in to be stored in the database.
@@ -73,4 +73,33 @@ class storeCoursesTest(TestCase):
             call(f"Skipping: {query['classes'][1]['courseId']}"),
         ]
 
+    def test_store_department_false(self):
+        year = 2024
+        quarter = 1
+        code = "CMPSC"
+        total_courses = 30
+        self.assertFalse(ucsb_api.already_stored_department(year, quarter, code, total_courses))
+    
+    @patch('builtins.print')
+    def test_store_department_true(self, mock_print):
+        year = 2024
+        quarter = 1
+        code = "CMPSC"
+        total_courses = 30
+        UCSB_quarter = f"{year}{quarter}"
+        query = {
+            "pageNumber": 1,
+            "pageSize": 30,
+            "total": total_courses,
+            "classes": []
+        }
 
+        for i in range(total_courses):
+            query["classes"].append({
+                "quarter": int(UCSB_quarter),
+                "courseId": f"CMPSC {i}",
+                "description": "TMP",
+            })
+        ucsb_api.store_courses(query, year, quarter, code)
+
+        self.assertTrue(ucsb_api.already_stored_department(year, quarter, code, total_courses))
