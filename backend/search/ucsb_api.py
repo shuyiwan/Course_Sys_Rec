@@ -59,10 +59,9 @@ def fetch_all_courses() -> None:
 
     # parameters, change if needed
     # make sure to be considerate of the UCSB API
-    max_pages = 5
-    years = ['2024']
-    quarters = ['1', '2']
-    subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL",
+    YEARS = ['2022']
+    QUARTERS = ['1', '2']
+    SUBJECT_CODES =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL",
     "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC",
     "CMPTG", "CNCSP", "DANCE", "DYNS", "EARTH", "EACS", "EEMB", "ECON", "ED", "ECE", "ENGR",
     "ENGL", "EDS", "ESM", "ENV S", "ESS", "ES", "FEMST", "FAMST", "FR", "GEN S", "GEOG",
@@ -71,38 +70,49 @@ def fetch_all_courses() -> None:
     "MES", "MS", "MCDB", "MUS", "MUS A", "PHIL", "PHYS", "POL S", "PORT", "PSY", "RG ST",
     "RENST", "RUSS", "SLAV", "SOC", "SPAN", "SHS", "PSTAT", "TMP", "THTR", "WRIT", "W&L",]
 
-    for year in years:
-        for quarter in quarters:
-            for code in subject_codes:
-                # convert the quarter to UCSB format
-                UCSB_quarter = f"{year}{quarter}"
-                queried_courses = 0
-                total_courses = get_total_courses(UCSB_quarter, code)
-
-                if already_stored_department(year, quarter, code, total_courses):
-                    print(f"Skipped Department: {UCSB_quarter} {code}")
-                    continue
-                print(f"Querying Department: {UCSB_quarter} {code} {total_courses}")
-
-                # UCSB API stores its courses in multiple pages, meaning we need to loop through each page
-                for page_number in range(1, max_pages):
-
-                    # fetch the page
-                    query = query_UCSB_classes(UCSB_quarter, code, page_number, pageSize=total_courses)
-
-                    # sleep for 2 seconds to avoid overloading the api
-                    time.sleep(2)
-
-                    # keep track of page statistics
-                    assert query["pageNumber"] == page_number
-                    queried_courses += query["pageSize"]
-
-                    store_courses(query, year, quarter, code)
-
-                    # check if we have reached the total number of courses
-                    if (queried_courses >= total_courses):
-                        break
+    for year in YEARS:
+        for quarter in QUARTERS:
+            for code in SUBJECT_CODES:
+                fetch_department(year, quarter, code)
     print("Success! Finished querying")
+
+def fetch_department(year: str, quarter: str, code: str) -> None:
+    """
+    This function should only be run once during startup to get required courses 
+    in your DB. This function will take a while to complete. Once run, you don't
+    need to run this again unless you want to get more classes from different quarters.
+    """
+    # config, change if needed
+    MAX_PAGES = 5
+
+    # convert the quarter to UCSB format
+    UCSB_quarter = f"{year}{quarter}"
+    queried_courses = 0
+    total_courses = get_total_courses(UCSB_quarter, code)
+
+    if already_stored_department(year, quarter, code, total_courses):
+        print(f"Skipped Department: {UCSB_quarter} {code}")
+        return
+    print(f"Querying Department: {UCSB_quarter} {code} {total_courses}")
+
+    # UCSB API stores its courses in multiple pages, meaning we need to loop through each page
+    for page_number in range(1, MAX_PAGES):
+
+        # fetch the page
+        query = query_UCSB_classes(UCSB_quarter, code, page_number, pageSize=total_courses)
+
+        # sleep for 2 seconds to avoid overloading the api
+        time.sleep(2)
+
+        # keep track of page statistics
+        assert query["pageNumber"] == page_number
+        queried_courses += query["pageSize"]
+
+        store_courses(query, year, quarter, code)
+
+        # check if we have reached the total number of courses
+        if (queried_courses >= total_courses):
+            break
 
 def get_total_courses(UCSB_quarter: str, code: str) -> int:
     """
