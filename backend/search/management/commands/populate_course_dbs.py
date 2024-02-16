@@ -19,7 +19,7 @@ class Command(BaseCommand):
         # parameters, change if needed
         # make sure to be considerate of the UCSB API
         max_pages = 5
-        years = ['2024']
+        years = ['2023']
         quarters = ['1', '2']
         subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL",
         "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC",
@@ -40,9 +40,9 @@ class Command(BaseCommand):
 
                     # skip if the DB has already stored the same amount of total courses for the given quarter and code
                     if models.CachedCourses.objects.filter(quarter=int(quarter), department=code).count() == total_courses:
-                        print("Skipped Department:", UCSB_quarter, code)
+                        self.stdout.write(f"Skipped Department: {UCSB_quarter} {code}")
                         continue
-                    print("Querying Department:", UCSB_quarter, code)
+                    self.stdout.write(f"Querying Department: {UCSB_quarter} {code}")
 
                     # UCSB API stores its courses in multiple pages, meaning we need to loop through each page
                     for page_number in range(1, max_pages):
@@ -57,23 +57,7 @@ class Command(BaseCommand):
                         assert query["pageNumber"] == page_number
                         queried_courses += query["pageSize"]
 
-                        # store the classes in the query
-                        for i in query["classes"]:
-                            # if we have already stored this class, skip
-                            if models.CachedCourses.objects.filter(quarter=int(quarter), department=code, courseID=i["courseId"]).count() > 0:
-                                print("Skipping:", i["courseId"])
-                                continue
-                            
-                            # otherwise store
-                            course = models.CachedCourses(
-                                courseID = i["courseId"],
-                                department = code,
-                                year = int(year),
-                                quarter = int(quarter),
-                                data = i
-                            )
-                            course.save()
-                            print("Stored:", i["courseId"])
+                        self.store_courses(query, year, quarter, code)
 
                         # check if we have reached the total number of courses
                         if (queried_courses >= total_courses):
@@ -90,3 +74,24 @@ class Command(BaseCommand):
         time.sleep(0.5)
         query = query_UCSB_classes(UCSB_quarter, code, pageNumber=1, pageSize=1)
         return query["total"]
+
+    def store_courses(self, query: dict, year: str, quarter: str, code: str) -> None:
+        """
+        Stores the courses in the database
+        """
+        for i in query["classes"]:
+            # if we have already stored this class, skip
+            if models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code, courseID=i["courseId"]).count() > 0:
+                self.stdout.write(f"Skipping: {i['courseId']}")
+                continue
+            
+            # otherwise store
+            course = models.CachedCourses(
+                courseID = i["courseId"],
+                department = code,
+                year = int(year),
+                quarter = int(quarter),
+                data = i
+            )
+            course.save()
+            self.stdout.write(f"Stored: {i['courseId']}")
