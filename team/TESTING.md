@@ -32,3 +32,10 @@ To add Jest to your project, follow these steps:
 2. Run following command:
 
     ```npm test```
+
+# Testing for Backend
+
+There are no additional libraries required to run backend tests. They use Django's and Python's native 
+testing libraries. Thus, to run tests, call the following command from `backend`:
+
+`python manage.py test`
