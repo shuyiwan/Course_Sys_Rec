@@ -59,7 +59,7 @@ def fetch_all_courses() -> None:
 
     # parameters, change if needed
     # make sure to be considerate of the UCSB API
-    YEARS = ['2022']
+    YEARS = ['2024']
     QUARTERS = ['1', '2']
     SUBJECT_CODES =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL",
     "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC",
