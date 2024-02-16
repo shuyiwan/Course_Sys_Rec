@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,6 +84,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "saved_courses_db",
+        'TEST': {
+            'NAME': 'tests_saved_courses_db',
+        }, # using for testing in a diff db
         "USER": "team4",
         "PASSWORD": "cs148winter",
         "HOST": "localhost",
@@ -131,7 +136,10 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Custom setting
+# Custom settings
 CORS_ALLOW_ALL_ORIGINS = True # allow django backend to accept requests from anywhere 
                               # for development 
 
+# Environment variables
+load_dotenv()
+USCB_API_CONSUMER_KEY = os.getenv('uscb_api_consumer_key')
