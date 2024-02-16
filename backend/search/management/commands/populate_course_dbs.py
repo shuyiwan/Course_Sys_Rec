@@ -11,9 +11,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         """
         This function should only be run once during startup to get required courses 
-        in your DB. This function will take a while to complete. Once run, it will 
-        not run again, even for future restarts of the server as long as the DB doesn't
-        erase data.
+        in your DB. This function will take a while to complete. Once run, you don't
+        need to run this again unless you want to get more classes from different quarters.
         """
 
         # parameters, change if needed
