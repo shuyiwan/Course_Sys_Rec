@@ -1,20 +1,44 @@
 [
     {
-      "id": 1,
-      "title": "Introduction to React",
-      "description": "Learn the basics of React, including components, state, and props.",
-      "instructor": "Jane Doe"
+        "ID": 1,
+        "courseID": "CMPSC    24  ",
+        "title": "PROBLEM SOLVING II",
+        "instructor": "MIRZA D",
+        "description": "Intermediate building blocks for solving problems using computers. Topics i nclude intermediate object-oriented programming, data structures, object-or iented design, algorithms for manipulating these data structures and their run-time analyses. Data structures introduced include stacks, queues, lists , trees, and sets."
     },
     {
-      "id": 2,
-      "title": "Advanced React",
-      "description": "Dive deeper into React with hooks, context API, and advanced patterns.",
-      "instructor": "John Smith"
+        "ID": 2,
+        "courseID": "CMPSC   111  ",
+        "title": "INT COMPUTAT SCI",
+        "instructor": "MATNI Z A",
+        "description": "Introduction to the numerical algorithms that form the foundations of data science, machine learning, and computational science and engineering. Matri x computation, linear equation systems, eigenvalue and singular value decom positions, numerical optimization. The informed use of mathematical softwar e environments and libraries, such as python/numpy/scipy."
     },
     {
-      "id": 3,
-      "title": "React Native Basics",
-      "description": "Build mobile applications using React Native and explore its core concepts.",
-      "instructor": "Alice Johnson"
+        "ID": 3,
+        "courseID": "CMPSC   130B ",
+        "title": "DATA STRUCT ALG II",
+        "instructor": "VIGODA E J",
+        "description": "Design and analysis of computer algorithms. Correctness proofs and solution of recurrence relations. Design techniques; divide and conquer, greedy str ategies, dynamic programming. Applications of techniques to problems from s everal disciplines. NP - completeness."
+    },
+    {
+        "ID": 4,
+        "courseID": "CMPSC   140  ",
+        "title": "PARA SCI COMP",
+        "instructor": "YANG T",
+        "description": "Fundamentals of high performance computing and parallel algorithm design fo r numerical computation. Topics include parallel architectures and clusters , parallel programming with message-passing libraries and threads, program parallelization methodologies, parallel performance evaluation and optimi zation, parallel numerical algorithms and applications with different perfo rmance tradeoffs."
+    },
+    {
+        "ID": 5,
+        "courseID": "CMPSC   165B ",
+        "title": "MACHINE LEARNING",
+        "instructor": "CHANG SHIYU",
+        "description": "Covers the most important techniques of machine learning (ML) and includes discussions of: well-posed learning problems; artificial neural networks; c oncept learning and general to specific ordering; decision tree learning; g enetic algorithms; Bayesian learning; analytical learning; and others."
+    },
+    {
+        "ID": 6,
+        "courseID": "CMPSCW    8  ",
+        "title": "INTRO TO COMP SCI",
+        "instructor": "WANG R K",
+        "description": "Introduction to computer program development for students with little to no programming experience. Basic programming concepts, variables and expressi ons, data and control structures, algorithms, debugging, program design, an d documentation."
     }
-  ]
+]

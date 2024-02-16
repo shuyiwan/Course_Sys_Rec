@@ -105,6 +105,13 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+The following isn't required to get the Django app running, but it's highly advised to do so to get 
+some important data into your database:
+
+```
+python manage.py populate_course_dbs
+```
+
 That should be it! If everything is set up correctly, Django should be running an app at `http://127.0.0.1:8000/`.
 
 
