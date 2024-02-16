@@ -78,9 +78,8 @@ def fetch_all_courses() -> None:
 
 def fetch_department(year: str, quarter: str, code: str) -> None:
     """
-    This function should only be run once during startup to get required courses 
-    in your DB. This function will take a while to complete. Once run, you don't
-    need to run this again unless you want to get more classes from different quarters.
+    If the department isn't already fetched, this function will 
+    fetch all of the courses for a given department.
     """
     # config, change if needed
     MAX_PAGES = 5
