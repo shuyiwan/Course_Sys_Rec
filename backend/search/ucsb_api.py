@@ -3,7 +3,11 @@ Internal scraper used to query course information from the UCSB API
 """
 
 from django.conf import settings
+from search import models
+
+import json
 import requests
+import time
 
 """
 Information about the API can be found here: 
@@ -45,6 +49,93 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1,
     response: requests.Response = requests.get(url, headers=headers)
     data: dict = response.json()
     return data
+
+def fetch_all_courses() -> None:
+    """
+    This function should only be run once during startup to get required courses 
+    in your DB. This function will take a while to complete. Once run, you don't
+    need to run this again unless you want to get more classes from different quarters.
+    """
+
+    # parameters, change if needed
+    # make sure to be considerate of the UCSB API
+    max_pages = 5
+    years = ['2024']
+    quarters = ['1', '2']
+    subject_codes =  ["ANTH", "ART", "ARTHI", "ARTST", "AS AM", "ASTRO", "BIOE", "BIOL",
+    "BMSE", "BL ST", "CH E", "CHEM", "CH ST", "CHIN", "CLASS", "COMM", "C LIT", "CMPSC",
+    "CMPTG", "CNCSP", "DANCE", "DYNS", "EARTH", "EACS", "EEMB", "ECON", "ED", "ECE", "ENGR",
+    "ENGL", "EDS", "ESM", "ENV S", "ESS", "ES", "FEMST", "FAMST", "FR", "GEN S", "GEOG",
+    "GER", "GPS", "GLOBL", "GRAD", "GREEK", "HEB", "HIST", "INT", "ITAL", "JAPAN", "KOR",
+    "LATIN", "LAIS", "LING", "LIT", "MARSC", "MARIN", "MATRL", "MATH", "ME", "MAT", "ME ST",
+    "MES", "MS", "MCDB", "MUS", "MUS A", "PHIL", "PHYS", "POL S", "PORT", "PSY", "RG ST",
+    "RENST", "RUSS", "SLAV", "SOC", "SPAN", "SHS", "PSTAT", "TMP", "THTR", "WRIT", "W&L",]
+
+    for year in years:
+        for quarter in quarters:
+            for code in subject_codes:
+                # convert the quarter to UCSB format
+                UCSB_quarter = f"{year}{quarter}"
+                queried_courses = 0
+                total_courses = get_total_courses(UCSB_quarter, code)
+
+                # skip if the DB has already stored the same amount of total courses for the given quarter and code
+                if models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code).count() == total_courses:
+                    print(f"Skipped Department: {UCSB_quarter} {code}")
+                    continue
+                print(f"Querying Department: {UCSB_quarter} {code} {total_courses}")
+
+                # UCSB API stores its courses in multiple pages, meaning we need to loop through each page
+                for page_number in range(1, max_pages):
+
+                    # fetch the page
+                    query = query_UCSB_classes(UCSB_quarter, code, page_number, pageSize=total_courses)
+
+                    # sleep for 2 seconds to avoid overloading the api
+                    time.sleep(2)
+
+                    # keep track of page statistics
+                    assert query["pageNumber"] == page_number
+                    queried_courses += query["pageSize"]
+
+                    store_courses(query, year, quarter, code)
+
+                    # check if we have reached the total number of courses
+                    if (queried_courses >= total_courses):
+                        break
+    print("Success! Finished querying")
+
+def get_total_courses(UCSB_quarter: str, code: str) -> int:
+    """
+    Returns the total number of courses for a given quarter and subject code
+    while keeping network load low
+    """
+    # sleep less because the network load is smaller
+    time.sleep(0.5)
+    query = query_UCSB_classes(UCSB_quarter, code, pageNumber=1, pageSize=1)
+    return query["total"]
+
+def store_courses(query: dict, year: str, quarter: str, code: str) -> None:
+    """
+    Stores the courses in the database
+    """
+    for i in query["classes"]:
+        # if we have already stored this class, skip
+        if models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code, courseID=i["courseId"]).count() > 0:
+            print(f"Skipping: {i['courseId']}")
+            continue
+        
+        # otherwise store
+        course = models.CachedCourses(
+            courseID = i["courseId"],
+            department = code,
+            year = int(year),
+            quarter = int(quarter),
+            data = i
+        )
+        course.save()
+        print(f"Stored: {i['courseId']}")
+
 
 if __name__ == "__main__":
     # Example way to query; this should return a list of courses and descriptions
