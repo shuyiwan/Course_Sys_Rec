@@ -9,7 +9,7 @@ import requests
 Information about the API can be found here: 
 <https://developer.ucsb.edu/content/academic-curriculums#/>
 """
-def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1) -> dict:
+def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1, pageSize: int = 30) -> dict:
     # quarter is required to query the UCSB api
     # quarter follows YYYYQ format; Q is an integer [W = 1, S = 2, M = 3, F = 4]
     assert quarter
@@ -20,7 +20,6 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1)
     # *** Query Parameters ***
     minUnits: int = 1
     maxUnits: int = 12
-    pageSize: int = 30 # to be modified
     includeClassSections: bool = True
 
     # all of the valid parameters found on the api should be input into the url

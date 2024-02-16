@@ -1,0 +1,4 @@
+python3 manage.py dbshell
+USE saved_courses_db;
+SHOW TABLES;
+SELECT * FROM django_migrations;

@@ -2,8 +2,9 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from search import validators
 
-class Cached_Courses(models.Model):
+class CachedCourses(models.Model):
     courseID = models.CharField(max_length=30)
+    department = models.CharField(max_length=30)
 
     # 1 = Fall, 2 = Winter, 3 = Spring, 4 = Summer
     quarter = models.IntegerField(validators = [MinValueValidator(1), MaxValueValidator(4)])
