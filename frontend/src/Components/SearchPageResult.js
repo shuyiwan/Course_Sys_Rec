@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
 
 export default function SearchPageResult({result}){
-
+    console.log(localStorage.getItem("email"))
     return (
         <div>
             <Link to="/" className="ReturnButton"> </Link>
