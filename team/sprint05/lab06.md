@@ -7,6 +7,7 @@ Mentor: Christopher Chang
 Team: Kevin Nguyen [x], Yicong Yan [x], Lixong Guo (Leo) [x], Mariana Rosillo [x], Katz Yan [x], Ivan Hernandez [x], Claire Pemberton [x] (work synchronously via slack at section time for doing retro), Shuyi Wan [x]
 
 Meeting leader: Ivan Hernandez
+
 Note-taker: Shuyi Wan
 
 # Scribed Discussion:
