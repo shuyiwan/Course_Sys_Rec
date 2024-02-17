@@ -9,12 +9,10 @@
 
 ### Kevin Nguyen (Codeium):
 
-* Okay for auto-generating snippets that require googling
-Auto generation can be slow
-
-        * Good for duplicating code you’ve previously written; fails otherwise
-
-* Documentation and refactoring isn’t that good; bad coding style
+- Okay for auto-generating snippets that require googling
+    - Auto generation can be slow.
+- Good for duplicating code you’ve previously written; fails otherwise
+- Documentation and refactoring isn’t that good; bad coding style
 
 
 ### Yicong Yan (Copilot):
@@ -25,37 +23,32 @@ Auto generation can be slow
 
 ### Ivan Hernandez (Chatgpt, v0.dev):
 
-- For this AI coding experience, I used Chatgpt
+- For this AI coding experience, I used **ChatGPT**
+    - I utilized ChatGPT primarily to go over my code and get clarification on why my code was not working, or to better understand specific parts of the program.
 
-        - I utilized Chatgpt primarily to go over my code and get clarification on why my code was not working, or to better understand specific parts of the program.
+- **v0.dev**
+    - I used v0.dev to start creating some ideas on how our web application login info could look like. We have already implemented a web application login page, however, there are other functions we can implement to make this program look better.
 
-- v0.dev
-
-        - I used v0.dev to start creating some ideas on how our web application login info could look like. We have already implemented a web application login page, however, there are other functions we can implement to make this program look better
 
 
 ### Leo Guo (v0.dev, Chatgpt):
 
-- Tools: v0.dev, chatgpt
-- How Helpful: I used v0.dev for modern UI design idea and I used chatgpt to modify/correct my css codes following my code style. Meanwhile, I let them teach me some frontend/backend implementation
-- Outcome: many codes might be incorrect or have some bugs. I have to manually correct them. But overall saves my time and improves efficiency.
+- Tools:Vercel, v0.dev, chatgpt, github copilot
+- Outcome: I used v0.dev for modern UI design idea and I used chatgpt to modify/correct my css codes following my code style. Meanwhile, I let them teach me some frontend/backend implementation. Some codes might be incorrect or have some bugs. I have to manually correct them. But overall saves my time and improves efficiency.
+
 
 
 ### Mariana Rosillo (chatGPT, Vercel v0):
 
 - Tools:
-
-        - ChatGPT
-
-        - Vercel V0.dev
+    - ChatGPT
+    - Vercel V0.dev
 
 - Outcome:
-
-        - I used ChatGPT to help me create an API that would store information about selected courses to make the shopping cart work. It gave me some clarification on how it works so that I could implement that in our project.
-        - Similarly, I am currently using chatGPT to see how we could implement AI for course recommendations based on selected courses.
-        - I used Vercel V0.dev to get an idea of how to develop the UX/UI design for the front end of our web application.
+    - I used **ChatGPT** to help me create an API that would store information about selected courses to make the shopping cart work. It gave me some clarification on how it works so that I could implement that in our project.
+    - Similarly, I am currently using **ChatGPT** to see how we could implement AI for course recommendations based on selected courses.
+    - I used **Vercel V0.dev** to get an idea of how to develop the UX/UI design for the front end of our web application.
 
 - Reflections:
-
-        - I found chatGPT to be helpful when it comes to explaining how things work. In terms of taking its code, sometimes it does not fully work so I need to go and get an idea of how I can debug it – which can be difficult since I did not write the code. Thus, I found it helpful to use it as a model to write my code.
-        - For Vercel V0.dev, I found it amazing how this can be implemented. I like how this lets you see the visual implementations and also gives you access to the code – which is very helpful in understanding what is going on.
+    - I found **ChatGPT** to be helpful when it comes to explaining how things work. In terms of taking its code, sometimes it does not fully work so I need to go and get an idea of how I can debug it – which can be difficult since I did not write the code. Thus, I found it helpful to use it as a model to write my code.
+    - For **Vercel V0.dev**, I found it amazing how this can be implemented. I like how this lets you see the visual implementations and also gives you access to the code – which is very helpful in understanding what is going on.
