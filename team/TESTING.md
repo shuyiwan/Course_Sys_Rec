@@ -25,6 +25,10 @@ To add Jest to your project, follow these steps:
 
 3. Jest is now installed as a development dependency in your project.
 
+## Testing File
+
+All the frontend testing files are in frontend/src/Tests
+
 ## Testing
 
 1. Make sure current project directory is "frontend" in the terminal.
