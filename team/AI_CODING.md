@@ -11,7 +11,6 @@
 
 - Okay for auto-generating snippets that require googling
 Auto generation can be slow
-
         - Good for duplicating code you’ve previously written; fails otherwise
 
 - Documentation and refactoring isn’t that good; bad coding style
