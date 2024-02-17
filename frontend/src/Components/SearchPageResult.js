@@ -2,8 +2,37 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
 
-export default function SearchPageResult({result}){
-    console.log(localStorage.getItem("email"))
+export default function SearchPageResult({ result }) {
+    // console.log(localStorage.getItem("email"))
+
+    // retrieve the user's email from localStorage + store here
+    const userEmail = localStorage.getItem("email");
+
+    async function addToCart() {
+        const postData = {
+            email: userEmail, 
+            courseID: result.courseID 
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/shoppingCart/add/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            console.log("Item added to cart successfully");
+        } catch (error) {
+            console.error("Failed to add item to cart:", error);
+        }
+    }
+
     return (
         <div>
             <Link to="/" className="ReturnButton"> </Link>
@@ -16,7 +45,7 @@ export default function SearchPageResult({result}){
                 <p>Description: {result.description}</p>
                 <br />
                 <p>Instructor: {result.instructor}</p>
-                <button className="AddToCartButton">+</button>
+                <button className="AddToCartButton" onClick={addToCart}>+</button>
             </div>
         </div>
     );
