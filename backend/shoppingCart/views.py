@@ -59,7 +59,7 @@ def add_classes(request):
                               ' the cart, and the new courses are saved'})
 
 
-### The function to retrieved the courses
+### The function to retrieve the courses
 @require_http_methods(["GET"])  # Make sure it only handles the GET request。
 def retrieve_classes(request):
 
@@ -104,8 +104,38 @@ def retrieve_classes(request):
 
     
 
+### The function to delete course
+@require_http_methods(["GET"])  # Make sure it only handles the GET request。
+def delete_class(request):
+    # get the email from url. 
+    # For example http://127.0.0.1:8000/shoppingCart/delete/?email=test@ucsb.edu&courseID=CS148
+    # if it cannot find parameters is not in url, set them to ''
+    email = request.GET.get('email', '')
+    courseID = request.GET.get('courseID', '')
 
+    # return error if any of the keywords is empty
+    if not email:
+        return JsonResponse({'Failure': 'No email provided.'}, status=400)
+    
+    if not courseID:
+        return JsonResponse({'Failure': 'No courseID provided.'}, status=400)
 
+    # check if this user is in User table, if not we return an error message
+    if not models.User.objects.filter(email=email).exists():
+        return JsonResponse({'Failure': f'User {email} does not exist.'}, status=400)
+    
+    # get the user
+    user = models.User.objects.get(email = email)
+
+    # Check if this class is already added for this user
+    if not models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id).exists():
+        return JsonResponse({'Failure': f'{email} have not added this course yet.'})
+    
+    # get the class and delete it
+    course = models.SavedCourses.objects.get(courseID = courseID, user_id = user.id)
+    course.delete()
+
+    return JsonResponse({'Success': f'{courseID} is already deleted for {email}'})
 
 
 
