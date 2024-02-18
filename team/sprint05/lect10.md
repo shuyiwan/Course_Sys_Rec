@@ -2,7 +2,7 @@
 
 Mentor: Christopher Chang
 
-## Meeting Time: lect09
+## Meeting Time: lect10
 
 ## Type of meeting: story time
 

@@ -26,6 +26,7 @@ function LoginButton () {
                 })
                 .then((res) => {
                     setProfile(res.data);
+                    localStorage.setItem("email", profile.email);      
                 })
                 .catch((err) => console.log(err));
         }
