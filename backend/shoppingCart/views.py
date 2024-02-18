@@ -4,9 +4,17 @@ from django.shortcuts import render
 from shoppingCart import models
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
+from django.middleware.csrf import get_token
 from django.forms.models import model_to_dict
 
 # Create your views here.
+
+### This function is used to generate the csrfToken for frontend so that they
+### can send post request.
+@require_http_methods(["GET"])
+def get_csrfToken(request):
+    return JsonResponse({'csrfToken': get_token(request)})
+
 
 ### The function to handle the request of save courses to cart.
 @require_http_methods(["POST"])  # Make sure it only handles the POST request.

@@ -136,10 +136,16 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Custom settings
-CORS_ALLOW_ALL_ORIGINS = True # allow django backend to accept requests from anywhere 
-                              # for development 
+
+# Custom setting
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [ 'http://localhost:3000', ]
+CORS_ORIGIN_ALLOW_ALL = False
+CSRF_TRUSTED_ORIGINS = [ 'http://localhost:3000', ]
+
 
 # Environment variables
 load_dotenv()
 USCB_API_CONSUMER_KEY = os.getenv('uscb_api_consumer_key')
+
