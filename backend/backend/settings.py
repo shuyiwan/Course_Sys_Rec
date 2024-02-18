@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,9 +136,16 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+
 # Custom setting
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [ 'http://localhost:3000', ]
 CORS_ORIGIN_ALLOW_ALL = False
 CSRF_TRUSTED_ORIGINS = [ 'http://localhost:3000', ]
+
+
+# Environment variables
+load_dotenv()
+USCB_API_CONSUMER_KEY = os.getenv('uscb_api_consumer_key')
+
