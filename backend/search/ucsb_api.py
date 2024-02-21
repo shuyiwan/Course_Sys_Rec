@@ -73,7 +73,9 @@ def fetch_all_courses() -> None:
     for year in YEARS:
         for quarter in QUARTERS:
             for code in SUBJECT_CODES:
+                online_code = f"{code}W"
                 fetch_department(year, quarter, code)
+                fetch_department(year, quarter, online_code)
     print("Success! Finished querying")
 
 def fetch_department(year: str, quarter: str, code: str) -> None:
