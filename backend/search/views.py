@@ -36,11 +36,22 @@ def search_keywords(request):
     # pre-process the keyword to remove all whitespace
     keyword = keyword.replace(" ", "")
 
-    # get the python dictionary return by calling ucsb-api
-    # Since the online courses have different subject_code, we need to
-    # call api two times
-    query = ucsb_api.query_UCSB_classes(quarter, subcode)
-    query_W = ucsb_api.query_UCSB_classes(quarter, subcode_W)
+    # get the selected courses (both in person and online)
+    selected = []
+    search_keywords_helper(subcode, quarter, keyword, selected)
+    search_keywords_helper(subcode_W, quarter, keyword, selected)
+        
+    # return a json, "safe = False" so that it can handle the data that 
+    # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
+    # so that it looks better than all the course cluster together.
+    return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})
+
+def search_keywords_helper(subcode: str, quarter: str, keyword: str, selected: list) -> None:
+    # get class data by querying from backend DB
+    query = ucsb_api.query_from_DB(quarter, subcode)
+
+    # only get ["data"] from the dicts returned by query_from_DB
+    query = [i["data"] for i in query]
 
     # We use regular expression to match keywords in descriptions
     # \b is a word boundary char in regular expressions, adding these two 
@@ -53,20 +64,14 @@ def search_keywords(request):
     # re,IGNORECASE is to make the matching process case-insensitive
     regex = re.compile(keyword, re.IGNORECASE)
 
-    # search classes that contain keywords
-    selected = [] # will contain all the matched classes. This list will be converted 
-                  # to json and returned to frontend after searching.
-    
-    course_index = 1 # used in React
-    for i in query["classes"]:
-
+    for i in query:
         # if the course descriptions contain the keyword, we will add this course to the
         # list.
         # We add the information of this course into the dict, and then add this
         # dict to "selected"
         if regex.search(i["description"]):
             each_class = dict()
-            each_class["ID"] = course_index
+            each_class["ID"] = len(selected)
             each_class["courseID"] = i["courseId"]
             each_class["title"] = i["title"]
 
@@ -78,28 +83,3 @@ def search_keywords(request):
             each_class["description"] = i["description"]
 
             selected.append(each_class)
-            course_index += 1
-
-    # search the online classes
-    for i in query_W["classes"]:
-        
-        if regex.search(i["description"]):
-            each_class = dict()
-            each_class["ID"] = course_index
-            each_class["courseID"] = i["courseId"]
-            each_class["title"] = i["title"]
-
-            # check if the "instructors" list is empty, if so then set "instructor" to "TBD"
-            if not i["classSections"][0]["instructors"]:
-                each_class["instructor"] = "TBD"
-            else:
-                each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
-            each_class["description"] = i["description"]
-        
-            selected.append(each_class)
-            course_index += 1
-        
-    # return a json, "safe = False" so that it can handle the data that 
-    # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
-    # so that it looks better than all the course cluster together.
-    return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})

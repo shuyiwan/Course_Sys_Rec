@@ -50,6 +50,21 @@ def query_UCSB_classes(quarter: str, subjectCode: str = "", pageNumber: int = 1,
     data: dict = response.json()
     return data
 
+def query_from_DB(UCSB_quarter: str, subjectCode: str) -> dict:
+    """
+    Query from the database
+    """
+    # UCSB_quarter follows YYYYQ format; Q is an integer [W = 1, S = 2, M = 3, F = 4]
+    assert UCSB_quarter
+    assert len(UCSB_quarter) == 5
+    assert UCSB_quarter.isdigit()
+    assert int(UCSB_quarter[-1]) >= 1 and int(UCSB_quarter[-1]) <= 4
+
+    quarter = int(UCSB_quarter[-1])
+    year = int(UCSB_quarter[:-1])
+    db_query = models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values()
+    return db_query
+
 def fetch_all_courses() -> None:
     """
     This function should only be run once during startup to get required courses 
