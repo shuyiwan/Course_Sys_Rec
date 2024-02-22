@@ -15,7 +15,7 @@ export default function SearchPageResult({ result }) {
         };
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/shoppingCart/add/', {
+            const response = await fetch('https://intermittence.pythonanywhere.com/search/?keyword=Students&quarter=20241&subject_code=CMPSC', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
