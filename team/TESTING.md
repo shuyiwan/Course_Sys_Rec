@@ -39,7 +39,9 @@ All the frontend testing files are in frontend/src/Tests
 
 # Testing for Backend
 
-There are no additional libraries required to run backend tests. They use Django's and Python's native 
-testing libraries. Thus, to run tests, call the following command from `backend`:
+There are no additional libraries required to run the corresponding unit tests. They use Django's and Python's native testing libraries. Thus, to run tests, call the following command from `backend`:
 
 `python manage.py test`
+
+Each submodule testing file is located within the different submodule folders in the `backend` folder 
+such as `backend/search/tests.py` or `backend/shoppingCart/tests.py`. To learn how to create Django tests, please see the [official Django documentation](https://docs.djangoproject.com/en/5.0/topics/testing/overview/).
