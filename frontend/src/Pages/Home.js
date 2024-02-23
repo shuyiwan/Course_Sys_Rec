@@ -1,5 +1,6 @@
-import React, {useEffect,useState} from "react"
-import { saveAs } from 'file-saver';
+//import React, {useEffect,useState} from "react"
+import React, {useState} from "react"
+// import { saveAs } from 'file-saver';
 import SearchBar from '../Components/SearchBar';
 import SearchResultList from '../Components/SearchResultList';
 import "../Styles/Pages.css"; 
