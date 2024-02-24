@@ -4,7 +4,6 @@ from django.shortcuts import render
 from shoppingCart import models
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
-from django.views.decorators.csrf import ensure_csrf_cookie
 from django.middleware.csrf import get_token
 from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt
@@ -23,7 +22,6 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 ### The function to handle the request of save courses to cart.
 @require_http_methods(["POST"])  # Make sure it only handles the POST request.
-@ensure_csrf_cookie
 @csrf_exempt
 def add_classes(request):
 
