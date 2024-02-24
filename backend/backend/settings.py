@@ -140,7 +140,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Custom setting
 
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [ 'http://localhost:3000', 'https://courses-mvp.onrender.com/']
+CORS_ALLOWED_ORIGINS = [ 'http://localhost:3000', ]
 CORS_ORIGIN_ALLOW_ALL = False
 
 CSRF_TRUSTED_ORIGINS = [ 'http://localhost:3000', ]
