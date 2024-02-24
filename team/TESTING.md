@@ -27,7 +27,10 @@ To add Jest to your project, follow these steps:
 
 ## Testing File
 
-All the frontend testing files are in frontend/src/Tests
+All the frontend testing files are in frontend/src/Tests. Current tests we have:
+
+### Component Tests:
+- frontend/src/Tests/Home.test.js: This file mock the user action in home page. This simulates the user type "algorithms" in search bar, click the button, and check if it route to the search page. 
 
 ## Testing
 
