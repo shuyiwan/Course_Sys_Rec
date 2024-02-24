@@ -59,3 +59,5 @@ such as `backend/search/tests.py` or `backend/shoppingCart/tests.py`. To learn h
 
 ## In the Future
 New backend modules that require tests will have their own testing files in their folders.
+
+Add Testing about "POST" and "EDIT"
