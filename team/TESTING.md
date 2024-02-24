@@ -41,8 +41,11 @@ All the frontend testing files are in `frontend/src/Tests`. Current tests we hav
     ```npm test```
 
 ## Future Testing Plan in Frontend
+### Component Testing
 - Test if the course cart holds the correct user info (component testing).
 - Test website logic with login feature -- cannot access course cart if not logging in (component testing).
+### Unit Testing
+- If the login button is functional
 
 # Testing for Backend
 
