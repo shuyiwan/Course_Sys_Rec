@@ -9,17 +9,35 @@ export default function SearchPageResult({ result }) {
     const userEmail = localStorage.getItem("email");
 
     async function addToCart() {
-        const postData = {
+        const postData = [{
             email: userEmail, 
             courseID: result.courseID 
-        };
+        }];
+        
+        async function getCsrfToken() {
+                let _csrfToken = null;
+
+                if (_csrfToken === null) {
+                const response = await fetch(`http://127.0.0.1:8000/shoppingCart/crsfToken/`, {
+                    credentials: 'include',
+                });
+                const data = await response.json();
+                _csrfToken = data.csrfToken;
+            }
+            console.log(_csrfToken)
+            return _csrfToken;
+        }
 
         try {
-            const response = await fetch('https://intermittence.pythonanywhere.com/shoppingCart/add/', {
+            
+            const response = await fetch('http://127.0.0.1:8000/shoppingCart/add/', {
                 method: 'POST',
                 headers: {
+                    'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
+                    'X-CSRFToken': getCsrfToken(),
                 },
+                credentials: 'include',
                 body: JSON.stringify(postData),
             });
 
@@ -28,7 +46,9 @@ export default function SearchPageResult({ result }) {
             }
 
             console.log("Item added to cart successfully");
-        } catch (error) {
+        } 
+        
+        catch (error) {
             console.error("Failed to add item to cart:", error);
         }
     }
