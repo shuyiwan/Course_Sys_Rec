@@ -1,53 +1,71 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
-    margin: none;
+body {
+    margin: 0; /* No default margin to ensure full-width nav bar */
 }
 
-.nav{
-    background-color: #333;
-    color: white;
+.nav {
+    background-color: #fff; /* Nav bar background color changed to white */
+    color: black; /* Text color changed to black */
     display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 55rem;
-    padding: 0 1rem;
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    padding: 0.8rem 1rem; /* Adjust padding to reduce vertical height to 4/5 */
 }
 
-.nav a{
-    color: inherit;
+.nav a {
+    color: black; /* Ensure anchor tags inherit black text color for readability */
     text-decoration: none;
-    height: 100%;
     display: flex;
     align-items: center;
-    padding: 0.25 rem;
+    padding: 0.25rem; /* Adjust padding for individual nav items */
 }
 
-.nav ul{
+.nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 1rem; /* Maintain gap between links */
 }
 
-.siteTitle{
-    font-size: 4rem;
+.siteTitle {
+    font-size: 2rem; /* Standard size for site title */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and title text */
 }
 
-.link{
-    font-size: 2rem;
+.link {
+    font-size: 1.5rem; /* Standard link size */
 }
 
-.nav li.active{
-    background-color: #555;
+.nav li.active {
+    background-color: #e7e7e7; /* Lighter shade for active link to maintain contrast */
 }
 
-.nav li:hover{
-    background-color: #777;
+.nav li:hover {
+    background-color: #ddd; /* Hover effect with slightly darker shade */
 }
 
+@media (max-width: 768px) {
+    .nav {
+        justify-content: space-around; /* Adjust for smaller screens */
+    }
 
+    .nav ul {
+        display: none; /* Hide navigation links on smaller screens */
+    }
 
+    .nav ul.active {
+        display: flex; /* Show navigation links when active */
+        flex-direction: column; /* Stack links vertically */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff; /* Ensure dropdown matches nav bar background */
+    }
+}

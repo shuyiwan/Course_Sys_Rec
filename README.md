@@ -28,6 +28,6 @@ This web app aims to help student to pick the right course and succeed later in 
 
 ## Setup:
 
-The instructions to get the backend setup can be located [here](MVP/backend/README.md#setting-up-the-backend). <br>
-Here are the instructions to get the [frontend-setup](MVP/frontend/README.md) and here is the [documentation](MVP/frontend/Frontend_Documentation.md) for frontend.
+The instructions to get the backend setup can be located [here](backend/README.md#setting-up-the-backend). <br>
+Here are the instructions to get the [frontend-setup](frontend/README.md) and here is the [documentation](frontend/Frontend_Documentation.md) for frontend.
 

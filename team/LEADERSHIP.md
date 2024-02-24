@@ -15,3 +15,5 @@
 |Wed 2/07   | Yicong Yan        | Led lec08 discussion for  sprint 04, daily scrum
 |Fri 2/09   | N/A               | MVP Presentations -- we all participated
 |Mon 2/12   | Kevin Nguyen      | Led lec09 discussion for  sprint 05, daily scrum
+|Wed 2/14   | Katz Yan          | Led lec10 discussion for  sprint 05, daily scrum
+|Fri 2/16   | Ivan Hernandez    | Led retro02, daily scrum
