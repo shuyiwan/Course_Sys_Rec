@@ -17,3 +17,5 @@
 |Mon 2/12   | Kevin Nguyen      | Led lec09 discussion for  sprint 05, daily scrum
 |Wed 2/14   | Katz Yan          | Led lec10 discussion for  sprint 05, daily scrum
 |Fri 2/16   | Ivan Hernandez    | Led retro02, daily scrum
+|Wed 2/21   | Yicong Yan        | Led lec11 discussion for  sprint 06, daily scrum
+|Wed 2/23   | Claire Pemberton  | Led lab07 discussion for  sprint 06, daily scrum
