@@ -51,3 +51,12 @@
 - `Participant 1`: Yicong Yan   `Interaction`: shared a react tutorial video in #react_native_help `Link`: https://ucsb-148-w24.slack.com/archives/C06FK0HBTTN/p1706749074959009
 - `Participant 2`: Kevin Nguyen `Interaction`: responded a post in #git_help about deployment `Link`: https://ucsb-148-w24.slack.com/archives/C06ERBQ35UZ/p1705538534987249
 - `Participant 3`: Leo Guo      `Interaction`: asked about git pull & fectch in #git_help `Link`: https://ucsb-148-w24.slack.com/archives/C06ERBQ35UZ/p1706739746319439
+
+
+## How to use/install YouTube API and Google Video API
+Here is the link to the google doc that contains information regarding this: [Youtube and Google Video APIs](https://docs.google.com/document/d/1Glurlro8GAa9w_fcR5Utq4puWT7ExH-Lq8BftbrC9Ww/edit?usp=sharing)
+
+## Which API works better: YouTube or Google Video API?
+Following the information gathered previously on how to use/install Youtube API and Google Video API. We have collected more information analyzing both APIs closer and selecting which API works best for our web application.
+
+Link to Google [Document](https://docs.google.com/document/d/1I_mDXdtXqSkHSNDL63HPnIwJkrEH3b_gC4Du7Rp50s4/edit?usp=sharing) with annotations.
