@@ -8,25 +8,26 @@ export default function SearchPageResult({ result }) {
     // retrieve the user's email from localStorage + store here
     const userEmail = localStorage.getItem("email");
 
+    async function getCsrfToken() {
+        let _csrfToken = null;
+
+        if (_csrfToken === null) {
+            const response = await fetch(`http://127.0.0.1:8000/shoppingCart/crsfToken/`, {
+                credentials: 'include',
+            });
+            const data = await response.json();
+            _csrfToken = data.csrfToken;
+        }
+        //console.log(_csrfToken)
+        return _csrfToken;
+    }
+
     async function addToCart() {
         const postData = [{
             email: userEmail, 
-            courseID: result.courseID 
+            courseID: result.courseID
         }];
-        
-        async function getCsrfToken() {
-                let _csrfToken = null;
-
-                if (_csrfToken === null) {
-                const response = await fetch(`http://127.0.0.1:8000/shoppingCart/crsfToken/`, {
-                    credentials: 'include',
-                });
-                const data = await response.json();
-                _csrfToken = data.csrfToken;
-            }
-            console.log(_csrfToken)
-            return _csrfToken;
-        }
+        console.log(result.courseID)
 
         try {
             
