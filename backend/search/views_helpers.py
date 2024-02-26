@@ -40,10 +40,13 @@ def filter_query(query: dict, regex_keyword: re.Pattern, selected: list) -> None
             each_class["title"] = i["title"]
 
             # check if the "instructors" list is empty, if so then set "instructor" to "TBD"
-            if not i["classSections"][0]["instructors"]:
+            if not i["classSections"]:
                 each_class["instructor"] = "TBD"
             else:
-                each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
+                if not i["classSections"][0]["instructors"]:
+                    each_class["instructor"] = "TBD"
+                else:
+                    each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
             each_class["description"] = i["description"]
 
             selected.append(each_class)
