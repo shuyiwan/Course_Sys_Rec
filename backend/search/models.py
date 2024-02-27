@@ -2,7 +2,21 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from search import validators
 
+
+class Professor(models.Model):
+    fullname = models.CharField(max_length=50)
+    name = models.CharField(max_length=30)
+    department = models.CharField(max_length=50)
+    rating = models.FloatField()
+    num_ratings = models.IntegerField()
+    difficulty = models.FloatField()
+    would_take_again = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"professor={self.fullname}, department={self.department}, rating={self.rating}"
+
 class CachedCourses(models.Model):
+    instructor = models.ForeignKey(Professor, on_delete=models.SET_NULL, related_name='courses', null=True)
     courseID = models.CharField(max_length=30)
     department = models.CharField(max_length=30)
 
