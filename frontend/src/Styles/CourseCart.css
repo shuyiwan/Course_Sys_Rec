@@ -5,8 +5,8 @@ body, h1, p, a, button {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*background-color: #f7f7f7; */
 }
 
 h1 {
@@ -83,4 +83,25 @@ button#checkout-button {
 
 button#checkout-button:hover {
     background-color: #218838;
+}
+
+
+.searchButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.searchButton {
+    font-size: 1rem; /* Adjust the font size */
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.8;
+    color: black;
+    background-color: white;
+    border: none;
+    padding: 6px 12px; /* Adjust the padding to make the button smaller */
+    border-radius: 20px;
+    display: inline-block;
 }
