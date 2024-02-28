@@ -142,10 +142,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [ 'http://localhost:3000', ]
 CORS_ORIGIN_ALLOW_ALL = False
+
 CSRF_TRUSTED_ORIGINS = [ 'http://localhost:3000', ]
 
 
 # Environment variables
 load_dotenv()
 USCB_API_CONSUMER_KEY = os.getenv('uscb_api_consumer_key')
+
 

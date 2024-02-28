@@ -17,6 +17,9 @@ def get_csrfToken(request):
     return JsonResponse({'csrfToken': get_token(request)})
 
 
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+
 ### The function to handle the request of save courses to cart.
 @require_http_methods(["POST"])  # Make sure it only handles the POST request.
 @csrf_exempt
@@ -39,6 +42,10 @@ def add_classes(request):
     for i in courses_list:
         email = i["email"]
         courseID = i["courseID"]
+
+        # remove all whitespace in the courseID before adding to db
+        courseID = courseID.replace(" ", "")
+        courseID = courseID.upper()
 
         # check if the user name is in User table, if not we need create a user
         # and add it to the table
@@ -129,6 +136,10 @@ def delete_class(request):
     
     if not courseID:
         return JsonResponse({'Failure': 'No courseID provided.'}, status=400)
+    
+    # remove all whitespace in the courseID before deletion
+    courseID = courseID.replace(" ", "")
+    courseID = courseID.upper()
 
     # check if this user is in User table, if not we return an error message
     if not models.User.objects.filter(email=email).exists():
