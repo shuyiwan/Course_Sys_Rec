@@ -1,5 +1,6 @@
 from search import models
-import ratemyprofessor
+from django.forms.models import model_to_dict
+
 
 import re # the package for regular expression
 
@@ -49,6 +50,10 @@ def filter_query(query: dict, regex_keyword: re.Pattern, selected: list) -> None
                 else:
                     each_class["instructor"] = i["classSections"][0]["instructors"][0]["instructor"]
             each_class["description"] = i["description"]
+            if each_class["instructor"] == "TBD":
+                each_class["ratings from Ratemyprofessor"] = "TBD"
+            else:
+                each_class["ratings from Ratemyprofessor"] = retrieve_prof(each_class["instructor"])
 
             selected.append(each_class)
 
@@ -67,73 +72,22 @@ def query_from_DB(UCSB_quarter: str, subjectCode: str) -> dict:
     db_query = models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values()
     return db_query
 
-def fetch_all_professors() -> dict:
+
+def retrieve_prof(prof_name: str) -> list:
     """
-    Query all classes from the database, and store all professor from each class
+    Query all professor from the database that match this name(the name returned by school api)
     """
-    db_query = models.CachedCourses.objects.all()
+    # remove the initial of middle name if it exists
+    if prof_name.count(" ") >= 1:
+        prof_name = prof_name.split(" ")[0] + " " + prof_name.split(" ")[1]
+    result = []
+    db_query = models.Professor.objects.filter(name=prof_name)
+    for each_prof in db_query:
+        result.append(model_to_dict(each_prof))
+    return result
 
-    for class_object in db_query:
-        each_class = class_object.data
-        print("CourseID: " + each_class["courseId"])
-        print("Title: " + each_class["title"]) 
 
-        if each_class["classSections"] and each_class["classSections"][0]["instructors"]:
-                raw_profname = each_class["classSections"][0]["instructors"][0]["instructor"]
-        else:
-            print("Skipped: " + "no instructor for " + each_class["courseId"])
-            continue
-        
-        # get rid of the inital of the middle name, otherwise ratemyprofessor api could fail
-        if raw_profname.count(" ") >= 1:
-            profname = raw_profname.split(" ")[0] + " " + raw_profname.split(" ")[1]
-        else:
-            profname = raw_profname
 
-        # if we already have professors with this name, we need to link the class to them
-        existing_prof = models.Professor.objects.filter(name=profname)
-        if existing_prof.exists():
-            for each_prof in existing_prof:
-                class_object.instructor = each_prof
-                class_object.save()
-            print("Skipped: " + f"{profname} is already stored" )
-            continue
-        
-        # otherwise, we need to create a new professor
-        fetch_professor_for_classes(class_object, profname)
-
-def fetch_professor_for_classes(each_class: models.CachedCourses, prof_name: str) -> None:
-    SCHOOL = ratemyprofessor.get_school_by_name("University of California Santa Barbara")
-    prof_list = ratemyprofessor.get_professors_by_school_and_name(SCHOOL, prof_name)
-
-    if not prof_list:
-        print(f"Skipped: {prof_name} not found in ratemyprofessor")
-        with open('missing_prof.txt', 'a') as f:
-            f.write(prof_name + '\n')
-        return
-    if prof_list[0].school.name != "University of California Santa Barbara":
-        print(f"Skipped: there is no professor with name {prof_name} found in UCSB")
-        with open('missing_prof.txt', 'a') as f:
-            f.write(prof_name + '\n')
-        return
-
-    
-    for prof_object in prof_list:
-        if (prof_object.would_take_again is not None) and (prof_object.would_take_again != -1):
-            would_take_again = str(round(prof_object.would_take_again))
-        else:
-            would_take_again = "N/A"
-        new_prof = models.Professor(fullname = prof_object.name,
-                                     name = prof_name,
-                                     department = prof_object.department,
-                                     rating = prof_object.rating,
-                                     difficulty = prof_object.difficulty,
-                                     num_ratings = prof_object.num_ratings,
-                                     would_take_again = would_take_again)
-        new_prof.save()
-        each_class.instructor = new_prof
-        each_class.save()
-    print(f"Stored: {prof_name} for {each_class.courseID}")
             
             
         

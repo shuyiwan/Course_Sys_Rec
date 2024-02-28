@@ -4,7 +4,7 @@ from search import validators
 
 
 class Professor(models.Model):
-    fullname = models.CharField(max_length=50)
+    fullname = models.CharField(max_length=70)
     name = models.CharField(max_length=30)
     department = models.CharField(max_length=50)
     rating = models.FloatField()
