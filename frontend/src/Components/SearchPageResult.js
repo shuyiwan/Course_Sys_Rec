@@ -27,7 +27,7 @@ export default function SearchPageResult({ result }) {
             email: userEmail, 
             courseID: result.courseID
         }];
-        console.log(result.courseID)
+        // console.log(result.courseID)
 
         try {
             
