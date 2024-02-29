@@ -153,7 +153,7 @@ class ExtractFromData(TestCase):
         self.assertEqual(result["instructor"], "TBD")
         self.assertEqual(result["description"], "Python")
 
-    def test_extract_from_data_no_instructor(self):
+    def test_extract_no_instructor(self):
         cached_course = {
             'id': 1,
             'courseID': 'CMPSC8',
@@ -173,7 +173,7 @@ class ExtractFromData(TestCase):
         self.assertEqual(result["instructor"], "TBD")
         self.assertEqual(result["description"], "Python")
 
-    def test_extract_from_data_has_instructors(self):
+    def test_extract_has_instructors(self):
         cached_course = {
             'id': 1,
             'courseID': 'CMPSC8',
