@@ -53,10 +53,10 @@
     > DESCRIBE <table_name>;
 
     # Show all the entries of table
-    >SELECT * FROM <table_name>;
+    > SELECT * FROM <table_name>;
 
     # Empty the table
-    DELETE FROM <table_name>;
+    > DELETE FROM <table_name>;
     ```
 
 For more information about MySQL, please refer to the MySQL documentation.
