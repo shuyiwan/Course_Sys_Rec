@@ -6,7 +6,7 @@
 
 1. Install MySQL to your device.
 2. Start up the MySQL shell:
-    ```
+    ```shell
     # Mac
     > /usr/local/mysql/bin/mysql -u root -p
 
@@ -17,8 +17,8 @@
     Not tested yet
     ```
     **Important:** Your machine may require you to activate MySQL before you can use the shell. You must do this first if this happens.
-3. From inside the MySQL shell, create the database, username, and password as defined in `MVP/backend/backend/settings.py`
-    ```
+3. From inside the MySQL shell, create the database, username, and password as defined in `backend/backend/settings.py`
+    ```shell
     # create the database
     > CREATE DATABASE saved_courses_db;
 
@@ -36,7 +36,7 @@
 
 #### Other Useful Commands:
 
-    ```
+    ```shell
     # Show current databases
     > SHOW DATABASES;
 
@@ -66,9 +66,9 @@ For more information about MySQL, please refer to the MySQL documentation.
 1. Install Python. Only `Python 3.9` and above have been shown to work with this project.
 
 2. Create the Python virtual environment. These commands may vary depending on your machine/setup, but it generally goes like this:
-    ```
-    # head to the correct folder
-    > cd MVP/backend
+    ```shell
+    # head to the correct folder from root
+    > cd backend
 
     # create the virtual environment
     > python -m venv venv
@@ -86,7 +86,7 @@ For more information about MySQL, please refer to the MySQL documentation.
 
 3. Install the dependencies. Right now, we are managing both `Pipfile` and `requirements.txt`, which can both work independently, but using `requirements.txt` is recommended.
 
-    ```
+    ```shell
     # from requirements.txt
     > python -m pip install -r requirements.txt
 
@@ -96,22 +96,36 @@ For more information about MySQL, please refer to the MySQL documentation.
     ```
 
 ### Setting up Django
-Once both the Python environment and MySQL is setup, it is finally time to get the Django app set up:
 
-```
+#### Setting up environmental variables
+This project requires using a UCSB API key. To do so:
+1. Register an account, create a UCSB API app, and get the UCSB api key from it. You can find the instructions to do so [here](https://www.developer.ucsb.edu/documentation) (mostly the `Getting Started` and `Creating your first app`).
+
+2. Create `backend/backend/.env`
+
+3. Register the following variable inside: `ucsb_api_key=YOUR_PUBLIC_KEY`
+
+#### Performing migrations
+After following all of the prior steps to set up your environment, it is finally time to get the Django app set up:
+
+```shell
 # Make sure that you've activated your virtual environment
-
 python manage.py migrate
-python manage.py runserver
 ```
 
+#### Populating local databases
 The following isn't required to get the Django app running, but it's highly advised to do so to get 
 some important data into your database:
 
-```
+```shell
 python manage.py populate_course_dbs
 ```
 
+#### Finally:
+
+```shell
+python manage.py runserver
+```
 That should be it! If everything is set up correctly, Django should be running an app at `http://127.0.0.1:8000/`.
 
 
@@ -129,7 +143,7 @@ Calling this URL should return a JSON object. The return JSON is converted from 
 
 For example: calling the URL http://127.0.0.1:8000/search/?keyword=project&quarter=20241&subject_code=CMPSC should return all the courses offered in winter 2024 that contain “project” in its descriptions, case-insensitive:
 
-    ```
+    ```json
     [
         {
             "ID": 1,

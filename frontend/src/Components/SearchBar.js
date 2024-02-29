@@ -9,7 +9,8 @@ export default function SearchBar({setResult}){
 
     //backend API call
     const fetchData = (value) =>{
-        let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=CMPSC';
+        //https://intermittence.pythonanywhere.com/search/?keyword=
+        let url = 'http://127.0.0.1:8000/search/?keyword=' + value +'&quarter=20241&subject_code=CMPSC';
         fetch(url)
         .then((response) => response.json())
         .then((jsonFile) => {
