@@ -20,3 +20,25 @@
 |Wed 2/21   | Yicong Yan        | Led lec11 discussion for  sprint 06, daily scrum
 |Fri 2/23   | Claire Pemberton  | Led lab07 discussion for  sprint 06, daily scrum
 |Mon 2/26   | Yicong Yan        | Led lec12 discussion for  sprint 07, daily scrum
+|Wed 2/28   | Shuyi Wan         | Led lec13 discussion for  sprint 07, daily scrum
+|Wed 3/01   | Ivan Hernandez    | Led lab08 discussion for  sprint 07, daily scrum
+|Wed 3/04   | Mariana Rosillo   | Led lec14 discussion for  sprint 08, daily scrum
+|Wed 3/06   | Katz Yan          | Led lec15 discussion for  sprint 08, daily scrum
+|Wed 3/08   | Leo Guo           | Led lab09 discussion for  sprint 08, daily scrum
+|Wed 3/11   | Kevin Nguyen      | Led lec16 discussion for  sprint 09, daily scrum
+|Wed 3/13   | Claire Pemberton  | Led lec17 discussion for  sprint 09, daily scrum
+|Wed 3/15   | Yicong Yan        | Led lab10 discussion for  sprint 09, daily scrum
+
+
+## LEADERSHIP ROLES FOR REST OF QUARTER
+| ROLE                                  | NAME 
+|---------------------------------------|------------------------------------------------------
+| Product Owner                         | Shuyi Wan
+| Scrum Master                          | CHECK TABLE ABOVE -- roles are rotating for this one
+| Testing/QA Coordinator                | Kevin Nguyen
+| Retro 3 Leader                        | Mariana Rosillo
+| UX Coordinator                        | Claire Pemberton
+| Design Document Coordinator           | Ivan Hernandez
+| Deployment Document Coordinator       | Shuyi Wan
+| User Manual Coordinator               | Katz Yan
+| Final presentation leader (week 9/10) | Leo Guo
