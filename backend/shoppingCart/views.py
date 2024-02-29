@@ -120,10 +120,12 @@ def retrieve_classes(request):
         i_dict["pk_id"] = pk_id
         custom_id += 1
 
-        # using the primary key, we will now append stored course information to the dict
+        # using the sql_id, we will now append stored course information to the dict
         search_course = CachedCourses.objects.get(id = i_dict['sql_id'])
         i_dict["courseID"] = search_course.courseID
         i_dict["description"] = search_course.data["description"]
+        i_dict["title"] = search_course.data["title"]
+        i_dict["instructor"] = search_course.data["classSections"][0]["instructors"][0]["instructor"]
 
         return_classes.append(i_dict)
 

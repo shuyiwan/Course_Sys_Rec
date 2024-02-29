@@ -93,7 +93,10 @@ class retrieveTests(TestCase):
 
     def test_retrieve(self):
         # make sure that CachedCourses has the correct data
-        models.CachedCourses.objects.create(id = 1, courseID = "CS8", quarter = 1, year=2024, data = {'description': 'test'})
+        models.CachedCourses.objects.create(id = 1, courseID = "CS8", quarter = 1, year=2024, 
+            data = {'description': 'test1', 
+                    'title': 'test2', 
+                    'classSections': [{'instructors': [{'instructor': 'test3'}]}]})
 
         # test if the retrieve_classes works, and also if add_classes removes all the whitespaces
         url_add = reverse("add_classes")
@@ -107,6 +110,9 @@ class retrieveTests(TestCase):
         response_retrieve = response_retrieve.json()
 
         self.assertEqual(response_retrieve[0]['courseID'], 'CS8')
+        self.assertEqual(response_retrieve[0]['description'], 'test1')
+        self.assertEqual(response_retrieve[0]['title'], 'test2')
+        self.assertEqual(response_retrieve[0]['instructor'], 'test3')
 
 class deleteTests(TestCase):
 
