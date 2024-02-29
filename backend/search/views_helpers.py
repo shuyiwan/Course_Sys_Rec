@@ -28,31 +28,14 @@ def filter_query(query: QuerySet, regex_keyword: re.Pattern, selected: list) -> 
     to courses that fit the keyword
     """
     for i in query:
-        data = i["data"]
-        sql_id = i["id"]
-        courseId = i["courseID"]
-
         # if the course descriptions contain the keyword, we will add this course to the
         # list.
         # We add the information of this course into the dict, and then add this
         # dict to "selected"
-        if regex_keyword.search(data["description"]):
+        if regex_keyword.search(i["data"]["description"]):
             each_class = dict()
             each_class["ID"] = len(selected) # this is the index of the course
-            each_class["sql_id"] = sql_id
-            each_class["courseID"] = courseId
-            each_class["title"] = data["title"]
-
-            # check if the "instructors" list is empty, if so then set "instructor" to "TBD"
-            if not data["classSections"]:
-                each_class["instructor"] = "TBD"
-            else:
-                if not data["classSections"][0]["instructors"]:
-                    each_class["instructor"] = "TBD"
-                else:
-                    each_class["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
-            each_class["description"] = data["description"]
-
+            each_class = extract_from_data(orig_dict=each_class, cached_course=i)
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> dict:
@@ -69,3 +52,24 @@ def query_from_DB(UCSB_quarter: str, subjectCode: str) -> dict:
     year = int(UCSB_quarter[:-1])
     db_query = models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values()
     return db_query
+
+def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
+    """
+    Adds the information of this course's data into the original dictionary
+    """
+    # add non data info
+    orig_dict["sql_id"] = cached_course["id"]
+    orig_dict["courseID"] = cached_course["courseID"]
+
+    # add all info located in data
+    data = cached_course["data"]
+    orig_dict["title"] = data["title"]
+    orig_dict["description"] = data["description"]
+    if not data["classSections"]:
+        orig_dict["instructor"] = "TBD"
+    elif not data["classSections"][0]["instructors"]:
+        orig_dict["instructor"] = "TBD"
+    else:
+        orig_dict["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
+
+    return orig_dict

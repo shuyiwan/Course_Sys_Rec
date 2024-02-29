@@ -1,6 +1,7 @@
 from shoppingCart import models
 from search.models import CachedCourses
 from search.ucsb_api import process_raw_course_ID
+from search.views_helpers import extract_from_cached_course
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -122,10 +123,8 @@ def retrieve_classes(request):
 
         # using the sql_id, we will now append stored course information to the dict
         search_course = CachedCourses.objects.get(id = i_dict['sql_id'])
-        i_dict["courseID"] = search_course.courseID
-        i_dict["description"] = search_course.data["description"]
-        i_dict["title"] = search_course.data["title"]
-        i_dict["instructor"] = search_course.data["classSections"][0]["instructors"][0]["instructor"]
+        # convert search_course to dict
+        i_dict = extract_from_cached_course(i_dict, model_to_dict(search_course))
 
         return_classes.append(i_dict)
 
