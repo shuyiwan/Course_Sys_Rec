@@ -2,7 +2,6 @@ from django.test import TestCase
 from unittest.mock import patch, call # for testing print statements
 from search import models, ucsb_api
 
-
 class StoreCoursesTest(TestCase):
     '''
     This class tests that store_courses prints the correct message depending on what 
@@ -37,8 +36,8 @@ class StoreCoursesTest(TestCase):
 
         ucsb_api.store_courses(query, year, quarter, code)
         assert mock_print.mock_calls == [
-            call(f"Stored: {query['classes'][0]['courseId']}"),
-            call(f"Stored: {query['classes'][1]['courseId']}"),
+            call(f"Stored: CMPSC8"),
+            call(f"Stored: CMPSC16"),
         ]
 
     @patch('builtins.print')
@@ -69,8 +68,8 @@ class StoreCoursesTest(TestCase):
 
         ucsb_api.store_courses(query, year, quarter, code)
         assert mock_print.mock_calls == [
-            call(f"Stored: {query['classes'][0]['courseId']}"),
-            call(f"Skipping: {query['classes'][1]['courseId']}"),
+            call(f"Stored: CMPSC8"),
+            call(f"Skipping: CMPSC8"),
         ]
 
     def test_store_department_empty(self):

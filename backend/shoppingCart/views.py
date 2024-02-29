@@ -43,7 +43,6 @@ def add_classes(request):
     # already there to frontend.
     existing_courses = []
     
-    print(courses_list)
     for i in courses_list:
         email = i["email"]
         courseID = i["courseID"]
