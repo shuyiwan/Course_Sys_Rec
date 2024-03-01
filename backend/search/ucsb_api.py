@@ -103,7 +103,7 @@ def fetch_department(year: str, quarter: str, code: str) -> None:
         query = query_UCSB_classes(UCSB_quarter, code, page_number, pageSize=total_courses)
 
         # sleep for 2 seconds to avoid overloading the api
-        time.sleep(2)
+        time.sleep(1)
 
         # keep track of page statistics
         assert query["pageNumber"] == page_number
@@ -131,20 +131,23 @@ def store_courses(query: dict, year: str, quarter: str, code: str) -> None:
     """
     for i in query["classes"]:
         # if we have already stored this class, skip
-        if models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code, courseID=i["courseId"]).count() > 0:
-            print(f"Skipping: {i['courseId']}")
+        courseID = process_raw_course_ID(i["courseId"])
+
+        if models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code, courseID=courseID).count() > 0:
+            print(f"Skipping: {courseID}")
             continue
         
         # otherwise store
         course = models.CachedCourses(
-            courseID = i["courseId"],
+            courseID = courseID,
             department = code,
             year = int(year),
             quarter = int(quarter),
             data = i
         )
         course.save()
-        print(f"Stored: {i['courseId']}")
+
+        print(f"Stored: {courseID}")
 
 def already_stored_department(year: str, quarter: str, code: str, total_courses: int) -> bool:
     """
@@ -152,6 +155,10 @@ def already_stored_department(year: str, quarter: str, code: str, total_courses:
     """
     return models.CachedCourses.objects.filter(quarter=int(quarter), year=int(year), department=code).count() >= total_courses
 
+def process_raw_course_ID(courseID: str) -> str:
+    courseID = courseID.replace(" ", "")
+    courseID = courseID.upper()
+    return courseID
 
 if __name__ == "__main__":
     # Example way to query; this should return a list of courses and descriptions

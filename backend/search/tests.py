@@ -1,7 +1,7 @@
+from search import models, ucsb_api, views_helpers
+
 from django.test import TestCase
 from unittest.mock import patch, call # for testing print statements
-from search import models, ucsb_api
-
 
 class StoreCoursesTest(TestCase):
     '''
@@ -37,8 +37,8 @@ class StoreCoursesTest(TestCase):
 
         ucsb_api.store_courses(query, year, quarter, code)
         assert mock_print.mock_calls == [
-            call(f"Stored: {query['classes'][0]['courseId']}"),
-            call(f"Stored: {query['classes'][1]['courseId']}"),
+            call(f"Stored: CMPSC8"),
+            call(f"Stored: CMPSC16"),
         ]
 
     @patch('builtins.print')
@@ -69,8 +69,8 @@ class StoreCoursesTest(TestCase):
 
         ucsb_api.store_courses(query, year, quarter, code)
         assert mock_print.mock_calls == [
-            call(f"Stored: {query['classes'][0]['courseId']}"),
-            call(f"Skipping: {query['classes'][1]['courseId']}"),
+            call(f"Stored: CMPSC8"),
+            call(f"Skipping: CMPSC8"),
         ]
 
     def test_store_department_empty(self):
@@ -129,3 +129,68 @@ class StoreCoursesTest(TestCase):
 
         self.assertFalse(ucsb_api.already_stored_department(year, quarter, code, total_courses))
 
+class ExtractFromData(TestCase):
+    '''
+    This class tests whether the extract_from_cached_course function extracts the correct information
+    given from the UCSB api
+    '''
+
+    def test_extract_no_sections(self):
+        cached_course = {
+            'id': 1,
+            'courseID': 'CMPSC8',
+            'data': {
+                'title': 'Intro to CMPSC',
+                'description': 'Python',
+                'classSections': [],
+            },
+        }
+
+        result = views_helpers.extract_from_cached_course(orig_dict={}, cached_course=cached_course)
+        self.assertEqual(result["sql_id"], 1)
+        self.assertEqual(result["courseID"], "CMPSC8")
+        self.assertEqual(result["title"], "Intro to CMPSC")
+        self.assertEqual(result["instructor"], "TBD")
+        self.assertEqual(result["description"], "Python")
+
+    def test_extract_no_instructor(self):
+        cached_course = {
+            'id': 1,
+            'courseID': 'CMPSC8',
+            'data': {
+                'title': 'Intro to CMPSC',
+                'description': 'Python',
+                'classSections': [{
+                    'instructors': [],
+                }],
+            },
+        }
+
+        result = views_helpers.extract_from_cached_course(orig_dict={}, cached_course=cached_course)
+        self.assertEqual(result["sql_id"], 1)
+        self.assertEqual(result["courseID"], "CMPSC8")
+        self.assertEqual(result["title"], "Intro to CMPSC")
+        self.assertEqual(result["instructor"], "TBD")
+        self.assertEqual(result["description"], "Python")
+
+    def test_extract_has_instructors(self):
+        cached_course = {
+            'id': 1,
+            'courseID': 'CMPSC8',
+            'data': {
+                'title': 'Intro to CMPSC',
+                'description': 'Python',
+                'classSections': [{
+                    'instructors': [{
+                        'instructor': 'John Doe',
+                    }],
+                }],
+            },
+        }
+
+        result = views_helpers.extract_from_cached_course(orig_dict={}, cached_course=cached_course)
+        self.assertEqual(result["sql_id"], 1)
+        self.assertEqual(result["courseID"], "CMPSC8")
+        self.assertEqual(result["title"], "Intro to CMPSC")
+        self.assertEqual(result["instructor"], "John Doe")
+        self.assertEqual(result["description"], "Python")
