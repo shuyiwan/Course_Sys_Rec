@@ -44,6 +44,37 @@ h1 {
     color: #666;
 }
 
+.cart-note{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    textarea{
+        width: 100%;
+        height: auto;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.cart-note-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    img{
+        width: 5%; /* image size (cmnd /)*/
+        margin-left: 5px;
+        cursor: pointer;
+    }
+}
+
 .remove-item {
     position: absolute;
     top: 10px;

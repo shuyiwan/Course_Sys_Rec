@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
 import '../Styles/CourseCart.css'; // Import the CSS file
 import testData from '../Components/DataTest.json';
+import pencil_icon from "../assets/PencilIcon.png";
 
 export default function CourseCart() {
 
@@ -50,6 +51,23 @@ export default function CourseCart() {
     }
         
     else{
+    function getNote(id) {
+        let _docNote = document.getElementById(id);
+        console.log("I got here", _docNote);
+        if (_docNote.classList.contains("show")) {
+            console.log("Has show");
+            _docNote.classList.remove("show");
+            _docNote.classList.add("hidden");
+
+        } else if (_docNote.classList.contains("hidden")) {
+            console.log("Has hidden");
+            _docNote.classList.remove("hidden");
+            _docNote.classList.add("show");
+        }
+    }
+
+
+
         return (
             <div>
     
@@ -59,7 +77,14 @@ export default function CourseCart() {
                             <button className="remove-item" onClick={() => removeItem(id)}>Remove</button>
                             <h2>{course.courseID}</h2>
                             <p>{course.description}</p>
+                            <div className="cart-note">
+                            <textarea className="hidden" name="Notes" id={"note_" + id}></textarea>
+                            <div className="cart-note-button" onClick={() => getNote("note_" + id)}>
+                                <p>Note</p>
+                                <img src={pencil_icon} alt="notes" />
+                            </div>
                         </div>
+                    </div>
                     ))}
                 </div>
     
