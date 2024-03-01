@@ -30,19 +30,18 @@ class User(models.Model):
 
 class SavedCourses(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='saved_courses')
-    # Forgign key is used to link the class to a user in User table.
+    # Foreign key is used to link the class to a user in User table.
 
     # on_delete: when a user is deleted from table, all his saved courses will be
     # automatically deleted as well
     # related_name: help us to find all the courses for a users
-    courseID = models.CharField(max_length=30)
-    title = models.CharField(max_length = 30, blank = True, null = True)
+    courseID = models.CharField(max_length = 30)
     instructor = models.CharField(max_length=30, blank = True, null = True)
-    description = models.TextField(blank = True, null = True)
+    sql_id = models.IntegerField(blank = True, null = True)
 
     # make sure each user cannot have multiples rows of the same class
     class Meta:
-        unique_together = ('user', 'courseID')
+        unique_together = ('user', 'courseID', 'sql_id')
 
     def __str__(self):
         return self.courseID
