@@ -18,20 +18,20 @@ def search_from_backend(subcode: str, quarter: str, keywords: list, selected: li
     filter_query(query, regex_patterns, selected)
 
 
-def filter_query(query: QuerySet, regex_keyword: re.Pattern, selected: list) -> None:
+def filter_query(query: QuerySet, regex_patterns: list[re.Pattern], selected: list) -> None:
     """ 
     Narrows down the search query from all the classes in a department
     to courses that fit the keywords.
     """
-    for i in query:
+    for course in query:
         # if the course descriptions contain the keyword, we will add this course to the
         # list.
         # We add the information of this course into the dict, and then add this
         # dict to "selected"
-        if regex_keyword.search(i["data"]["description"]):
+        if any(regex.search(course["data"]["description"]) for regex in regex_patterns):
             each_class = dict()
             each_class["ID"] = len(selected) # this is the index of the course
-            each_class = extract_from_cached_course(orig_dict=each_class, cached_course=i)
+            each_class = extract_from_cached_course(orig_dict=each_class, cached_course=course)
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:

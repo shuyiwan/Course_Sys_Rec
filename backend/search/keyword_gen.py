@@ -14,7 +14,7 @@ def keyword_generation(keyword: str) -> List[str]:
     messages=[
         {
             "role": "user",
-            "content": f"Generate 5 keywords related to {keyword}.",
+            "content": f"Generate 10 keywords related to {keyword}.",
         },
     ],
 )
@@ -25,7 +25,9 @@ def keyword_generation(keyword: str) -> List[str]:
   keywords = keywords_message.replace('\n', ',').split(',')
     
     # Stripping whitespace and removing empty strings from the list
-  keywords = [keyword.strip() for keyword in keywords if keyword.strip()]
+  keywords = [kwd.strip() for kwd in keywords if kwd.strip()]
+  keywords.append(keyword)
+
 
   print(keywords) # Debugging purpose, can be deleted when needed
   return keywords
