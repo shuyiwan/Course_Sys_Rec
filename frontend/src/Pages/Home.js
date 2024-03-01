@@ -20,7 +20,8 @@ export default function Home() {
 
     return (
         <div className='searchBarWrapper'>
-            <div className='searchBarContainer'>
+            {/*<div className='searchBarContainer'>*/}
+            <div>
                 <h1>Welcome to Platinum</h1>
                 <SearchBar setResult={setResult} />
                 <SearchResultList results={results} />
