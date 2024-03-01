@@ -1,7 +1,16 @@
+"""
+A collection of functions to cache the professors into the database
+"""
+from django.db import models
 from search import models
 from django.db.models import QuerySet
 import ratemyprofessor
 import time
+
+"""
+Information about the API can be found here: 
+<https://pypi.org/project/RateMyProfessorAPI/>
+"""
 
 def read_missprof_file() -> set:
     """
