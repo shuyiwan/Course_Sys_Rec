@@ -3,6 +3,8 @@ from django.views.decorators.http import require_http_methods
 from django.shortcuts import render
 from search import views_helpers
 
+
+
 ### The function to handle the search request
 @require_http_methods(["GET"])  # Make sure it only handles the GET request
 def search_keywords(request):
@@ -41,3 +43,5 @@ def search_keywords(request):
     # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
     # so that it looks better than all the course cluster together.
     return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})
+
+
