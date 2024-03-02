@@ -33,11 +33,6 @@ def filter_query(query: QuerySet, regex_patterns: list[re.Pattern], selected: li
             each_class = dict()
             each_class["ID"] = len(selected) # this is the index of the course
             each_class = extract_from_cached_course(orig_dict=each_class, cached_course=course)
-            # add ratings to the class
-            if each_class["instructor"] == "TBD":
-                each_class["rmf"] = "TBD"
-            else:
-                each_class["rmf"] = retrieve_prof(each_class["instructor"])
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
@@ -84,6 +79,12 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
         orig_dict["instructor"] = "TBD"
     else:
         orig_dict["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
+
+    # add ratings to the class
+    if orig_dict["instructor"] == "TBD":
+        orig_dict["rmf"] = "TBD"
+    else:
+        orig_dict["rmf"] = retrieve_prof(orig_dict["instructor"])
 
     return orig_dict
 
