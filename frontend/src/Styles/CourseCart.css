@@ -5,13 +5,14 @@ body, h1, p, a, button {
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /*background-color: #f7f7f7; */
 }
 
 h1 {
     color: #333;
     margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #shopping-cart {
@@ -36,12 +37,45 @@ h1 {
 
 .cart-item h2 {
     color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     margin-bottom: 10px;
 }
 
 .cart-item p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #666;
+}
+
+.cart-note{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    textarea{
+        width: 100%;
+        height: auto;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+.cart-note-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    img{
+        width: 5%; /* image size (cmnd /)*/
+        margin-left: 5px;
+        cursor: pointer;
+    }
 }
 
 .remove-item {
@@ -83,4 +117,25 @@ button#checkout-button {
 
 button#checkout-button:hover {
     background-color: #218838;
+}
+
+
+.searchButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.searchButton {
+    font-size: 1rem; /* Adjust the font size */
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.8;
+    color: black;
+    background-color: white;
+    border: none;
+    padding: 6px 12px; /* Adjust the padding to make the button smaller */
+    border-radius: 20px;
+    display: inline-block;
 }

@@ -1,6 +1,24 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #62b3ed;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .App-link {
   color: #61dafb;
 }
+
+img {
+  width: 100%;
+}
+
+.App {
+  position: relative;
+}
+
 
 .helloWorld{
   text-align: center;
@@ -13,15 +31,13 @@
 }
 
 .loginButton{
-  display: flex;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: calc(5px + 2vmin);
-  text-align: center; 
-  line-height: 2; 
-  justify-content: center; 
-  align-items: center; 
+  font-size: calc(7px + 2vmin);
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.8;
   color: white;
-  background-color: rgb(60, 63, 62);
+  background-color: black;
+  border: none;
+  padding: 8px 20px; /* Adjust padding to make the button slightly smaller in height */
+  border-radius: 4px;
 }

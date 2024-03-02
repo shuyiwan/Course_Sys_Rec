@@ -1,10 +1,28 @@
-
 /* For Home.js page */
-.searchBarContainer{
-    text-align: center;
-    position: absolute;
-    top: 55%;
-    left: 40%;
+
+.searchBarContainer h1 {
+  font-size: 3rem;
+  color: #fff;
+  height: 15vh;
+  text-align: center;
+  position: relative;
+  top: 25vh;
+  margin-bottom: 2rem;
+}
+
+.searchBarWrapper, .searchBarContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 5rem auto 2rem;
+  margin-top: 10rem;
+  margin-bottom: 2rem;
+  div h1{
+    color: white;
+  }
 }
 
 /* For Search.js page */
@@ -23,11 +41,12 @@
 /* Style for the main container of the Home page */
 .homeContainer {
   background-color: #93C5FD; 
-  min-height: 100vh; 
+  min-height: 60vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 /* Style for the welcome message */

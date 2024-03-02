@@ -2,8 +2,9 @@
 .title-bar {
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 100px 0 20px;
     position: relative;
+    font-size: 3.0rem;
     top: 0;
     width: 100%;
 }
@@ -12,31 +13,34 @@
     margin: 0;
     font-size: 2.5rem; 
     font-weight: bold; 
+    color: rgb(255, 255, 255);
 }
 
 
 .mission-title {
-    color: black; 
-    font-size: 1.8rem; 
+    color: rgb(0, 0, 0); 
+    font-size: 1.6rem; 
     text-align: center; 
-    margin-top: 20px; 
+    margin-top: 10px; 
 }
 
 
 .mission-text {
-    color: black; 
+    color: rgb(55, 54, 54); 
     font-size: 1.2rem; 
     text-align: center; 
     margin: 20px auto; 
-    width: 60%; 
+    width: 90%; 
 }
 
 
 .about-container {
-    background-image: url('forest_1.jpg');
+    /*background-image: url('forest_1.jpg');*/
+    background-color: #62b3ed;
     background-size: cover;
     background-position: center;
     min-height: 100vh;
+    margin-top: 40px;
 }
 
 

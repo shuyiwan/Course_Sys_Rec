@@ -1,26 +1,21 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0; /* No default margin to ensure full-width nav bar */
-}
 
 .nav {
-    background-color: #fff; /* Nav bar background color changed to white */
-    color: black; /* Text color changed to black */
+    background-color: #62b3ed; /* Nav bar background color changed to white */
+    color: white;
     display: flex;
-    justify-content: space-between; /* Space between items */
-    align-items: center; /* Center items vertically */
-    padding: 0.8rem 1rem; /* Adjust padding to reduce vertical height to 4/5 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem 0.3rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-weight: bold;
 }
 
 .nav a {
-    color: black; /* Ensure anchor tags inherit black text color for readability */
+    color: inherit; /* Ensure anchor tags inherit black text color for readability */
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 0.25rem; /* Adjust padding for individual nav items */
+    height: 100%;
+    margin-top: 0;
+    padding: 0.5rem 0.5rem;
 }
 
 .nav ul {
@@ -28,26 +23,39 @@ body {
     margin: 0;
     list-style: none;
     display: flex;
-    gap: 1rem; /* Maintain gap between links */
+    gap: 1rem;
+    margin-right: 1rem;
+    margin-left: auto;
 }
 
 .siteTitle {
-    font-size: 2rem; /* Standard size for site title */
+    font-size: 4rem;
     display: flex;
     align-items: center;
     gap: 0.5rem; /* Space between icon and title text */
 }
 
 .link {
-    font-size: 1.5rem; /* Standard link size */
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .nav li.active {
-    background-color: #e7e7e7; /* Lighter shade for active link to maintain contrast */
+    color: #555;
 }
 
 .nav li:hover {
-    background-color: #ddd; /* Hover effect with slightly darker shade */
+    color: #777; /* Hover effect with slightly darker shade */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+nav img {
+    width: 80px;
+    height: 80px;
 }
 
 @media (max-width: 768px) {

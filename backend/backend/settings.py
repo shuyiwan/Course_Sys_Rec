@@ -150,4 +150,6 @@ CSRF_TRUSTED_ORIGINS = [ 'http://localhost:3000', ]
 load_dotenv()
 USCB_API_CONSUMER_KEY = os.getenv('uscb_api_consumer_key')
 
+OPENAI_API_KEY = os.getenv('openai_api_key')
+
 
