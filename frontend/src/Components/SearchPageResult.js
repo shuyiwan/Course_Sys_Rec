@@ -12,7 +12,7 @@ export default function SearchPageResult({ result }) {
         let _csrfToken = null;
 
         if (_csrfToken === null) {
-            const response = await fetch(`http://127.0.0.1:8000/shoppingCart/crsfToken/`, {
+            const response = await fetch(`https://intermittence.pythonanywhere.com/shoppingCart/crsfToken/`, {
                 credentials: 'include',
             });
             const data = await response.json();
@@ -25,13 +25,15 @@ export default function SearchPageResult({ result }) {
     async function addToCart() {
         const postData = [{
             email: userEmail, 
-            courseID: result.courseID
+            courseID: result.courseID,
+            sql_id: result.sql_id
+
         }];
         // console.log(result.courseID)
 
         try {
             
-            const response = await fetch('http://127.0.0.1:8000/shoppingCart/add/', {
+            const response = await fetch('https://intermittence.pythonanywhere.com/shoppingCart/add/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
