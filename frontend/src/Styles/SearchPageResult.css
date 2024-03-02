@@ -45,6 +45,35 @@
     transition: box-shadow 0.7s; 
 }
 
+.GPTExplainButton {
+    position: absolute;
+    bottom: 10px;
+    left: 36%;
+    transform: translateY(-50%);
+    width: 120px; 
+    height: 30px;
+    line-height: 30px; 
+    text-align: center;
+    border-radius: 20px; 
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, transform 0.3s ease-in-out; 
+}
+
+.GPTExplainButton:hover {
+    background-color: #0056b3;
+}
+
+.GPTExplainButton:focus {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px #5a01a7; 
+    transition: box-shadow 0.7s; 
+}
+
 .ReturnButton {
     position: fixed; 
     left: 20px; 
