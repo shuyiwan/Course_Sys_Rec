@@ -40,9 +40,9 @@ def filter_query(query: QuerySet, regex_keyword: re.Pattern, selected: list) -> 
             each_class = extract_from_cached_course(orig_dict=each_class, cached_course=i)
             # add ratings to the class
             if each_class["instructor"] == "TBD":
-                each_class["ratings from Ratemyprofessor"] = "TBD"
+                each_class["rmf"] = "TBD"
             else:
-                each_class["ratings from Ratemyprofessor"] = retrieve_prof(each_class["instructor"])
+                each_class["rmf"] = retrieve_prof(each_class["instructor"])
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> dict:
