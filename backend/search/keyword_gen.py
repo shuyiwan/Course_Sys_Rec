@@ -3,6 +3,7 @@ from openai import OpenAI
 import openai
 from typing import List
 from django.conf import settings
+import re
 
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 # OpenAI.api_key = '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'

@@ -2,7 +2,7 @@ from search import models
 from django.forms.models import model_to_dict
 from django.db.models import QuerySet
 from search.keyword_gen import keyword_generation
-import re # the package for regular expression
+import re 
 
 def search_from_backend(subcode: str, quarter: str, keywords: list, selected: list) -> None:
     # Get class data by querying from the backend DB
@@ -35,9 +35,9 @@ def filter_query(query: QuerySet, regex_patterns: list[re.Pattern], selected: li
             each_class = extract_from_cached_course(orig_dict=each_class, cached_course=course)
             # add ratings to the class
             if each_class["instructor"] == "TBD":
-                each_class["ratings from Ratemyprofessor"] = "TBD"
+                each_class["rmf"] = "TBD"
             else:
-                each_class["ratings from Ratemyprofessor"] = retrieve_prof(each_class["instructor"])
+                each_class["rmf"] = retrieve_prof(each_class["instructor"])
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
@@ -50,6 +50,7 @@ def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
     quarter = int(UCSB_quarter[-1])
     year = int(UCSB_quarter[:-1])
     db_query = list(models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values())
+    # db_query = models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values()
     return db_query
 
 def retrieve_prof(prof_name: str) -> list:

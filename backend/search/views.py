@@ -39,6 +39,7 @@ def search_keywords(request):
 
     # Search for courses matching the generated keywords, for both regular and online courses
     views_helpers.search_from_backend(subcode, quarter, generated_keywords, selected)
+    
     # get the subject code for online course e.g. "CMPSCW"
     views_helpers.search_from_backend(subcode + "W", quarter, generated_keywords, selected)
         
