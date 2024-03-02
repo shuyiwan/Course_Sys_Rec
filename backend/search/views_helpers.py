@@ -32,7 +32,7 @@ def filter_query(query: QuerySet, regex_patterns: list[re.Pattern], selected: li
         if any(regex.search(course["data"]["description"]) for regex in regex_patterns):
             each_class = dict()
             each_class["ID"] = len(selected) # this is the index of the course
-            each_class = extract_from_cached_course(orig_dict=each_class, cached_course=i)
+            each_class = extract_from_cached_course(orig_dict=each_class, cached_course=course)
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
