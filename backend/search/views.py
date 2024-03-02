@@ -6,6 +6,8 @@ from search.keyword_gen import keyword_generation  # Import the keyword_generati
 
 
 
+
+
 ### The function to handle the search request
 @require_http_methods(["GET"])  # Make sure it only handles the GET request
 
@@ -40,5 +42,9 @@ def search_keywords(request):
     # get the subject code for online course e.g. "CMPSCW"
     views_helpers.search_from_backend(subcode + "W", quarter, generated_keywords, selected)
         
-    # Return the selected courses as a JSON response
-    return JsonResponse(selected, safe=False, json_dumps_params={'indent': 4})
+
+
+    # return a json, "safe = False" so that it can handle the data that 
+    # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
+    # so that it looks better than all the course cluster together.
+    return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})

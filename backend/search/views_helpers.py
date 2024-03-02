@@ -1,4 +1,5 @@
 from search import models
+from django.forms.models import model_to_dict
 from django.db.models import QuerySet
 from search.keyword_gen import keyword_generation
 import re # the package for regular expression
@@ -32,6 +33,11 @@ def filter_query(query: QuerySet, regex_patterns: list[re.Pattern], selected: li
             each_class = dict()
             each_class["ID"] = len(selected) # this is the index of the course
             each_class = extract_from_cached_course(orig_dict=each_class, cached_course=course)
+            # add ratings to the class
+            if each_class["instructor"] == "TBD":
+                each_class["ratings from Ratemyprofessor"] = "TBD"
+            else:
+                each_class["ratings from Ratemyprofessor"] = retrieve_prof(each_class["instructor"])
             selected.append(each_class)
 
 def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
@@ -45,6 +51,20 @@ def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
     year = int(UCSB_quarter[:-1])
     db_query = list(models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values())
     return db_query
+
+def retrieve_prof(prof_name: str) -> list:
+    """
+    Query all professor from the database that match this name(the name returned by school api)
+    """
+    # remove the initial of middle name if it exists
+    if prof_name.count(" ") >= 1:
+        prof_name = prof_name.split(" ")[0] + " " + prof_name.split(" ")[1]
+    result = []
+    db_query = models.Professor.objects.filter(name=prof_name)
+    for each_prof in db_query:
+        result.append(model_to_dict(each_prof))
+    return result
+
 def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
     """
     Adds the information of this course's data into the original dictionary
@@ -65,3 +85,4 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
         orig_dict["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
 
     return orig_dict
+

@@ -26,5 +26,6 @@ urlpatterns = [
     path("shoppingCart/add/", sc_views.add_classes, name="add_classes"), # url path for adding classes to cart
     path("shoppingCart/crsfToken/", sc_views.get_csrfToken, name="get_csrfToken"), # url path for getting csrf token
     path("shoppingCart/retrieve/", sc_views.retrieve_classes, name="retrieve_classes"), # url path for retrieving classes
-    path("shoppingCart/delete/", sc_views.delete_class, name="delete_class") # url path for deleting classes
+    path("shoppingCart/delete/", sc_views.delete_class, name="delete_class"), # url path for deleting classes
+    
 ]
