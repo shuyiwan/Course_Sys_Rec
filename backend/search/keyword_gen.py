@@ -25,9 +25,16 @@ def keyword_generation(keyword: str) -> List[str]:
   keywords = keywords_message.replace('\n', ',').split(',')
     
     # Stripping whitespace and removing empty strings from the list
-  keywords = [kwd.strip() for kwd in keywords if kwd.strip()]
-  keywords.append(keyword)
+  # keywords = [kwd.strip() for kwd in keywords if kwd.strip()]
+  cleaned_keywords = []
+  for kwd in keywords:
+    cleaned_keyword = re.sub(r'^\d+\.\s*', '', kwd.strip())  # Remove leading numbering
+    if cleaned_keyword:  # Ensure the keyword is not empty after cleaning
+            cleaned_keywords.append(cleaned_keyword)
+      
+  # keywords.append(keyword)
+  cleaned_keywords.append(keyword) # append original keyword
 
 
-  print(keywords) # Debugging purpose, can be deleted when needed
-  return keywords
+  print(cleaned_keywords) # Debugging purpose, can be deleted when needed
+  return cleaned_keywords
