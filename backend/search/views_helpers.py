@@ -52,6 +52,20 @@ def retrieve_prof(prof_name: str) -> list:
     """
     Query all professor from the database that match this name(the name returned by school api)
     """
+    # if the name is "TBD", we will return a dict of "TBD"
+    if prof_name == "TBD":
+        tbd_prof = dict()
+        tbd_prof["id"] = "TBD"
+        tbd_prof["fullname"] = "TBD"
+        tbd_prof["name"] = "TBD"
+        tbd_prof["department"] = "TBD"
+        tbd_prof["rating"] = "TBD"
+        tbd_prof["num_ratings"] = "TBD"
+        tbd_prof["difficulty"] = "TBD"
+        tbd_prof["would_take_again"] = "TBD"
+        return [tbd_prof]
+    
+    # retrieve the professor from the database when name is not "TBD"
     # remove the initial of middle name if it exists
     if prof_name.count(" ") >= 1:
         prof_name = prof_name.split(" ")[0] + " " + prof_name.split(" ")[1]
@@ -81,10 +95,9 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
         orig_dict["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
 
     # add ratings to the class
-    if orig_dict["instructor"] == "TBD":
-        orig_dict["rmf"] = "TBD"
-    else:
-        orig_dict["rmf"] = retrieve_prof(orig_dict["instructor"])
+    orig_dict["rmf"] = retrieve_prof(orig_dict["instructor"])
+    if not orig_dict["rmf"]:
+        orig_dict["rmf"] = "could not find this professor"
 
     return orig_dict
 
