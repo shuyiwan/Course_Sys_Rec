@@ -11,6 +11,8 @@ def search_from_backend(subcode: str, quarter: str, keywords: list, selected: li
     # Prepare the regex pattern for each keyword
     regex_patterns = []
     for keyword in keywords:
+        # remove spaces in the keyword so that it accepts phrases like "computer science"
+        keyword = keyword.replace(" ", "")
         escaped_keyword = re.escape(keyword.lower())
         pattern = r'\b' + '\\s*'.join(escaped_keyword) + r'\b'  # May be modified
         regex_patterns.append(re.compile(pattern, re.IGNORECASE))
