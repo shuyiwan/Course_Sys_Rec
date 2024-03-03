@@ -6,8 +6,6 @@ from django.conf import settings
 import re
 
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
-# OpenAI.api_key = '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'
-
 
 def keyword_generation(keyword: str) -> List[str]:
   completion = client.chat.completions.create(
