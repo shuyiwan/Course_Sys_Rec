@@ -69,6 +69,9 @@ export default function SearchPageResult({ result }) {
                 <br />
                 <p>Instructor: {result.instructor}</p>
                 <button className="AddToCartButton" onClick={addToCart}>+</button>
+                <div>{result.instructor}</div>
+                {/* need someone to work one the css for RMF button */}
+                <button onClick={addToCart}>RMF</button>
             </div>
         </div>
     );
