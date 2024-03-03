@@ -7,21 +7,20 @@
 }
 
 .dropdown-button {
-    background-color: #f1f1f1;
+    font-size: calc(2px + 2vmin);
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.8;
+    color: white;
+    background-color: black;
     border: none;
-    padding: 10px;
-    cursor: pointer;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    text-align: center; /* Center the text horizontally */
-    line-height: 2;
+    padding: 8px 15px; /* Adjust padding to make the button slightly smaller in height */
+    border-radius: 4px;  
 }
 
 .round-image {
     border-radius: 50%; /* Make the image round */
+    width: 50px; /* Set the width to make it smaller */
+    height: 50px;
   }
   
-.small-image {
-width: 50px; /* Set the width to make it smaller */
-height: 50px; /* Set the height to make it smaller */
-}
