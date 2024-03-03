@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
-import GPTExplain from './GPTExplain.js';
+import GPTExplanation from './GPTExplain.js';
 
 export default function SearchPageResult({ result }) {
-    // console.log(localStorage.getItem("email"))
-
     // retrieve the user's email from localStorage + store here
-    const userEmail = localStorage.getItem("email");
-    const [message, setGeneratedMessage] = useState('');
+    const userEmail = localStorage.getItem("email");  
 
     async function getCsrfToken() {
         let _csrfToken = null;
@@ -61,7 +58,6 @@ export default function SearchPageResult({ result }) {
     return (
         <div>
             <Link to="/" className="ReturnButton"> </Link>
-
             <div className="SearchPageResult">
                 <p>{result.courseID}</p>
                 <br />
@@ -71,10 +67,8 @@ export default function SearchPageResult({ result }) {
                 <br />
                 <p>Instructor: {result.instructor}</p>
                 <button className="AddToCartButton" onClick={addToCart}>+</button>
-                <button className="GPTExplainButton" onClick={GPTExplain(result.description)}>More Explanation</button>
-                <div className="Chatbox">message</div>
+                <GPTExplanation input={result.description} />
             </div>
-
         </div>
     );
 }
