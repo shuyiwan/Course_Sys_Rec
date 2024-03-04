@@ -71,8 +71,9 @@ export default function SearchPageResult({ result }) {
                 <br />
                 <p>Instructor: {result.instructor}</p>
                 <button className="AddToCartButton" onClick={addToCart}>+</button>
-                <GPTExplanation input={result.description} />
                 <RMPresult RMPinfo = {result.rmf} />
+                <GPTExplanation input={result.description} />
+                
 
             </div>
         </div>
