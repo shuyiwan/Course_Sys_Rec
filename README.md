@@ -1,4 +1,4 @@
-# Course Organization and Recommendation System
+# Course Organization and Recommendation System https://platinum-plus.netlify.app/
 
 This system is a website application where users can enter their course plan, course topic, course calendar, etc., 
 and get relevant topic recommendations based on current learning topics the user interacts with.
