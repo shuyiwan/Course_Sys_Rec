@@ -14,7 +14,16 @@ export default function RMPresult({RMPinfo}) {
     }
     
     if(RMPinfo === "could not find this professor"){
-        return <div>Professor not found</div>
+        return (
+            <div>
+                {/* need someone to work one the css for RMF button */}
+                <button onClick={showRMP}>Rate My Professor</button>
+                    
+                <div className = {showRate ? "RMP_show" : "RMP_notshow"}>
+                    Professor Not Found
+                </div> 
+            </div> 
+        );
     }
 
     else{
@@ -35,7 +44,6 @@ export default function RMPresult({RMPinfo}) {
                         </div>
                     ))} 
                 </div> 
-    
             </div> 
         );
     }
