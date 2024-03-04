@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
 import GPTExplanation from './GPTExplain.js';
+import RMPresult from "./RMPresult.js"
+
 
 export default function SearchPageResult({ result }) {
     // retrieve the user's email from localStorage + store here
+
     const userEmail = localStorage.getItem("email");  
 
     async function getCsrfToken() {
@@ -55,6 +58,7 @@ export default function SearchPageResult({ result }) {
         }
     }
 
+    //console.log(result.rmf)
     return (
         <div>
             <Link to="/" className="ReturnButton"> </Link>
@@ -68,6 +72,8 @@ export default function SearchPageResult({ result }) {
                 <p>Instructor: {result.instructor}</p>
                 <button className="AddToCartButton" onClick={addToCart}>+</button>
                 <GPTExplanation input={result.description} />
+                <RMPresult RMPinfo = {result.rmf} />
+
             </div>
         </div>
     );
