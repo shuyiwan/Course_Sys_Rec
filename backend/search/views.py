@@ -41,10 +41,10 @@ def search_keywords(request):
     views_helpers.search_from_backend(subcode, quarter, generated_keywords, selected)
     
     # get the subject code for online course e.g. "CMPSCW"
-    views_helpers.search_from_backend(subcode + "W", quarter, generated_keywords, selected)
+    # note that this only applies if there is a subject code in the first place
+    if subcode:
+        views_helpers.search_from_backend(subcode + "W", quarter, generated_keywords, selected)
         
-
-
     # return a json, "safe = False" so that it can handle the data that 
     # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
     # so that it looks better than all the course cluster together.
