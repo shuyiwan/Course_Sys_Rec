@@ -1,3 +1,47 @@
+## Deploying the Frontend
+For our team's deployment of frontend, we are using Netlify https://www.netlify.com/. The steps to deploy manully will be shown.
+
+### Preparation
+
+1. Open up the terminal
+2. Clone the repository
+  ```shell
+    git clone git@github.com:ucsb-cs148-w24/project-pj04-courserecs.git
+  ```
+3. cd into the project-pj04-courserecs
+  ```shell
+    cd project-pj04-courserecs
+  ```
+
+### Deploy the Website to Acquire URL
+#### Option 1: Manully Deploy
+
+1. cd into the frontend
+  ```shell
+    cd frontend
+  ```
+2. Generate the Poduction Directory which creates the 'build' directory in frontend
+  ```shell
+    npm run build
+  ```
+3. Drag the 'build' directory to Netlify
+   <img width="1089" alt="Screenshot 2024-03-02 at 11 30 01 PM" src="https://github.com/ucsb-cs148-w24/project-pj04-courserecs/assets/130107934/25c6e352-7de9-4a7a-a134-4d185ae651e2">
+
+#### Option 2: Link the GitHub Repository to Netlify
+
+### Setup Google OAuth
+
+Once finishing the deployment and having the site URL. You should setup the google oauth because our project has the login feature using google oauth.
+
+#### Option 1 (Recommended): Reach Out Our Team to Add the Website URL
+In this case, you don't need to change any code in this project. We will simply add your deployment URL to our Client.
+
+#### Option 2: Setup Your Google OAuth
+1. [Create Developer Project](https://ucsb-cs156.github.io/topics/oauth/google_create_developer_project.html)
+2. [OAuth Consent Screen](https://ucsb-cs156.github.io/topics/oauth/google_oauth_consent_screen.html)
+3. Once you got the Google Client ID. Replace ours with yours in code in frontend/src/index.js
+
+
 ## Deploying the Backend
 
 Our backend is hosted on [PythonAnywhere](https://www.pythonanywhere.com). Similar to the [steps](../backend/README.md#setting-up-the-backend) required to setup the backend environment, PythonAnywhere too must be configured for deployment.
