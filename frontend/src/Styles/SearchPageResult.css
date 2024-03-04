@@ -61,3 +61,12 @@
 .ReturnButton:hover {
     transform: scale(1.1); 
 }
+
+/* for RMPresult.js */
+.RMP_notshow {
+    display: none;
+}
+
+.RMP_show {
+    
+}
