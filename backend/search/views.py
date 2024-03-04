@@ -20,15 +20,15 @@ def search_keywords(request):
     subcode = request.GET.get('subject_code', '')
 
     # Return error if any parameter is missing
-    if not (keyword and quarter and subcode):
+    if not (keyword and quarter):
         return JsonResponse({'error': 'Missing required search parameters.'}, status=400)
     
     # return error if the subject_code end with "W" since we will handle the online 
     # courses together with regular courses.
     # Return error for invalid subject code
 
-    # get the subject code for online course e.g. "CMPSCW"
-    if subcode[-1] == "W":
+    # get the subject code for online course e.g. "CMPSCW" if there is a subject code
+    if subcode and subcode[-1] == "W":
         return JsonResponse({'error': 'Invalid subject code.'}, status=400)
     
     # Generate keywords once for the search request

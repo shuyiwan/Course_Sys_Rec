@@ -46,9 +46,13 @@ def query_from_DB(UCSB_quarter: str, subjectCode: str) -> list:
 
     quarter = int(UCSB_quarter[-1])
     year = int(UCSB_quarter[:-1])
-    db_query = list(models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values())
-    # db_query = models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode).values()
-    return db_query
+
+    query = None
+    if subjectCode:
+        query = models.CachedCourses.objects.filter(quarter=quarter, year=year, department=subjectCode)
+    else:
+        query = models.CachedCourses.objects.filter(quarter=quarter, year=year)
+    return list(query.values())
 
 def retrieve_prof(prof_name: str) -> list:
     """
