@@ -1,0 +1,22 @@
+.chat-bubble-show {
+    position: relative;
+    right: 5px;
+    background-color: #d6dcf1;
+    border: 1px solid #313ab5;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.closeButton {
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  cursor: pointer;
+  height: 26px;
+  width: 26px;
+  text-align: center; 
+  justify-content: center;
+}

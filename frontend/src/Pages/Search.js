@@ -49,7 +49,7 @@ export default function Course(){
         }
         return (
             // render the results
-            <SearchPageList results={results}/> 
+            <SearchPageList results={results}/>  
         )
     }
 }
