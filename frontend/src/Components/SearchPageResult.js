@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
+import RMPresult from "./RMPresult.js"
 
 export default function SearchPageResult({ result }) {
     // console.log(localStorage.getItem("email"))
 
     // retrieve the user's email from localStorage + store here
     const userEmail = localStorage.getItem("email");
+    //console.log(result.rmf)
 
     async function getCsrfToken() {
         let _csrfToken = null;
@@ -56,6 +58,7 @@ export default function SearchPageResult({ result }) {
         }
     }
 
+    //console.log(result.rmf)
     return (
         <div>
             <Link to="/" className="ReturnButton"> </Link>
@@ -69,9 +72,8 @@ export default function SearchPageResult({ result }) {
                 <br />
                 <p>Instructor: {result.instructor}</p>
                 <button className="AddToCartButton" onClick={addToCart}>+</button>
-                <div>{result.instructor}</div>
-                {/* need someone to work one the css for RMF button */}
-                <button onClick={addToCart}>RMF</button>
+                {/*  */}
+                <RMPresult RMPinfo = {result.rmf} />
             </div>
         </div>
     );
