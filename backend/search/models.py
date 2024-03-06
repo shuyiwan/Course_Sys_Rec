@@ -11,6 +11,7 @@ class Professor(models.Model):
     num_ratings = models.IntegerField(default=0)
     difficulty = models.FloatField(default=0)
     would_take_again = models.CharField(max_length=30, default="")
+    tags = models.JSONField(default=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"professor={self.fullname}, department={self.department}, rating={self.rating}"

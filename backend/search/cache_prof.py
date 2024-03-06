@@ -3,9 +3,11 @@ A collection of functions to cache the professors into the database
 """
 from django.db import models
 from search import models
+from search import rmf_api
 from django.db.models import QuerySet
 import ratemyprofessor
 import time
+import json
 
 """
 Information about the API can be found here: 
@@ -182,3 +184,52 @@ def create_prof_object(prof: ratemyprofessor.Professor,
     new_prof.save()
     each_class.instructor = new_prof
     each_class.save()
+
+def fetch_all_tags() -> None:
+    """
+    Use scraper in search/rmf_api.py to get the professor tags and add them to the database
+    """
+    start_time = time.time()
+    db_query = models.Professor.objects.filter(tags__isnull=True)
+
+    if db_query.count() == models.Professor.objects.all().count():
+        print("Starting to populate the tags column from scratch...")
+    else:
+        print("Continuing to populate the tags column...")
+
+    # go thorough each professor and query api to get their tags
+    for each_prof in db_query:
+        fullname = each_prof.fullname
+        print("Professor: " + fullname + ", " + "Department: " + each_prof.department)
+        tags = get_tags(fullname)
+        if not tags:
+            tags = ["could not find tags for this professor"]
+        elif tags[0] == "could not find rmf id":
+            tags = ["no tags: failed to find rmf id for this professor"]
+
+        # store the tags
+        tags_json = json.dumps(tags)
+        each_prof.tags = tags_json
+        each_prof.save()
+        if tags[0] == "could not find tags for this professor":
+            print("Skipped: "  + "could not find tags for " + fullname)
+        elif tags[0] == "no tags: failed to find rmf id for this professor":
+            print("Skipped: "  + "failed to find rmf id for " + fullname)
+        else:
+            print("Stored: " + fullname)
+
+    print("Success! Finished querying")
+    finish_time = time.time()
+    total_time = (finish_time - start_time) / 60
+    print(f"Total time for this run: {total_time} minutes")
+
+def get_tags(name: str) -> list:
+    """
+    Given a name, get the tags of a professor
+    """
+    list_id = rmf_api.query_rmfapi_for_rmfid(name)
+    if list_id: # the first id corresponds to the best result that match this name 
+        return rmf_api.query_rmfapi_for_hottest_tags(list_id[0]) # this may return an empty list if no tags found
+    else:
+        # normally this should not happen since every professor name in db have a record in rmf
+        return ["could not find rmf id"]

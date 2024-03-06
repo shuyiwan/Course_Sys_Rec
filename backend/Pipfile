@@ -10,6 +10,7 @@ python-dotenv = "*"
 mysqlclient = "==2.2.3"
 django-cors-headers = "*"
 ratemyprofessorapi = "*"
+openai = "*"
 
 [dev-packages]
 
