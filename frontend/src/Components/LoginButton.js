@@ -11,7 +11,7 @@ function LoginButton() {
     const name = localStorage.getItem('name');
     const picture = localStorage.getItem('picture');
     const loginStatus = localStorage.getItem('loginStatus');
-    const [authorized, setAuthorized] = useState(localStorage.getItem("loginStatus") === "false" ? false : true);
+    const [authorized, setAuthorized] = useState(loginStatus === "false" ? false : true);
 
     
     const googleLogin = useGoogleLogin({
