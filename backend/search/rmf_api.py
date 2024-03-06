@@ -11,7 +11,7 @@ def query_rmfapi_for_rmfid(professor_name: str) -> str:
         f'https://www.ratemyprofessors.com/search/professors/1077?'
         f'q={professor_name}'
     )
-    # Wrote this function with reference to the code of RateMyProfessorAPI package
+    # Wrote this function with references to the code inside RateMyProfessorAPI package
     page = requests.get(url)
     data = re.findall(r'"legacyId":(\d+)', page.text)
     id_list = []
@@ -25,8 +25,9 @@ def query_rmfapi_for_rmfid(professor_name: str) -> str:
 
 def query_rmfapi_for_hottest_tags(rmf_id: str) -> list:
     """
-    This is the main scraper function.
-    Given a RMF id, this function returns the list of tags for the professor
+    The main scraper function for professor webpage.
+    This function returns the list of hottest tags for the professor if there are any.
+    We can change this later to scrape more stuff.
     """
     url: str = (
             f'https://www.ratemyprofessors.com/ShowRatings.jsp?'
