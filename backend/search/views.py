@@ -10,7 +10,6 @@ from search.keyword_gen import keyword_generation  # Import the keyword_generati
 
 ### The function to handle the search request
 @require_http_methods(["GET"])  # Make sure it only handles the GET request
-
 def search_keywords(request):
     # get the keyword from url. 
     # For example http://127.0.0.1:8000/search/?keyword=project&quarter=20241&subject_code=CMPSC
@@ -49,3 +48,4 @@ def search_keywords(request):
     # are not dict, "json_dumps_params={'indent': 4}" is for adding indentation
     # so that it looks better than all the course cluster together.
     return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})
+

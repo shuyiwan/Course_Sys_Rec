@@ -2,6 +2,8 @@ from search import models
 from django.forms.models import model_to_dict
 from django.db.models import QuerySet
 from search.keyword_gen import keyword_generation
+from search import rmf_api
+import json
 import re 
 
 def search_from_backend(subcode: str, quarter: str, keywords: list, selected: list) -> None:
@@ -78,7 +80,11 @@ def retrieve_prof(prof_name: str) -> list:
     result = []
     db_query = models.Professor.objects.filter(name=prof_name)
     for each_prof in db_query:
-        result.append(model_to_dict(each_prof))
+        # convert the tags from json to list
+        tags_list = json.loads(each_prof.tags)
+        prof_dict = model_to_dict(each_prof)
+        prof_dict["tags"] = tags_list
+        result.append(prof_dict)
     return result
 
 def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
@@ -107,3 +113,14 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
 
     return orig_dict
 
+def get_tags(name: str) -> list:
+    """
+    Given a name, get the tags of a professor
+    """
+    list_id = rmf_api.query_rmfapi_for_rmfid(name)
+    if list_id:
+        # the first id corresponds to the best result that match this name 
+        return rmf_api.query_rmfapi_for_hottest_tags(list_id[0]) 
+    else:
+        return []
+    
