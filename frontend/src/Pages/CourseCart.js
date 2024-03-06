@@ -22,7 +22,8 @@ export default function CourseCart() {
         //http://127.0.0.1:8000/shoppingCart/retrieve/?email=test@ucsb.edu
         //setCartItems(testData);
         getCourseList();
-    }, [])
+       
+    }, [localStorage.getItem("loginStatus")])
 
     async function removeItem(index) {
         const updatedCart = [...cartItems];
@@ -68,35 +69,44 @@ export default function CourseCart() {
         }
 
 
-
-        return (
-            <div>
-
-                <div id="shopping-cart">
-                    {cartItems.map((course, id) => (
-                        <div className="cart-item" key={id}>
-                            <button className="remove-item" onClick={() => removeItem(id)}>Remove</button>
-                            <h2>{course.courseID}</h2>
-                            <p>{course.description}</p>
-                            <div className="cart-note">
-                                <textarea className="hidden" name="Notes" id={"note_" + id}></textarea>
-                                <div className="cart-note-button" onClick={() => getNote("note_" + id)}>
-                                    <p>Note</p>
-                                    <img src={pencil_icon} alt="notes" />
+        if (localStorage.getItem("loginStatus") === "false"){
+            return (
+                <div>
+                    <div>
+                        <h1>Please log in to view your cart</h1>
+                    </div>
+                </div>
+            )
+        }
+        else{ 
+            return (
+                <div>
+                    <div id="shopping-cart">
+                        {cartItems.map((course, id) => (
+                            <div className="cart-item" key={id}>
+                                <button className="remove-item" onClick={() => removeItem(id)}>Remove</button>
+                                <h2>{course.courseID}</h2>
+                                <p>{course.description}</p>
+                                <div className="cart-note">
+                                    <textarea className="hidden" name="Notes" id={"note_" + id}></textarea>
+                                    <div className="cart-note-button" onClick={() => getNote("note_" + id)}>
+                                        <p>Note</p>
+                                        <img src={pencil_icon} alt="notes" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+    
+                    {/*<Link to="/search">Back to Search</Link>*/}
+    
+                    <div className="searchButtonContainer">
+                        <Link to="/" className="searchButton">Back to Search</Link>
+                    </div>
+    
+                    <button id="checkout-button">Download PDF</button>
                 </div>
-
-                {/*<Link to="/search">Back to Search</Link>*/}
-
-                <div className="searchButtonContainer">
-                    <Link to="/" className="searchButton">Back to Search</Link>
-                </div>
-
-                <button id="checkout-button">Download PDF</button>
-            </div>
-        );
+            );
+        }        
     }
 }

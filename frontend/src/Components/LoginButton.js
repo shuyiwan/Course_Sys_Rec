@@ -4,17 +4,27 @@ import '../Styles/App.css';
 import '../Styles/Login.css';
 import axios from 'axios';
 import '../Styles/DropdownTab.css';
+import { Link } from 'react-router-dom';
 
 function LoginButton() {
     const [user, setUser] = useState(null);
-    const [profile, setProfile] = useState(null);
+    const name = localStorage.getItem('name');
+    const picture = localStorage.getItem('picture');
+    const loginStatus = localStorage.getItem('loginStatus');
+    const [authorized, setAuthorized] = useState((loginStatus === "false" || loginStatus === null) ? false : true);
 
-    const login = useGoogleLogin({
+    
+    const googleLogin = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
         onError: (error) => console.log('Login Failed:', error)
     });
 
+    const login =  async () => {
+        await googleLogin();
+    };
+
     useEffect(() => {
+        //console.log(123)
         if (user) {
             axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
                 headers: {
@@ -23,9 +33,12 @@ function LoginButton() {
                 }
             })
             .then((res) => {
-                setProfile(res.data);
                 // In here, I moved localStorage.setItem inside then to ensure profile data is available -> can be used in SearchPageResult.js
                 localStorage.setItem("email", res.data.email);
+                localStorage.setItem("name", res.data.name);
+                localStorage.setItem("picture", res.data.picture);
+                localStorage.setItem("loginStatus", "true");
+                setAuthorized(true);
             })
             .catch((err) => console.log(err));
         }
@@ -33,21 +46,34 @@ function LoginButton() {
 
     const logOut = () => {
         googleLogout();
-        setUser(null); // In here, I clear user state on logout -> so in future we can display home page based on user state
-        setProfile(null);
+        setUser(null); 
     };
 
     const handleClick = () => {
         logOut();
+        localStorage.removeItem('email');
+        localStorage.removeItem('name');
+        localStorage.removeItem('picture');
+        localStorage.setItem("loginStatus", "false");
+        setAuthorized(false);
     };
 
-    return profile ? (   
+
+    return (authorized) ? (  
+        <div> 
+            <Link to="/">
             <button className="loginButton" onClick={handleClick}>
-                <img src={profile.picture} alt="user pic" className="round-image" />                    
-                    {profile.name}, Log Out
-            </button>      
+                <img src={picture} alt="user pic" className="round-image" />                    
+                    {name}, Log Out
+            </button> 
+            </Link>
+        </div>     
     ) : (
-        <button className='loginButton' onClick={login}>Login</button>
+        <div>
+            <Link to="/">
+                <button className="loginButton" onClick={login}>Login</button>
+            </Link>
+        </div>
     );
 }
 
