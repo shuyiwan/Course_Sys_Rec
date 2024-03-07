@@ -8,7 +8,7 @@ def query_rmfapi_for_rmfid(professor_name: str) -> str:
     We need the RMF id of that professor before scraping his page.
     """
     url: str = (
-        f'https://www.ratemyprofessors.com/search/professors/1077?'
+        f'https://www.ratemyprofessors.com/search/professors/1077?' # 1077 is the code of UCSB
         f'q={professor_name}'
     )
     # Wrote this function with references to the code inside RateMyProfessorAPI package
