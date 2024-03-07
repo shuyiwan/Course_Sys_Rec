@@ -3,7 +3,7 @@
 .searchBarContainer h1 {
   font-size: 3rem;
   color: #fff;
-  height: 15vh;
+  height: 17vh;
   text-align: center;
   position: relative;
   top: 25vh;
@@ -52,12 +52,64 @@
 /* Style for the welcome message */
 .welcomeMessage {
   color: #000; 
-  font-size: 4rem; 
+  font-size: 5.5rem; 
   font-weight: bold; 
   text-align: left; /* Align text to the left */
   margin-top: -45rem; /* Space below the navbar */
   margin-left: -55rem; 
   letter-spacing: -0.05em;
+}
+
+
+.rectangle-blocks-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Adjust as needed for alignment */
+  gap: 17px; /* Space between blocks */
+  margin-top: 25px; /* Space below the search bar */
+}
+
+.rectangle-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 37%; /* Adjust for larger size */
+  padding: 20px; /* Adjust padding to make rectangles larger */
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.rectangle-block:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+
+
+
+.noResultsIconContainer {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Take up the full height of the viewport */
+  text-align: center;
+  color: white; /* This makes all text inside white by default */
+  filter: brightness(0) invert(1);
+}
+
+.courseNotFound {
+  font-size: 1.5rem; /* Adjust the size as needed */
+  font-weight: bold;
+  margin-top: 20px; /* Adjust the space between the icon and this text */
+}
+
+.tryDifferent {
+  font-size: 1rem; /* Smaller font size for this text */
+  margin-top: 10px; /* Adjust some space between the two texts */
 }
 
 

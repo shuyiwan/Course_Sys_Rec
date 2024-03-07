@@ -75,9 +75,9 @@
 }
 
 .ReturnButton {
-    position: fixed; 
+    position: absolute; 
     left: 20px; 
-    top: 70px; 
+    top: 120px; 
     background: url('return.png') no-repeat center center; 
     background-size: contain; 
     width: 50px; 
@@ -85,6 +85,7 @@
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    filter: brightness(0) invert(1);
 }
 
 .ReturnButton:hover {
@@ -98,4 +99,53 @@
 
 .RMP_show {
     
+}
+.confirmationMessage {
+    position: fixed; /* Fixed positioning relative to the viewport */
+    right: 20px; /* 20px from the right edge of the viewport */
+    top: 120px; /* 20px from the top edge of the viewport */
+    background-color: black; /* Background color of the message */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for a bit of depth */
+    z-index: 1000; /* Ensure it's above other content */
+    font-size: 0.9rem; /* Text size */
+    animation: slideIn 0.5s ease-out forwards; /* Animation for sliding in */
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.allAddedContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.allAddedIcon {
+    width: 100px; /* Adjust as needed */
+    margin-bottom: 20px;
+}
+
+.allAddedMessage {
+    font-size: 24px; /* Adjust as needed */
+    font-weight: bold;
+    text-align: center;
+}
+
+.confirmationMessage {
+    color: white; /* Adjust as needed */
+    font-size: 16px; /* Adjust as needed */
+    margin-top: 10px;
 }
