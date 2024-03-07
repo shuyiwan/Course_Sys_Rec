@@ -2,11 +2,11 @@
 
 Mentor: Christopher Chang
 
-## Meeting Time: lect08
+## Meeting Time: lect15
 
 ## Type of meeting: [daily scrum, story time]
 
-Team: Kevin Nguyen [x], Yicong Yan [x], Lixong Guo (Leo) [x], Mariana Rosillo [x], Katz Yan [x], Ivan Hernandez [excused], Claire Pemberton [x], Shuyi Wan [x]
+Team: Kevin Nguyen [x], Yicong Yan [x], Lixong Guo (Leo) [x], Mariana Rosillo [x], Katz Yan [x], Ivan Hernandez [x], Claire Pemberton [x], Shuyi Wan [x]
 
 **Meeting Leader:** Katz
 **Note-taker:** Katz
