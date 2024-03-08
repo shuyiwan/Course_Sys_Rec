@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
 import GPTExplanation from './GPTExplain.js';
 import RMPresult from "./RMPresult.js"
-import allAddedIcon from '../Styles/addcart.png'; // Adjust the path according to your project structure
+import returnIcon from '../assets/return.png';
+import allAddedIcon from '../assets/addcart.png'; // Adjust the path according to your project structure
 
 
 export default function SearchPageResult({ result}) {
@@ -68,7 +69,7 @@ export default function SearchPageResult({ result}) {
     //console.log(result.rmf)
     return (
         <div>
-            <Link to="/" className="ReturnButton"> </Link>
+            <Link to="/" style={{ backgroundImage: `url(${returnIcon})` }} className="ReturnButton"></Link>
             {addedToCart ? ( // Conditionally render based on addedToCart state
                 showMessage && <div className="confirmationMessage">Course added to cart!</div>
             ) : (

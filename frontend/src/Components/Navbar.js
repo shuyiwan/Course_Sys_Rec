@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
         <nav className="nav">
             <Link to="/" className="siteTitle">
-                <img src={logo_image} alt="logo" />
+                <img src={logo_image} alt="logo" style={{ filter: 'invert(100%) brightness(300%) contrast(100%)' }} />
             </Link>
             <ul>
                 {/* Uncomment the next line only when you need to test the search page */}

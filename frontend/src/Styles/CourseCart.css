@@ -13,6 +13,8 @@ h1 {
     color: #333;
     margin-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    filter: brightness(0) invert(1); 
 }
 
 #shopping-cart {

@@ -75,22 +75,25 @@
 }
 
 .ReturnButton {
-    position: absolute; 
-    left: 20px; 
-    top: 120px; 
-    background: url('return.png') no-repeat center center; 
+    position: absolute;
+    left: 20px;
+    top: 120px;
+    background-image: url('../assets/return.png'); 
+    background-repeat: no-repeat; 
+    background-position: center center; 
     background-size: contain; 
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1); 
 }
 
 .ReturnButton:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1); /* Enlarges the button slightly on hover */
 }
+
 
 /* for RMPresult.js */
 .RMP_notshow {
