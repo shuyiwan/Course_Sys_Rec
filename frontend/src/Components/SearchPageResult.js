@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
 import GPTExplanation from './GPTExplain.js';
 import RMPresult from "./RMPresult.js"
+import allAddedIcon from '../Styles/addcart.png'; // Adjust the path according to your project structure
 
 
-export default function SearchPageResult({ result }) {
+export default function SearchPageResult({ result}) {
     // retrieve the user's email from localStorage + store here
 
     const userEmail = localStorage.getItem("email");  
+    const [addedToCart, setAddedToCart] = useState(false); // State to track if added to cart
+    const [showMessage, setShowMessage] = useState(false); // State to show added message
+
+
 
     async function getCsrfToken() {
         let _csrfToken = null;
@@ -50,7 +55,9 @@ export default function SearchPageResult({ result }) {
                 throw new Error('Network response was not ok');
             }
 
-            console.log("Item added to cart successfully");
+            setAddedToCart(true); // Update state to indicate item is added to cart
+            setShowMessage(true); // Show confirmation message
+            setTimeout(() => setShowMessage(false), 1500); // Hide message after 1.5 seconds
         } 
         
         catch (error) {
@@ -62,20 +69,22 @@ export default function SearchPageResult({ result }) {
     return (
         <div>
             <Link to="/" className="ReturnButton"> </Link>
-            <div className="SearchPageResult">
-                <p>{result.courseID}</p>
-                <br />
-                <p>{result.title}</p>
-                <br />
-                <p>Description: {result.description}</p>
-                <br />
-                <p>Instructor: {result.instructor}</p>
-                <button className="AddToCartButton" onClick={addToCart}>+</button>
-                <RMPresult RMPinfo = {result.rmf} />
-                <GPTExplanation input={result.description} />
-                
-
-            </div>
+            {addedToCart ? ( // Conditionally render based on addedToCart state
+                showMessage && <div className="confirmationMessage">Course added to cart!</div>
+            ) : (
+                <div className="SearchPageResult">
+                    <p>{result.courseID}</p>
+                    <br />
+                    <p>{result.title}</p>
+                    <br />
+                    <p>Description: {result.description}</p>
+                    <br />
+                    <p>Instructor: {result.instructor}</p>
+                    <button className="AddToCartButton" onClick={addToCart}>+</button>
+                    <RMPresult RMPinfo={result.rmf} />
+                    <GPTExplanation input={result.description} />
+                </div>
+            )}
         </div>
     );
 }

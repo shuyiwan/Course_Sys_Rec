@@ -20,10 +20,26 @@ export default function Home() {
 
     return (
         <div className='searchBarWrapper'>
-            {/*<div className='searchBarContainer'>*/}
             <div>
                 <h1>Welcome to Platinum</h1>
                 <SearchBar setResult={setResult} />
+                
+                {/* Rectangle Blocks Section */}
+                <div className="rectangle-blocks-container">
+                    <div className="rectangle-block">
+                        <p>Search: Linear Algebra</p>
+                    </div>
+                    <div className="rectangle-block">
+                        <p>Try: Software Engineer</p>
+                    </div>
+                    <div className="rectangle-block">
+                        <p>Try: Computer Science Teaching</p>
+                    </div>
+                    <div className="rectangle-block">
+                        <p>Try: Nietzsche</p>
+                    </div>
+                </div>
+
                 <SearchResultList results={results} />
             </div>
         </div>

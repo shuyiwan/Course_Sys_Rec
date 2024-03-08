@@ -1,8 +1,8 @@
 .round-image {
-    border-radius: 50%; /* Make the image round */
+    border-radius: 45%; /* Make the image round */
   }
   
 .small-image {
-width: 50px; /* Set the width to make it smaller */
-height: 50px; /* Set the height to make it smaller */
+width: 25px; /* Set the width to make it smaller */
+height: 25px; /* Set the height to make it smaller */
 }
