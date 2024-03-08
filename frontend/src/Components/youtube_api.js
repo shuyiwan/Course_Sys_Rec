@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { searchYouTubeVideos } from './youtube_api'; // Adjust the path accordingly
+import { searchYouTubeVideos } from './youtube_api';
 
 import axios from 'axios';
 
-// Replace 'YOUR_YOUTUBE_API_KEY' with your actual YouTube Data API key
 const API_KEY = process.env.youtube_api_key;
 
 // Function to search for videos using the YouTube API
