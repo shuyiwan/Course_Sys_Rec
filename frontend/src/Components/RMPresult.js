@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import '../Styles/SearchPageResult.css';
+import ProfTag from "./ProfTag";
 
 export default function RMPresult({RMPinfo}) {
     const [showRate, setShowRate] = useState(false);
-    console.log(RMPinfo)
+    
+    //console.log(RMPinfo)
 
     function showRMP() {
-        console.log(showRate)
-        if(showRate == false)
+        console.log(RMPinfo.tags)
+        if(showRate === false)
          setShowRate(true)
         else 
          setShowRate(false)
@@ -25,7 +27,7 @@ export default function RMPresult({RMPinfo}) {
             </div> 
         );
     }
-
+    
     else{
         return (
             <div>
@@ -41,8 +43,13 @@ export default function RMPresult({RMPinfo}) {
                             <p>Number of ratings: {prof.num_ratings}</p>
                             <p>Rating: {prof.rating}</p>
                             <p>Would take again: {prof.would_take_again}</p>
+                            <br/>
+                            <p>Professor tags:</p>
+                            <ProfTag Tags = {prof.tags}/>
                         </div>
                     ))} 
+                    
+                    
                 </div> 
             </div> 
         );

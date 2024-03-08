@@ -15,7 +15,7 @@ export default function Course(){
    
     useEffect(()=> {
         const fetchData = async (value) =>{
-            let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=CMPSC';
+            let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=';
             await fetch(url)
             .then((response) => response.json())
             .then((jsonFile) => {
@@ -51,6 +51,7 @@ export default function Course(){
             <Loading />
             )
         }
+        
         return (
             <SearchPageList results={results}/>  
         )

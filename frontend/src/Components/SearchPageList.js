@@ -3,7 +3,7 @@ import "../Styles/SearchPageList.css"
 import SearchPageResult from "./SearchPageResult.js"
 
 export default function SearchPageList({results}){
-    
+    console.log(results)
     return (
         <div className="SearchPageList">
         {results.map((result, ID) => {
