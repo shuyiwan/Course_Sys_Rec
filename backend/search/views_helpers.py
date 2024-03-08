@@ -99,6 +99,7 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
     # add all info located in data
     data = cached_course["data"]
     orig_dict["title"] = data["title"]
+    orig_dict["subject_code"] = data["subjectArea"].replace(" ", "")
     orig_dict["description"] = data["description"]
     if not data["classSections"]:
         orig_dict["instructor"] = "TBD"
