@@ -21,7 +21,6 @@ export default function Navbar() {
                         
                     </div>
                 </CustomLink>
-                <CustomLink to='/clients'>Clients</CustomLink>
                 <CustomLink to='/coursecart'>
                     <span>CourseCart</span>
                     <div className="flex flex-col items-center"> {/* Flexbox container for the icon and text */}

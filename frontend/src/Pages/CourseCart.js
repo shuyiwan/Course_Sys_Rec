@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../Styles/CourseCart.css'; 
 import testData from '../Components/DataTest.json';
 import CourseCartItem from '../Components/CourseCartItem';
+import emptyCartIcon from '../assets/empty-cart.png';
 
 
 export default function CourseCart() {
@@ -47,7 +48,7 @@ export default function CourseCart() {
         return (
             <div>
                 <div>
-                    <h1>Please log in to view your cart</h1>
+                    <h1>Please login to view your cart</h1>
                 </div>
             </div>
         )
@@ -56,8 +57,12 @@ export default function CourseCart() {
         if (cartItems.hasOwnProperty("Empty")) {
             return (
                 // need someone to work on the css for this message
-                <div>
-                    Nothing in the cart....
+                
+                <div> 
+                    <div className="emptyCartContainer">
+                        <img src={emptyCartIcon} alt="The cart is empty" style={{ maxWidth: '120px' }}/>
+                        <p className="NothingInCart">Nothing in the cart...</p>   
+                    </div>
                     <div className="searchButtonContainer">
                         <Link to="/" className="searchButton">Back to Search</Link>
                     </div>
