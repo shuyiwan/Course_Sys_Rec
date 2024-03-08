@@ -69,7 +69,7 @@ export default function CourseCart() {
         }
 
 
-        if (localStorage.getItem("loginStatus") === "false"){
+        if (localStorage.getItem("loginStatus") === "false" || localStorage.getItem("loginStatus") === null){
             return (
                 <div>
                     <div>
