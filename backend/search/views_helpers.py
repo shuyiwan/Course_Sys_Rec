@@ -98,7 +98,6 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
 
     # add all info located in data
     data = cached_course["data"]
-    print(json.dumps(data, indent=4))
     orig_dict["title"] = data["title"]
     orig_dict["description"] = data["description"]
 
