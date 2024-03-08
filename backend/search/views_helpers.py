@@ -98,14 +98,23 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
 
     # add all info located in data
     data = cached_course["data"]
+    print(json.dumps(data, indent=4))
     orig_dict["title"] = data["title"]
     orig_dict["description"] = data["description"]
+
+    # get instructors
     if not data["classSections"]:
         orig_dict["instructor"] = "TBD"
     elif not data["classSections"][0]["instructors"]:
         orig_dict["instructor"] = "TBD"
     else:
         orig_dict["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
+    
+    # get time locations
+    if not data["classSections"]:
+        orig_dict["timeLocations"] = "TBD"
+    else:
+        orig_dict["timeLocations"] = data["classSections"][0]["timeLocations"]
 
     # add ratings to the class
     orig_dict["rmf"] = retrieve_prof(orig_dict["instructor"])
