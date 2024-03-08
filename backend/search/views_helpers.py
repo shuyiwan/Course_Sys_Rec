@@ -71,6 +71,7 @@ def retrieve_prof(prof_name: str) -> list:
         tbd_prof["num_ratings"] = "TBD"
         tbd_prof["difficulty"] = "TBD"
         tbd_prof["would_take_again"] = "TBD"
+        tbd_prof["tags"] = ["TBD"]
         return [tbd_prof]
     
     # retrieve the professor from the database when name is not "TBD"
