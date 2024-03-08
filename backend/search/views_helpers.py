@@ -77,7 +77,7 @@ def retrieve_prof(prof_name: str) -> list:
     # retrieve the professor from the database when name is not "TBD"
     # remove the initial of middle name if it exists
     split_name = prof_name.split(" ")
-    print(split_name)
+
     if prof_name.count(" ") >= 1:
         prof_name = split_name[0] + " " + split_name[1]
 
