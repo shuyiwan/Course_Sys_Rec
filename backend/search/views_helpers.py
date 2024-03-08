@@ -76,11 +76,22 @@ def retrieve_prof(prof_name: str) -> list:
     
     # retrieve the professor from the database when name is not "TBD"
     # remove the initial of middle name if it exists
+    split_name = prof_name.split(" ")
+    print(split_name)
     if prof_name.count(" ") >= 1:
-        prof_name = prof_name.split(" ")[0] + " " + prof_name.split(" ")[1]
+        prof_name = split_name[0] + " " + split_name[1]
+
+    # use regex pattern to match partial name returned by school api with 
+    # the full name in the database
+    if  len(split_name) == 1:
+        name_pattern = re.compile(split_name[0], re.IGNORECASE)
+    else:
+        name_pattern = re.compile(split_name[1] + '\\w*' + '\\s*' + split_name[0] + '\\b', re.IGNORECASE)
     result = []
     db_query = models.Professor.objects.filter(name=prof_name)
     for each_prof in db_query:
+        if not name_pattern.match(each_prof.fullname):
+            continue
         # convert the tags from json to list
         tags_list = json.loads(each_prof.tags)
         prof_dict = model_to_dict(each_prof)
