@@ -1,0 +1,25 @@
+.youtube-button {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.youtube-button:hover {
+    background-color: #c82333;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    text-align: center;
+}
+  
