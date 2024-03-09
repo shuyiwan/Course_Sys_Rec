@@ -40,4 +40,4 @@ Based on what I was able to see in this retro, I would recommend the next leader
 
 The one Stop we had in Start/Stop/Continue was 'stop making a huge pull request that add multiple functions'. We all agreed that it's important for everyone to keep making small changes to make sure the product is working correctly.
 
-As we approach the final stretch of the quarter and get closer to the final deadline, we agreed that this is important to make sure our final product works correctly and as expected.
+As we approach the final stretch of the quarter and get closer to the final deadline, we agreed that this is important to make sure our final product works correctly and as expected. We also believe that this will help us avoid any merging conflicts that could delay our production.
