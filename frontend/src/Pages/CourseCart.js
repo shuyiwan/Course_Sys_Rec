@@ -4,6 +4,8 @@ import '../Styles/CourseCart.css';
 import testData from '../Components/DataTest.json';
 import CourseCartItem from '../Components/CourseCartItem';
 import emptyCartIcon from '../assets/empty-cart.png';
+import actionIcon from '../assets/action.png';
+
 
 
 export default function CourseCart() {
@@ -46,13 +48,13 @@ export default function CourseCart() {
 
     if (localStorage.getItem("loginStatus") === "false" || localStorage.getItem("loginStatus") === null){
         return (
-            <div>
-                <div>
-                    <h1>Please login to view your cart</h1>
-                </div>
+            <div style={{ textAlign: 'center', marginTop: '50px' }}> 
+                <h1>Please login to view your cart</h1>
+                <img src={actionIcon} alt="Action Icon" className="iconAction" /> 
             </div>
-        )
+        );
     }
+    
     else {
         if (cartItems.hasOwnProperty("Empty")) {
             return (

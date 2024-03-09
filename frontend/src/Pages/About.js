@@ -27,7 +27,6 @@ export default function About() {
                     At Platinum, our mission is to personalize the learning experience for every individual. We understand that each learner's journey is unique, and our goal is to provide course recommendations that reflect their specific interests, goals, and learning pace. By simplifying the process of finding the right courses through intelligent, keyword-driven recommendations, we strive to empower users to take charge of their learning and achieve their full potential.
                 </p>
             </div>
-
             {/* Blocks for History, Team, Services */}
             <div className="blocks-container">
                 {['Our History', 'Our Team', 'Our Services'].map((blockName) => (
