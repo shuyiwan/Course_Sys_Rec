@@ -24,7 +24,7 @@
 |Wed 3/01   | Ivan Hernandez    | Led lab08 discussion for  sprint 07, daily scrum
 |Wed 3/04   | Mariana Rosillo   | Led lec14 discussion for  sprint 08, daily scrum
 |Wed 3/06   | Katz Yan          | Led lec15 discussion for  sprint 08, daily scrum
-|Wed 3/08   | Leo Guo           | Led lab09 discussion for  sprint 08, daily scrum
+|Wed 3/08   | Mariana Rosillo   | Led retro03, dayly scrum
 |Wed 3/11   | Kevin Nguyen      | Led lec16 discussion for  sprint 09, daily scrum
 |Wed 3/13   | Claire Pemberton  | Led lec17 discussion for  sprint 09, daily scrum
 |Wed 3/15   | Yicong Yan        | Led lab10 discussion for  sprint 09, daily scrum
