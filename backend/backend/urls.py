@@ -23,6 +23,7 @@ from shoppingCart import views as sc_views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("search/", search_views.search_keywords, name="search_keywords"), # url path for search feature
+    path("search/professor/", search_views.search_professor, name="search_professor"), # url path for search professor
     path("shoppingCart/add/", sc_views.add_classes, name="add_classes"), # url path for adding classes to cart
     path("shoppingCart/crsfToken/", sc_views.get_csrfToken, name="get_csrfToken"), # url path for getting csrf token
     path("shoppingCart/retrieve/", sc_views.retrieve_classes, name="retrieve_classes"), # url path for retrieving classes

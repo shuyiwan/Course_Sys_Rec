@@ -49,3 +49,15 @@ def search_keywords(request):
     # so that it looks better than all the course cluster together.
     return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})
 
+@require_http_methods(["GET"])  # Make sure it only handles the GET request
+def search_professor(requests):
+    name = requests.GET.get('name', '')
+    quarter = requests.GET.get('quarter', '')
+
+    # Return error if any parameter is missing
+    if not (name and quarter):
+        return JsonResponse({'error': 'Missing required search parameters.'}, status=400)
+    
+    selected = []
+    views_helpers.search_professor_from_backend(name, selected)
+    return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})

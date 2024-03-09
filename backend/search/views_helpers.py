@@ -145,3 +145,34 @@ def get_tags(name: str) -> list:
     else:
         return []
     
+
+def search_professor_from_backend(name: str, selected: list) -> list:
+    """
+    Search for a professor from the backend
+    """
+    # Prepare the regex pattern for search professor name
+    name_pattern = re.compile(name, re.IGNORECASE)
+
+    db_query = models.Professor.objects.all()
+    for prof_object in db_query:
+        if not name_pattern.search(prof_object.fullname):
+            continue
+        # convert the tags from json to list
+        prof_dict = dict()
+        sql_id = prof_object.id
+        tags_list = json.loads(prof_object.tags)
+        prof_dict["ID"] = len(selected)
+        prof_dict["sql_id"] = sql_id
+        prof_dict["fullname"] = prof_object.fullname
+        prof_dict["name"] = prof_object.name
+        prof_dict["department"] = prof_object.department
+        prof_dict["rating"] = prof_object.rating
+        prof_dict["num_ratings"] = prof_object.num_ratings
+        prof_dict["difficulty"] = prof_object.difficulty
+        prof_dict["would_take_again"] = prof_object.would_take_again
+        prof_dict["tags"] = tags_list
+        prof_dict["classes"] = "TBD"
+        
+        selected.append(prof_dict)
+
+    return 
