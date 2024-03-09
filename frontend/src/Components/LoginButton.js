@@ -5,6 +5,8 @@ import '../Styles/Login.css';
 import axios from 'axios';
 import '../Styles/DropdownTab.css';
 import { Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
+import Chip from '@mui/material/Chip';
 
 function LoginButton() {
     const [user, setUser] = useState(null);
@@ -59,22 +61,31 @@ function LoginButton() {
     };
 
 
-    return (authorized) ? (  
+    return (authorized) ? (
         <div> 
             <Link to="/">
-            <button className="loginButton" onClick={handleClick}>
-                <img src={picture} alt="user pic" className="round-image" />                    
-                    {name}, Log Out
-            </button> 
+                <Chip
+                    avatar={<Avatar alt={name} src={picture} />}
+                    label={name}
+                    onDelete={handleClick}
+                    variant="outlined"
+                    className="whiteChip"
+                />
             </Link>
         </div>     
     ) : (
         <div>
             <Link to="/">
-                <button className="loginButton" onClick={login}>Login</button>
+                <Chip
+                    label="Login"
+                    variant="outlined"
+                    onClick={login}
+                    className="whiteChip"
+                />
             </Link>
         </div>
     );
+    
 }
 
 export default LoginButton;
