@@ -1,6 +1,6 @@
 # RETRO_02.md
 
-## 2/16/24
+## 3/08/24
 
 **Led by:** Mariana Rosillo 
 **Present:** Claire, Ivan, Shuyi, Yicong, Kevin, Katz, Leo (Everyone)  
