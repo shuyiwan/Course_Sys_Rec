@@ -158,3 +158,11 @@ button#checkout-button:hover {
     font-weight: bold;
     margin-top: 20px; 
   }
+  .iconAction {
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Aligns the image nicely */
+    margin: 0 auto; /* Centers the image horizontally */
+    filter: brightness(0) invert(1);
+  }
+  
