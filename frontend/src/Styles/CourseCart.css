@@ -13,6 +13,8 @@ h1 {
     color: #333;
     margin-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    filter: brightness(0) invert(1); 
 }
 
 #shopping-cart {
@@ -139,3 +141,28 @@ button#checkout-button:hover {
     border-radius: 20px;
     display: inline-block;
 }
+
+.emptyCartContainer {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Take up the full height of the viewport */
+    text-align: center;
+    color: white; /* This makes all text inside white by default */
+    filter: brightness(0) invert(1);
+  }
+  
+  .NothingInCart {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    margin-top: 20px; 
+  }
+  .iconAction {
+    width: 50px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Aligns the image nicely */
+    margin: 0 auto; /* Centers the image horizontally */
+    filter: brightness(0) invert(1);
+  }
+  

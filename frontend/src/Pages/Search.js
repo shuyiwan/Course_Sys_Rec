@@ -2,6 +2,10 @@ import SearchPageList from '../Components/SearchPageList.js'
 import React, {useEffect, useState} from "react"
 import { useLocation } from 'react-router-dom';
 import "../Styles/Pages.css"
+import Loading from '../Pages/Loading.js'; // Import the Loading component
+import noResultsIcon from '../assets/no-results.png'; // Adjust the path according to your project structure
+
+
 
 export default function Course(){
     let location = useLocation();
@@ -11,7 +15,7 @@ export default function Course(){
    
     useEffect(()=> {
         const fetchData = async (value) =>{
-            let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=CMPSC';
+            let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=';
             await fetch(url)
             .then((response) => response.json())
             .then((jsonFile) => {
@@ -33,22 +37,22 @@ export default function Course(){
 
     if(isJsonEmpty){
         return (
-            <div className='loadingMessage'>
-               Course not found
-            </div> 
+            <div className='noResultsIconContainer'>
+                <img src={noResultsIcon} alt="No Results Found" style={{ maxWidth: '120px' }}/>
+                <p className="courseNotFound">Course Not Found</p>
+                <p className="tryDifferent">Try again with different words or phrases</p>
+            </div>
         )
     }
 
     else{
         if (results.name === "downloading"){
             return (
-                <div className='loadingMessage'>
-                   Loading.....
-                </div> 
+            <Loading />
             )
         }
+        
         return (
-            // render the results
             <SearchPageList results={results}/>  
         )
     }

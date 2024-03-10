@@ -1,21 +1,28 @@
-
 .nav {
-    background-color: #62b3ed; /* Nav bar background color changed to white */
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1.5rem 0.3rem 1rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
 
 .nav a {
-    color: inherit; /* Ensure anchor tags inherit black text color for readability */
+    color: inherit; /* Ensures links inherit the white text color for readability */
     text-decoration: none;
-    height: 100%;
     margin-top: 0;
     padding: 0.5rem 0.5rem;
+    display: flex; /* Make link items flex containers */
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center items horizontally */
+    gap: 4px; /* Add a small gap between the icon and text */
+}
+
+.nav a svg {
+    width: 20px; /* Make icons a bit smaller */
+    height: 20px; /* Make icons a bit smaller */
 }
 
 .nav ul {
@@ -29,23 +36,23 @@
 }
 
 .siteTitle {
-    font-size: 4rem;
+    font-size: 3rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Space between icon and title text */
+    gap: 0.5rem;
 }
 
 .link {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .nav li.active {
-    color: #555;
+    color: #fff;
 }
 
 .nav li:hover {
-    color: #777; /* Hover effect with slightly darker shade */
+    color: #ddd;
 }
 
 .nav-links {
@@ -60,20 +67,20 @@ nav img {
 
 @media (max-width: 768px) {
     .nav {
-        justify-content: space-around; /* Adjust for smaller screens */
+        justify-content: space-around;
     }
 
     .nav ul {
-        display: none; /* Hide navigation links on smaller screens */
+        display: none;
     }
 
     .nav ul.active {
-        display: flex; /* Show navigation links when active */
-        flex-direction: column; /* Stack links vertically */
+        display: flex;
+        flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #fff; /* Ensure dropdown matches nav bar background */
+        background-color: #0f0c29;
     }
 }

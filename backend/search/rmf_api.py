@@ -8,7 +8,7 @@ def query_rmfapi_for_rmfid(professor_name: str) -> str:
     We need the RMF id of that professor before scraping his page.
     """
     url: str = (
-        f'https://www.ratemyprofessors.com/search/professors/1077?'
+        f'https://www.ratemyprofessors.com/search/professors/1077?' # 1077 is the code of UCSB
         f'q={professor_name}'
     )
     # Wrote this function with references to the code inside RateMyProfessorAPI package
@@ -42,9 +42,9 @@ def query_rmfapi_for_hottest_tags(rmf_id: str) -> list:
     # if we can find the div element that corresponds to tags, we extract them
     if tags_container:
         # Find all the span elements with the class "Tag-bs9vf4-0 hHOVKF" which contain the tags
-        tags = tags_container.find_all('span', class_='Tag-bs9vf4-0 hHOVKF')
+        raw_tags = tags_container.find_all('span', class_='Tag-bs9vf4-0 hHOVKF')
         # Extract the text from each tag
-        tags_text = [tag.get_text().strip() for tag in tags]
+        tags_text = [each_tag.get_text().strip() for each_tag in raw_tags]
         return tags_text
     # If we can not find that div element, there is no tags for this prof and we return an empty list
     return tags_text

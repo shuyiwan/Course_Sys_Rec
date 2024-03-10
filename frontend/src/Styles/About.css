@@ -18,7 +18,7 @@
 
 
 .mission-title {
-    color: rgb(0, 0, 0); 
+    color: white; 
     font-size: 1.6rem; 
     text-align: center; 
     margin-top: 10px; 
@@ -26,7 +26,7 @@
 
 
 .mission-text {
-    color: rgb(55, 54, 54); 
+    color: white; 
     font-size: 1.2rem; 
     text-align: center; 
     margin: 20px auto; 
@@ -36,7 +36,7 @@
 
 .about-container {
     /*background-image: url('forest_1.jpg');*/
-    background-color: #62b3ed;
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     background-size: cover;
     background-position: center;
     min-height: 100vh;

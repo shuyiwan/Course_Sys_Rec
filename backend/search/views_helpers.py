@@ -71,15 +71,27 @@ def retrieve_prof(prof_name: str) -> list:
         tbd_prof["num_ratings"] = "TBD"
         tbd_prof["difficulty"] = "TBD"
         tbd_prof["would_take_again"] = "TBD"
+        tbd_prof["tags"] = ["TBD"]
         return [tbd_prof]
     
     # retrieve the professor from the database when name is not "TBD"
     # remove the initial of middle name if it exists
+    split_name = prof_name.split(" ")
+
     if prof_name.count(" ") >= 1:
-        prof_name = prof_name.split(" ")[0] + " " + prof_name.split(" ")[1]
+        prof_name = split_name[0] + " " + split_name[1]
+
+    # use regex pattern to match partial name returned by school api with 
+    # the full name in the database
+    if  len(split_name) == 1:
+        name_pattern = re.compile(split_name[0], re.IGNORECASE)
+    else:
+        name_pattern = re.compile(split_name[1] + '\\w*' + '\\s*' + split_name[0] + '\\b', re.IGNORECASE)
     result = []
     db_query = models.Professor.objects.filter(name=prof_name)
     for each_prof in db_query:
+        if not name_pattern.match(each_prof.fullname):
+            continue
         # convert the tags from json to list
         tags_list = json.loads(each_prof.tags)
         prof_dict = model_to_dict(each_prof)
@@ -98,13 +110,22 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
     # add all info located in data
     data = cached_course["data"]
     orig_dict["title"] = data["title"]
+    orig_dict["subject_code"] = data["subjectArea"].replace(" ", "")
     orig_dict["description"] = data["description"]
+
+    # get instructors
     if not data["classSections"]:
         orig_dict["instructor"] = "TBD"
     elif not data["classSections"][0]["instructors"]:
         orig_dict["instructor"] = "TBD"
     else:
         orig_dict["instructor"] = data["classSections"][0]["instructors"][0]["instructor"]
+    
+    # get time locations
+    if not data["classSections"]:
+        orig_dict["timeLocations"] = "TBD"
+    else:
+        orig_dict["timeLocations"] = data["classSections"][0]["timeLocations"]
 
     # add ratings to the class
     orig_dict["rmf"] = retrieve_prof(orig_dict["instructor"])
