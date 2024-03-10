@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import OpenAI from "openai";
-import '../Styles/YoutubeRecommend.css';
 import YoutubeData from './YoutubeTest.json';
-import YoutubeVideoList from './YoutubeVideoList.js';
 
-export default function YoutubeRecommend({description}) {
-
-    const [videos, setVideos] = useState([]);
+export default function YoutubeRecommend(props) {
 
     async function GPTKeyword(GPTinput) {
         console.log(GPTinput);
@@ -23,12 +19,10 @@ export default function YoutubeRecommend({description}) {
         max_tokens: 15,
         });
 
-        // console.log(chatCompletion.choices[0].message.content);
-        // setKeywords(chatCompletion.choices[0].message.content);
         searchYouTubeVideos(chatCompletion.choices[0].message.content); 
     }
    
-    
+
     const searchYouTubeVideos = async (keywords) => {
         try {
           const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
@@ -39,20 +33,17 @@ export default function YoutubeRecommend({description}) {
               key: process.env.REACT_APP_YOUTUBE_API_KEY,
             },
           });
-            // console.log(keywords);
-          setVideos(response.data.items);
+          
+            props.updateVideoData(response.data.items, props.courseID, true);
         } catch (error) {
           console.error('Error searching YouTube videos:', error);
-          setVideos([]);
+          props.updateVideoData([], '', false);
         }
       };
 
-    console.log(videos);
-
     return (
         <div>
-            <button onClick={() => GPTKeyword(description)}>Youtube</button>
-            <YoutubeVideoList videos={YoutubeData.items} />
+            <button onClick={() => GPTKeyword(props.description)}>Youtube</button>
         </div>
     );
     

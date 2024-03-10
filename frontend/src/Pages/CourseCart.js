@@ -5,12 +5,15 @@ import testData from '../Components/DataTest.json';
 import CourseCartItem from '../Components/CourseCartItem';
 import emptyCartIcon from '../assets/empty-cart.png';
 import actionIcon from '../assets/action.png';
-
-
+import "../Styles/YoutubeVideo.css";
+import YoutubeVideoList from '../Components/YoutubeVideoList.js';
 
 export default function CourseCart() {
 
     const [cartItems, setCartItems] = useState([]);
+    const [videoData, setVideoData] = useState([]);
+    const [currentCourse, setCurrentCourse] = useState('');
+    const [showStatus, setShowStatus] = useState(false);
 
     async function getCourseList() {
         const response = await fetch(`https://intermittence.pythonanywhere.com/shoppingCart/retrieve/?email=` + localStorage.getItem("email"), {
@@ -58,8 +61,7 @@ export default function CourseCart() {
     else {
         if (cartItems.hasOwnProperty("Empty")) {
             return (
-                // need someone to work on the css for this message
-                
+                // need someone to work on the css for this message 
                 <div> 
                     <div className="emptyCartContainer">
                         <img src={emptyCartIcon} alt="The cart is empty" style={{ maxWidth: '120px' }}/>
@@ -73,17 +75,35 @@ export default function CourseCart() {
             )
         }
         else{ 
+            const updateVideoData = (newData, newID, newShowState) => {
+                setVideoData(newData);
+                setCurrentCourse(newID);
+                setShowStatus(newShowState);
+            };
+
+            const handleClick = () => {
+                setShowStatus(false);
+              };
+
             return (
                 <div>
                     <div id="shopping-cart">
                         {cartItems.map((course, id) => (
-                            <CourseCartItem course={course} id={id} removeItem={removeItem} />
+                            <CourseCartItem 
+                            course={course} id={id} 
+                            removeItem={removeItem} 
+                            updateVideoData={updateVideoData}/>
                         ))}
                     </div> 
     
                     <div className="searchButtonContainer">
                         <Link to="/" className="searchButton">Back to Search</Link>
                     </div>
+
+                    {showStatus && <div>
+                        <button className='close-youtube-button' onClick={handleClick}>✖️</button>
+                        <YoutubeVideoList videos={videoData} currentCourse={currentCourse}/>
+                    </div>}
                 </div>
             );
         }        

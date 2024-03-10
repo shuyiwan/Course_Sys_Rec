@@ -1,0 +1,65 @@
+.youtube-button {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.youtube-button:hover {
+    background-color: #c82333;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 130px; /* Move the container 50 pixels down from the top */
+    right: 0;
+    padding: 10px;
+    height: calc(100% - 130px); /* Set the height to fill remaining height of the screen after moving down */
+    overflow-y: auto;
+    background-color: rgba(22, 20, 20, 0.5);
+}
+  
+.item {
+    margin-bottom: 10px; /* Optional: Add spacing between items */
+}
+
+.container p {
+    /* Apply styles to paragraphs inside the container */
+    font-size: 20px; /* Example: Set font size for paragraphs */
+    color: #f7f4f4; /* Example: Set text color for paragraphs */
+  }
+
+.close-youtube-button {
+    position: fixed; /* Position the button fixed */
+    top: 132px; /* Position the button 20px from the top of the viewport */
+    right: 15px; /* Center the button horizontally */
+    width: 60px; /* Set the width of the button */
+    height: 40px; /* Set the height of the button */
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #bcbec0; /* Set background color */
+    color: #fff; /* Set text color */
+    border: none; /* Remove border */
+    font-size: 16px; /* Set font size */
+    z-index: 2; /* Set z-index to 1 to make sure the button is on top of other elements */
+}
+  
+.close-youtube-button:hover {
+background-color: #9b9fa2; /* Change background color on hover */
+}
+  
