@@ -10,3 +10,9 @@
     align-items: center;
     
 }
+
+.filter{
+    display: flex;
+    flex-direction: column;
+
+}

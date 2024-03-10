@@ -8,7 +8,7 @@ export default function RMPresult({RMPinfo}) {
     //console.log(RMPinfo)
 
     function showRMP() {
-        console.log(RMPinfo.tags)
+        //console.log(RMPinfo.tags)
         if(showRate === false)
          setShowRate(true)
         else 
