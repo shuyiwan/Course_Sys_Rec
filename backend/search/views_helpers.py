@@ -110,8 +110,20 @@ def extract_from_cached_course(orig_dict: dict, cached_course: dict) -> dict:
     orig_dict["rmf"] = retrieve_prof(orig_dict["instructor"])
     if not orig_dict["rmf"]:
         orig_dict["rmf"] = "could not find this professor"
+    
+    # add grade distributions
+    orig_dict["grades"] = get_grade_dist(orig_dict["courseID"], orig_dict["instructor"])
+    if not orig_dict["grades"]:
+        orig_dict["grades"] = "not found"
 
     return orig_dict
+
+def get_grade_dist(course: str, instructor: str) -> list:
+    """
+    Returns grade distribution of course
+    """
+    query = models.FullGrade.objects.filter(course=course, instructor=instructor)
+    return list(query.values())
 
 def get_tags(name: str) -> list:
     """
@@ -123,4 +135,3 @@ def get_tags(name: str) -> list:
         return rmf_api.query_rmfapi_for_hottest_tags(list_id[0]) 
     else:
         return []
-    
