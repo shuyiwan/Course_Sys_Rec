@@ -36,7 +36,6 @@
 
 .about-container {
     /*background-image: url('forest_1.jpg');*/
-    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     background-size: cover;
     background-position: center;
     min-height: 100vh;

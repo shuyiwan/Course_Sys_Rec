@@ -25,7 +25,7 @@
   }
 }
 
-/* For Search.js page */
+
 .loadingMessage{
   display: flex;
   text-align: center;
@@ -37,28 +37,6 @@
   font-size: 100px;
 }
 
-
-/* Style for the main container of the Home page */
-.homeContainer {
-  background-color: #93C5FD; 
-  min-height: 60vh; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Style for the welcome message */
-.welcomeMessage {
-  color: #000; 
-  font-size: 5.5rem; 
-  font-weight: bold; 
-  text-align: left; /* Align text to the left */
-  margin-top: -45rem; /* Space below the navbar */
-  margin-left: -55rem; 
-  letter-spacing: -0.05em;
-}
 
 
 .rectangle-blocks-container {
@@ -119,3 +97,12 @@
       background-color: #1E40AF;
   }
 }*/
+
+.blackHoleBackground {
+  min-height: 100vh; /* Ensure it covers the whole page vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(circle at top, #26004d 45%, #6b00d6 55%, #06000d 70%);
+}
