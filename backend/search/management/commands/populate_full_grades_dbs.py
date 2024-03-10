@@ -10,9 +10,10 @@ class Command(BaseCommand):
         with open('full_grades.csv', 'r') as file:
             reader = csv.reader(file)
             next(reader)  # Skip the header row
+
+            rowsToAdd = []
             for row in reader:
-                _, created = FullGrade.objects.get_or_create(
-                    # Map CSV fields to model fields
+                processedRow = FullGrade(
                     quarter=row[0],
                     course_level=row[1],
                     course=row[2].replace(" ", ""),
@@ -20,7 +21,20 @@ class Command(BaseCommand):
                     grade=row[4],
                     student_count=int(row[5])
                 )
+
+                # Add the row to the list of rows to add
+                rowsToAdd.append(processedRow)
+
+                # Do a single mysql insert
                 if i % 1000 == 0:
+                    FullGrade.objects.bulk_create(rowsToAdd)
                     print(f"Processed {i} rows")
+                    rowsToAdd = []
                 i += 1
+            
+            # Add the remaining rows
+            if len(rowsToAdd) > 0:
+                FullGrade.objects.bulk_create(rowsToAdd)
+                print(f"Processed {i} rows")
+                rowsToAdd = []
         self.stdout.write(self.style.SUCCESS('Successfully populated full_grades from CSV'))
