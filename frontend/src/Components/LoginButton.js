@@ -4,9 +4,12 @@ import '../Styles/App.css';
 import '../Styles/Login.css';
 import axios from 'axios';
 import '../Styles/DropdownTab.css';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
+import Chip from '@mui/material/Chip';
 
 function LoginButton() {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const name = localStorage.getItem('name');
     const picture = localStorage.getItem('picture');
@@ -56,25 +59,35 @@ function LoginButton() {
         localStorage.removeItem('picture');
         localStorage.setItem("loginStatus", "false");
         setAuthorized(false);
+        navigate('/')
     };
 
 
-    return (authorized) ? (  
+    return (authorized) ? (
         <div> 
-            <Link to="/">
-            <button className="loginButton" onClick={handleClick}>
-                <img src={picture} alt="user pic" className="round-image" />                    
-                    {name}, Log Out
-            </button> 
-            </Link>
+           
+            <Chip
+                avatar={<Avatar alt={name} src={picture} />}
+                label={name}
+                onDelete={handleClick}
+                variant="outlined"
+                className="whiteChip"
+            />
+            
         </div>     
     ) : (
         <div>
             <Link to="/">
-                <button className="loginButton" onClick={login}>Login</button>
+                <Chip
+                    label="Login"
+                    variant="outlined"
+                    onClick={login}
+                    className="whiteChip"
+                />
             </Link>
         </div>
     );
+    
 }
 
 export default LoginButton;

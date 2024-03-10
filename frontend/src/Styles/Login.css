@@ -1,8 +1,13 @@
-.round-image {
-    border-radius: 45%; /* Make the image round */
-  }
-  
-.small-image {
-width: 25px; /* Set the width to make it smaller */
-height: 25px; /* Set the height to make it smaller */
+.whiteChip {
+  color: white !important;
+  border: 1px solid white;
+  font-size: 5rem; /* Increase the font size to make the chip bigger */
+  height: 36px; /* Adjust the height to your preference */
+  margin-top: -20px; /* Move the chip higher on the page */
+  /* You might also want to add some padding to increase the overall size of the chip */
+  padding: 0 12px;
+}
+
+.whiteChip .MuiChip-deleteIcon {
+  color: white !important;
 }
