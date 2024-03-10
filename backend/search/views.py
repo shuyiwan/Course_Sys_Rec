@@ -59,5 +59,7 @@ def search_professor(requests):
         return JsonResponse({'error': 'Missing required search parameters.'}, status=400)
     
     selected = []
-    views_helpers.search_professor_from_backend(name, selected)
+    views_helpers.search_professor_from_backend(name, quarter, selected)
+    if not selected:
+        selected = ["There is no professor that match to this name."]
     return JsonResponse(selected, safe = False, json_dumps_params={'indent': 4})

@@ -146,11 +146,12 @@ def get_tags(name: str) -> list:
         return []
     
 
-def search_professor_from_backend(name: str, selected: list) -> list:
+def search_professor_from_backend(name: str, quarter: str, selected: list) -> None:
     """
-    Search for a professor from the backend
+    Search for all the professors that match to this name from the backend 
+    and find there classes
     """
-    # Prepare the regex pattern for search professor name
+    # Prepare the regex pattern for searching name
     name_pattern = re.compile(name, re.IGNORECASE)
 
     db_query = models.Professor.objects.all()
@@ -171,8 +172,49 @@ def search_professor_from_backend(name: str, selected: list) -> list:
         prof_dict["difficulty"] = prof_object.difficulty
         prof_dict["would_take_again"] = prof_object.would_take_again
         prof_dict["tags"] = tags_list
-        prof_dict["classes"] = "TBD"
+        classes = search_classes_for_prof(prof_object, quarter)
+        if not classes:
+            prof_dict["classes"] = [f"There is no classes for this profess in {quarter}."]
+        else:
+            prof_dict["classes"] = search_classes_for_prof(prof_object, quarter)
         
         selected.append(prof_dict)
 
-    return 
+def get_regex_for_professor_name(name: str) -> re.Pattern:
+    """
+    get the regex pattern for the returned name in the school api
+    """
+    split_name = name.split(" ")
+
+    # remove the initial of the middle name is there is one
+    if name.count(" ") >= 1:
+        name = split_name[0] + " " + split_name[1]
+
+    # use regex pattern to match partial name returned by school api with 
+    # the full name in the database
+    if  len(split_name) == 1:
+        return re.compile(split_name[0], re.IGNORECASE)
+    else:
+        return re.compile(split_name[1] + '\\w*' + '\\s*' + split_name[0] + '\\b', re.IGNORECASE)
+
+def search_classes_for_prof(prof_object: models.Professor, UCSB_quarter: str) -> list: 
+    """
+    Search classes for a professor object
+    """
+    # get all the classes from this quarter in every dept
+    db_query = query_from_DB(UCSB_quarter, '')
+    result = []
+
+    for class_dict in db_query:
+        data = class_dict["data"]
+        if not (data["classSections"] and data["classSections"][0]["instructors"]):
+            continue
+        
+        name_pattern = get_regex_for_professor_name(data["classSections"][0]["instructors"][0]["instructor"])
+        if name_pattern.search(prof_object.fullname):
+            each_class = dict()
+            each_class["ID"] = len(result)
+            each_class = extract_from_cached_course(orig_dict=each_class, cached_course=class_dict)
+            result.append(each_class)
+    return result
+
