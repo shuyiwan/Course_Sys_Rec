@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import OpenAI from "openai";
 import YoutubeData from './YoutubeTest.json';
+import '../Styles/YoutubeVideo.css';
 
 export default function YoutubeRecommend(props) {
 
@@ -33,7 +34,7 @@ export default function YoutubeRecommend(props) {
               key: process.env.REACT_APP_YOUTUBE_API_KEY,
             },
           });
-          
+
             props.updateVideoData(response.data.items, props.courseID, true);
         } catch (error) {
           console.error('Error searching YouTube videos:', error);
@@ -43,7 +44,7 @@ export default function YoutubeRecommend(props) {
 
     return (
         <div>
-            <button onClick={() => GPTKeyword(props.description)}>Youtube</button>
+            <button className="youtube-button" onClick={() => GPTKeyword(props.description)}>▶️ Youtube</button>
         </div>
     );
     

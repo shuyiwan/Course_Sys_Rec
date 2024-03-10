@@ -1,9 +1,10 @@
 .youtube-button {
     position: absolute;
-    top: 10px;
-    left: 50px;
-    background-color: #dc3545;
-    color: #fff;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3a2b2c;
+    color: #f3eded;
     border: none;
     padding: 8px 15px;
     cursor: pointer;
