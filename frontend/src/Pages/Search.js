@@ -18,7 +18,7 @@ export default function Course(){
             .then((response) => response.json())
             .then((jsonFile) => {
                 setResults(jsonFile)
-                console.log(jsonFile)
+                //console.log(jsonFile)
             })
         }
         if(location.state && location.state.value){

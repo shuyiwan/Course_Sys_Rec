@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../Styles/SearchPageResult.css';
 import GPTExplanation from './GPTExplain.js';
 import RMPresult from "./RMPresult.js"
+import GradeDistribution from "./GradeDistribution.js";
 import returnIcon from '../assets/return.png';
 import allAddedIcon from '../assets/addcart.png'; // Adjust the path according to your project structure
 
@@ -81,6 +82,7 @@ export default function SearchPageResult({ result}) {
                     <p>Description: {result.description}</p>
                     <br />
                     <p>Instructor: {result.instructor}</p>
+                    {/* time location should change into a component to handle null cases */}
                     {result.timeLocations.map((info, id) => (
                         <div key={id}>
                             <div>
@@ -96,6 +98,7 @@ export default function SearchPageResult({ result}) {
                     <button className="AddToCartButton" onClick={addToCart}>+</button>
                     <RMPresult RMPinfo={result.rmf} />
                     <GPTExplanation input={result.description} />
+                    <GradeDistribution grades = {result.grades}/>
                 </div>
             )}
         </div>
