@@ -3,6 +3,8 @@ import pencil_icon from "../assets/NoBkgrndPencilIcon.png";
 import '../Styles/CourseCart.css'; 
 import RMPresult from './RMPresult';
 import YoutubeRecommend from './YoutubeRecommend.js';
+import GradeDistribution from "./GradeDistribution.js";
+import '../Styles/SearchPageResult.css';
 
 export default function CourseCartItem( props ) {
 
@@ -44,6 +46,7 @@ export default function CourseCartItem( props ) {
             ))}
             
             <RMPresult RMPinfo={props.course.rmf}></RMPresult>
+            <GradeDistribution grades = {props.course.grades}/>
             <YoutubeRecommend description={props.course.description} updateVideoData={props.updateVideoData} courseID={props.course.courseID}></YoutubeRecommend>
             <div className="cart-note">
                 <textarea className="hidden" name="Notes" id={"note_" + props.id}></textarea>

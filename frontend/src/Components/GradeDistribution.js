@@ -1,31 +1,29 @@
 import React, {useEffect, useState} from "react";
 import '../Styles/SearchPageResult.css';
-import echarts from "echarts";
 import ReactEcharts from "echarts-for-react"
 
 export default function GradeDistribution({grades}) {
 
     const [showGrade, setShowGrade] = useState(false);
     const [allGrades, setAllGrades] = useState(grades);
-    const [latestQuarter, setlatestQuarter] = useState("");
     const [option, setOption] = useState({});
     
     //this might be buggy due to the return info from backend
     useEffect(()=> {
         if(grades !== "not found"){
-            setlatestQuarter(grades[0].quarter)
             const newList = allGrades.filter((grade) => {
-                return grade.quarter === latestQuarter; 
+                return grade.quarter === grades[0].quarter; 
             });
-            setAllGrades(allGrades);
-            console.log(allGrades);
+            
+            console.log(newList);
             let chartOption = {
                 title:{
-                    text: latestQuarter,
+                    text: grades[0].quarter,
                 },
+                
                 xAxis: {
                     type: 'category',
-                    data: allGrades.map(function (item) {
+                    data: newList.map(function (item) {
                         return item.grade;}),
                 },
 
@@ -34,14 +32,14 @@ export default function GradeDistribution({grades}) {
 
                 series: [{
                     type: 'bar',
-                    data:allGrades.map(function (item) {
+                    data:newList.map(function (item) {
                         return item.student_count;})
                     }],
                     barWidth: 20,  
             };
             setOption(chartOption);
         }
-    },[])
+    },[grades,allGrades])
 
     function handleClick() {
         if(showGrade === false)
