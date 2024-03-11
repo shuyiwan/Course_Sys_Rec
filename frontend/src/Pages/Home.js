@@ -23,8 +23,6 @@ export default function Home() {
             <div>
                 <h1>Welcome to Platinum</h1>
                 <SearchBar setResult={setResult} />
-                
-                {/* Rectangle Blocks Section */}
                 <div className="rectangle-blocks-container">
                     <div className="rectangle-block">
                         <p>Search: Linear Algebra</p>

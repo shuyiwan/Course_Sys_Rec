@@ -3,8 +3,8 @@ import React, {useEffect, useState} from "react"
 import { useLocation } from 'react-router-dom';
 import "../Styles/Pages.css"
 import Loading from '../Pages/Loading.js'; // Import the Loading component
-import noResultsIcon from '../assets/no-results.png'; // Adjust the path according to your project structure
-
+import noResultsIcon from '../assets/no-results.png';
+import Filter from '../Components/Filter.js';
 
 
 export default function Course(){
@@ -53,7 +53,9 @@ export default function Course(){
         }
         
         return (
-            <SearchPageList results={results}/>  
+            <div>
+                <SearchPageList results={results}/> 
+            </div> 
         )
     }
 }

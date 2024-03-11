@@ -32,3 +32,18 @@ class CachedCourses(models.Model):
 
     def __str__(self):
         return f"course={self.courseID}, department={self.department}, quarter={self.quarter}, year={self.year}"
+    
+class FullGrade(models.Model):
+    quarter = models.CharField(max_length=100)
+    course_level = models.CharField(max_length=100)
+    course = models.CharField(max_length=100)
+    instructor = models.CharField(max_length=100)
+    grade = models.CharField(max_length=100)
+    student_count = models.IntegerField()
+
+    # all rows must be unique
+    class Meta:
+        unique_together = ('quarter', 'course', 'instructor', 'grade')
+
+    def __str__(self):
+        return f"{self.quarter} - {self.course}"
