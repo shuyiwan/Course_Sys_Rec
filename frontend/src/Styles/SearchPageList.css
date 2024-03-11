@@ -12,8 +12,8 @@
 
 .filter{
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 150px;
+    left:150px;
 }
 
 .filter_showCodeList{
@@ -27,9 +27,9 @@
     display: none;
 }
 .filter_subjectCode{
-    min-width: 10%;
+    min-width: 100px;
 }
 
 .filter_allButton{
-    min-width: 10%;
+    min-width: 100px;
 }
