@@ -26,7 +26,9 @@ export default function CourseCartItem( props ) {
         <div className="cart-item" key={props.id}>
             <button className="remove-item" onClick={() => props.removeItem(props.id)}>Remove</button>
             <h2>{props.course.courseID}</h2>
-            <p>{props.course.description}</p>
+            <p>Description: {props.course.description}</p>
+            <br/>
+            <p>Instructor: {props.course.instructor}</p>
 
             {props.course.timeLocations.map((info, id) => (
                 <div key={id}>
