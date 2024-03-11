@@ -7,9 +7,6 @@ const ProcessSteps = () => {
             <div className="cs-container">
                 <div className="cs-content">
                     <h3 className="cs-title">Course DIY Guide</h3>
-                    <p className="cs-text">
-                        Our commitment to delivering the best learning experience starts from understanding your needs to providing continuous support.
-                    </p>
                 </div>
                 
                 <div className="cs-right-section">
