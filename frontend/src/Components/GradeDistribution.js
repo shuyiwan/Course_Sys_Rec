@@ -11,6 +11,7 @@ export default function GradeDistribution({grades}) {
     //this might be buggy due to the return info from backend
     useEffect(()=> {
         if(grades !== "not found"){
+            setAllGrades(grades)
             const newList = allGrades.filter((grade) => {
                 return grade.quarter === grades[0].quarter; 
             });
@@ -39,7 +40,7 @@ export default function GradeDistribution({grades}) {
             };
             setOption(chartOption);
         }
-    },[grades,allGrades])
+    },[])
 
     function handleClick() {
         if(showGrade === false)
