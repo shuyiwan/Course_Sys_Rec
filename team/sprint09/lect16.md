@@ -6,7 +6,7 @@ Mentor: Christopher Chang
 
 ## Type of meeting: Standup meeting
 
-Team: Kevin Nguyen [x], Yicong Yan [x], Lixing Guo (Leo) [excused], Mariana Rosillo [x], Katz Yan [x], Ivan Hernandez [x], Claire Pemberton [x], Shuyi Wan [x]
+Team: Kevin Nguyen [x], Yicong Yan [x], Lixing Guo (Leo) [x], Mariana Rosillo [x], Katz Yan [x], Ivan Hernandez [x], Claire Pemberton [x], Shuyi Wan [x]
 
 Meeting leader: Kevin Nguyen
 Note-taker: Mariana Rosillo
@@ -17,7 +17,7 @@ Note-taker: Mariana Rosillo
 
 * Katz: Worked on and completed the Search professor function. Added some code to the Rate My Professor function existing in the app.
 * Kevin: Finished the Grade Distributions in backend [with Claire]. Also worked in ways to optimize the feature.
-* Leo: Excused; wil give his update during the next meeting.
+* Leo: Reorganized home page and changed colors, added structure to the home page for users to navigate better through the app.
 * Yicong: Worked on Grade Distribution, added time and location for courses and worked on search my professor page.
 * Shuyi: Finished Youtube Video Recommendation feature.
 * Mariana: Worked on Youtube API [with Ivan] and completed Retro03 documentation.
