@@ -81,6 +81,18 @@ export default function SearchPageResult({ result}) {
                     <p>Description: {result.description}</p>
                     <br />
                     <p>Instructor: {result.instructor}</p>
+                    {result.timeLocations.map((info, id) => (
+                        <div key={id}>
+                            <div>
+                                {info.days}
+                                {info.beginTime + " - "}
+                                {info.endTime}
+                                <br/>
+                                {info.building + " "}
+                                {info.room}
+                            </div>
+                        </div>
+                    ))}
                     <button className="AddToCartButton" onClick={addToCart}>+</button>
                     <RMPresult RMPinfo={result.rmf} />
                     <GPTExplanation input={result.description} />

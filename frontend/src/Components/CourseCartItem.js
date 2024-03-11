@@ -27,13 +27,27 @@ export default function CourseCartItem( props ) {
             <button className="remove-item" onClick={() => props.removeItem(props.id)}>Remove</button>
             <h2>{props.course.courseID}</h2>
             <p>{props.course.description}</p>
+
+            {props.course.timeLocations.map((info, id) => (
+                <div key={id}>
+                    <div>
+                        {info.days}
+                        {info.beginTime + " - "}
+                        {info.endTime}
+                        <br/>
+                        {info.building + " "}
+                        {info.room}
+                    </div>
+                </div>
+            ))}
+            
             <RMPresult RMPinfo={props.course.rmf}></RMPresult>
             <YoutubeRecommend description={props.course.description} updateVideoData={props.updateVideoData} courseID={props.course.courseID}></YoutubeRecommend>
             <div className="cart-note">
                 <textarea className="hidden" name="Notes" id={"note_" + props.id}></textarea>
                 <div className="cart-note-button" onClick={() => getNote("note_" + props.id)}>
                     <p>Note</p>
-                    <img src={pencil_icon} alt="notes" />
+                    {/* <img src={pencil_icon} alt="notes" /> */}
                 </div>
             </div>
         </div>

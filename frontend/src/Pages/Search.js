@@ -4,23 +4,21 @@ import { useLocation } from 'react-router-dom';
 import "../Styles/Pages.css"
 import Loading from '../Pages/Loading.js'; // Import the Loading component
 import noResultsIcon from '../assets/no-results.png';
-import Filter from '../Components/Filter.js';
 
 
 export default function Course(){
     let location = useLocation();
     let keyword = " "
-    //if()
     const [results, setResults] = useState({name: 'downloading'})
    
     useEffect(()=> {
         const fetchData = async (value) =>{
-            let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=';
+            let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241';
             await fetch(url)
             .then((response) => response.json())
             .then((jsonFile) => {
                 setResults(jsonFile)
-                //console.log(jsonFile)
+                console.log(jsonFile)
             })
         }
         if(location.state && location.state.value){
