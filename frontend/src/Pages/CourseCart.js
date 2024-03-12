@@ -20,7 +20,7 @@ export default function CourseCart() {
             credentials: 'include',
         });
         const data = await response.json();
-        // console.log(data);
+        console.log(data);
         setCartItems(data);
     }
 

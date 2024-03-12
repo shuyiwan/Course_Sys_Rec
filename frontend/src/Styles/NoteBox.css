@@ -1,0 +1,46 @@
+.note-box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+}
+  
+.note-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+}
+  
+.note-text {
+    margin-bottom: 10px;
+}
+
+.character-count {
+    font-size: 14px;
+    color: #777;
+}
+
+.saved-note{
+    white-space: pre-wrap;
+}
+
+.edit-save-button {
+    position: absolute;
+    bottom: 26px;
+    right: 30px;
+    background-color: #006980;
+    color: white;
+    padding: 3px 7px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.edit-save-button:hover {
+    background-color: #004d59;
+}
+  
