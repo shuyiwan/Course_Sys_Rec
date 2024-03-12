@@ -29,7 +29,7 @@ export default function NoteBox( props ) {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            console.log("Note added to cart");
+            // console.log("Note added to cart");
         }       
         catch (error) {
             console.error("Failed to add note to cart:", error);
