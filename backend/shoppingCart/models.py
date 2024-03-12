@@ -37,6 +37,7 @@ class SavedCourses(models.Model):
     # related_name: help us to find all the courses for a users
     courseID = models.CharField(max_length = 30)
     instructor = models.CharField(max_length=30, blank = True, null = True)
+    notes = models.CharField(max_length = 500, blank = True, null = True)
     sql_id = models.IntegerField(blank = True, null = True)
 
     # make sure each user cannot have multiples rows of the same class

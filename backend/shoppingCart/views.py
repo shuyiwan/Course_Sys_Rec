@@ -49,6 +49,11 @@ def add_classes(request):
         courseID = i["courseID"]
         sql_id = i["sql_id"]
 
+        if "notes" in i:
+            notes = i["notes"]
+        else:
+            notes = None
+
         # remove all whitespace in the courseID before adding to db
         courseID = process_raw_course_ID(courseID)
 
@@ -62,12 +67,14 @@ def add_classes(request):
         # To link the class with the user, we need to fetch the user from db first
         user = models.User.objects.get(email = email)
 
-
         # Check if this class is already added for this user
         if not models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id, sql_id = sql_id).exists():
-            new_class = models.SavedCourses(courseID = courseID, user = user, sql_id = sql_id) # create the course
+            new_class = models.SavedCourses(courseID = courseID, user = user, notes=notes, sql_id = sql_id) # create the course
                         # object and link the user to this course
             new_class.save() # add one row to for this class to the SavedCourses table
+        # check if notes need to be updated
+        elif notes:
+            models.SavedCourses.objects.filter(courseID = courseID, user_id = user.id, sql_id = sql_id).update(notes = notes)
         else:
             # if this class is already there, then add this class to the list
             existing_courses.append(courseID)
