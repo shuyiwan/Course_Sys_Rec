@@ -1,46 +1,54 @@
-import React, {useState} from "react";
-import "../Styles/SearchPageList.css"
+import React, { useState } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import "../Styles/SearchPageList.css";
 
-export default function Filter ({ courses,setCourses,setSubjectCodes,subjectCodes}){
+
+export default function Filter({ courses, setCourses, setSubjectCodes, subjectCodes }) {
     const [allCourses, setAllCourses] = useState(courses);
-    const [showSubjectCode, setShowSubjectCode] = useState(false);
+    const [ShowSubjectCode, setShowSubjectCode] = useState('');
 
     const filterItem = (target) => {
-        const newList = allCourses.filter((course) => {
-            return course.subject_code === target; 
-        });
+        const newList = allCourses.filter((course) => course.subject_code === target);
         setCourses(newList);
     };
 
-    const showCodes = () => {
-        if(showSubjectCode)
-            setShowSubjectCode(false)
-        else
-            setShowSubjectCode(true)
+    const handleChange = (event) => {
+        const target = event.target.value;
+        setShowSubjectCode(target);
+
+        if (target === "All") {
+            showAll();
+        } else {
+            filterItem(target);
+        }
     };
-    
+
     const showAll = () => {
         setCourses(allCourses);
     };
 
     return (
         <div className="filter">
-            <button className="filter_subjectCode" onClick={()=>showCodes()}>filter</button>
-
-            <div className={showSubjectCode ? "filter_showCodeList" : "filter_notShowCodeList"}>
-                {subjectCodes.map((code, id) => {
-                    return (
-                        <button className="filter_subjectCode" key={id} onClick={()=>filterItem(code)}>
+            <FormControl sx={{ m: 1, minWidth: 120, backgroundColor: 'white' }} size="small">
+                <InputLabel id="filter-select-label">Filter</InputLabel>
+                <Select
+                    labelId="filter-select-label"
+                    id="filter-select"
+                    value={ShowSubjectCode}
+                    label="Filter"
+                    onChange={handleChange}
+                >
+                    <MenuItem value="All">All Departments</MenuItem>
+                    {subjectCodes.map((code, index) => (
+                        <MenuItem key={index} value={code}>
                             {code}
-                        </button>
-                    );
-                })}
-
-                <button className="filter_allButton"onClick={()=>showAll()}>
-                    All
-                </button>
-            </div>
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
         </div>
     );
-};
- 
+}
