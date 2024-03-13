@@ -3,50 +3,21 @@ import React, {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 import "../Styles/SearchBar.css"
 
-export default function SearchBar({setResult}){
+export default function SearchBar(){
     const [userInput, setUserInput] = useState("")
     const navigate = useNavigate();
-
-    //backend API call
-    const fetchData = (value) =>{
-        //https://intermittence.pythonanywhere.com/search/?keyword=
-        let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=CMPSC';
-        fetch(url)
-        .then((response) => response.json())
-        .then((jsonFile) => {
-            setResult(jsonFile)
-        })
-
-    }
     //backend API call for search page
     const handleChange = (value) =>{
         setUserInput(value);
-        if(value.trim() === ''){
-            setResult([]);
-        }
-        else{
-            if (value.length === 0) {
-                console.log(value);
-                setResult([]);
-            }
-            else{
-                fetchData(value);
-            }
-        }    
     }
 
     const handleEnter = (value, event) =>{
         if (event.key === 'Enter') {
-            if(value.trim() === ''){
-                setResult([]);
+            if (value.length === 0) {
+                ;
             }
             else{
-                if (value.length === 0) {
-                    setResult([]);
-                }
-                else{
-                    navigate('/search',{state: {value}})
-                }
+                navigate('/search',{state: {value}})
             }
         }
     }
