@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../Styles/NoteBox.css';
 
 export default function NoteBox( props ) {
-    const init_notes = (props.course.notes === null) ? "" : props.course.notes;
+    const init_notes = (props.course.notes === null || props.course.notes === " ") ? "" : props.course.notes;
     const [noteText, setNoteText] = useState(init_notes);
     const [editMode, setEditMode] = useState(false);
     const userEmail = localStorage.getItem("email");  
@@ -12,7 +12,7 @@ export default function NoteBox( props ) {
             email: userEmail, 
             courseID: props.course.courseID,
             sql_id: props.course.sql_id,
-            notes: note
+            notes: (note === "") ? " " : note,
         }];
 
         try {       
