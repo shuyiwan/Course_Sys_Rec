@@ -67,7 +67,7 @@ export default function NoteBox( props ) {
           </>
         ) : (
           <>
-            <div className="saved-note">{noteText}</div>
+            <p className="saved-note">{noteText}</p>
             <button className="edit-save-button" onClick={handleEditClick}>✏️ Edit Note</button>
           </>
         )}

@@ -2,6 +2,8 @@
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
   
 .note-input {
@@ -13,10 +15,10 @@
     border-radius: 5px;
     font-size: 16px;
     resize: vertical;
-}
-  
-.note-text {
-    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    word-wrap: break-word;
 }
 
 .character-count {
@@ -25,12 +27,18 @@
 }
 
 .saved-note{
+    word-wrap:break-word; 
+    word-break:break-all; 
     white-space: pre-wrap;
+    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .edit-save-button {
     position: absolute;
-    bottom: 26px;
+    bottom: 25px;
     right: 30px;
     background-color: #006980;
     color: white;
