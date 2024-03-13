@@ -21,6 +21,7 @@
 }
 
 .cs-title, .cs-text {
+  margin-top: 0.5rem;
   color: #fff; /* Assuming a dark background */
 }
 
@@ -50,6 +51,7 @@
 }
 
 .cs-item-text {
+  margin-top: 1rem;
   font-size: 0.85rem;
   color: #fff;
 }
