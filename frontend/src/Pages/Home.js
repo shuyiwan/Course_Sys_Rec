@@ -2,7 +2,6 @@
 import React, { useState } from "react"
 // import { saveAs } from 'file-saver';
 import SearchBar from '../Components/SearchBar';
-import SearchResultList from '../Components/SearchResultList';
 import "../Styles/Pages.css";
 
 export default function Home() {

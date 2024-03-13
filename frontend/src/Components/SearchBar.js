@@ -5,8 +5,21 @@ import "../Styles/SearchBar.css"
 
 export default function SearchBar(){
     const [userInput, setUserInput] = useState("")
+    const [searchByCourse, setSearchByCourse] = useState(true)
+    const [barMsg, setBarMsg] = useState("Search by course name")
     const navigate = useNavigate();
     //backend API call for search page
+    const changeMode = () =>{
+        if(searchByCourse === true){
+            setSearchByCourse(false);
+            setBarMsg("Search by professor")
+        }
+        else{
+            setSearchByCourse(true);
+            setBarMsg("Search by course name")
+        }
+    }
+
     const handleChange = (value) =>{
         setUserInput(value);
     }
@@ -17,15 +30,20 @@ export default function SearchBar(){
                 ;
             }
             else{
-                navigate('/search',{state: {value}})
+                if(searchByCourse === true){
+                    navigate('/search',{state: {value}})
+                }
+                else{
+                    navigate('/searchProfessor',{state: {value}})
+                }
             }
         }
     }
 
     return (
         <div className="inputWrapper">
-            <FaSearch id="searchIcon"/>
-            <input placeholder="Search for courses" 
+            <button onClick={(e) => changeMode()}>Change Mode</button>
+            <input placeholder={barMsg}
                 value={userInput}
                 onChange={(e) => handleChange(e.target.value)}
                 onKeyDown={(e) => handleEnter(userInput, e)}>

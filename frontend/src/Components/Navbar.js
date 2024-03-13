@@ -1,5 +1,7 @@
 import {Link, useMatch, useResolvedPath} from "react-router-dom"
 import '../Styles/nav.css';
+import LoginButton from "./LoginButton";
+import logo_image from "../assets/platinumLogoOff.svg";
 
 export default function Navbar(){
     return <nav className = "nav">
@@ -13,6 +15,7 @@ export default function Navbar(){
             <CustomLink to = '/coursecart'>CourseCart</CustomLink>
             <CustomLink to = '/about'>About</CustomLink>
         </ul>
+        <LoginButton />
     </nav>
 }
 
