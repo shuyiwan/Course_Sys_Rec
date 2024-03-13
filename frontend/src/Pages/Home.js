@@ -17,7 +17,6 @@ export default function Home() {
     // },[])
 
     const [results, setResult] = useState([]);
-
     return (
         <div className='searchBarWrapper'>
             <div>
