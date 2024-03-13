@@ -8,8 +8,8 @@ Mentor: Christopher Chang
 
 Team: Kevin Nguyen [x], Yicong Yan [x], Lixing Guo (Leo) [x], Mariana Rosillo [x], Katz Yan [x], Ivan Hernandez [x], Claire Pemberton [x], Shuyi Wan [x]
 
-Meeting leader: Kevin Nguyen
-Note-taker: Mariana Rosillo
+Meeting leader: Claire Pemberton
+Note-taker: Kevin Nguyen
 
 # Scribed Discussion:
 
