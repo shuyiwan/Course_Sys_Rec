@@ -3,49 +3,38 @@ import React, {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 import "../Styles/SearchBar.css"
 
-export default function SearchBar({setResult}){
+export default function SearchBar(){
     const [userInput, setUserInput] = useState("")
+    const [searchByCourse, setSearchByCourse] = useState(true)
+    const [barMsg, setBarMsg] = useState("Search by course name")
     const navigate = useNavigate();
-
-    //backend API call
-    const fetchData = (value) =>{
-        //https://intermittence.pythonanywhere.com/search/?keyword=
-        let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241&subject_code=CMPSC';
-        fetch(url)
-        .then((response) => response.json())
-        .then((jsonFile) => {
-            setResult(jsonFile)
-        })
-
-    }
     //backend API call for search page
-    const handleChange = (value) =>{
-        setUserInput(value);
-        if(value.trim() === ''){
-            setResult([]);
+    const changeMode = () =>{
+        if(searchByCourse === true){
+            setSearchByCourse(false);
+            setBarMsg("Search by professor")
         }
         else{
-            if (value.length === 0) {
-                console.log(value);
-                setResult([]);
-            }
-            else{
-                fetchData(value);
-            }
-        }    
+            setSearchByCourse(true);
+            setBarMsg("Search by course name")
+        }
+    }
+
+    const handleChange = (value) =>{
+        setUserInput(value);
     }
 
     const handleEnter = (value, event) =>{
         if (event.key === 'Enter') {
-            if(value.trim() === ''){
-                setResult([]);
+            if (value.length === 0) {
+                ;
             }
             else{
-                if (value.length === 0) {
-                    setResult([]);
+                if(searchByCourse === true){
+                    navigate('/search',{state: {value}})
                 }
                 else{
-                    navigate('/search',{state: {value}})
+                    navigate('/searchProfessor',{state: {value}})
                 }
             }
         }
@@ -53,8 +42,8 @@ export default function SearchBar({setResult}){
 
     return (
         <div className="inputWrapper">
-            <FaSearch id="searchIcon"/>
-            <input placeholder="Search for courses" 
+            <button onClick={(e) => changeMode()}>Change Mode</button>
+            <input placeholder={barMsg}
                 value={userInput}
                 onChange={(e) => handleChange(e.target.value)}
                 onKeyDown={(e) => handleEnter(userInput, e)}>

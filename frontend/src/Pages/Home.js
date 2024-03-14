@@ -2,7 +2,6 @@
 import React, { useState } from "react"
 // import { saveAs } from 'file-saver';
 import SearchBar from '../Components/SearchBar';
-import SearchResultList from '../Components/SearchResultList';
 import ProcessSteps from '../Components/ProcessSteps';
 import "../Styles/Pages.css";
 
@@ -18,13 +17,11 @@ export default function Home() {
 
     // },[])
 
-    const [results, setResult] = useState([]);
-
     return (
         <div className='searchBarWrapper'>
             <div>
                 <h1>Welcome to Platinum</h1>
-                <SearchBar setResult={setResult} />
+                <SearchBar/>
                 <div className="rectangle-blocks-container">
                     <div className="rectangle-block">
                         <p>Search: Linear Algebra</p>
@@ -39,9 +36,7 @@ export default function Home() {
                         <p>Try: Nietzsche</p>
                     </div>
                 </div>
-
                 <ProcessSteps />
-                
             </div>
         </div>
     );
