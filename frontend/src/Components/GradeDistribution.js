@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import '../Styles/SearchPageResult.css';
+import Button from '@mui/material/Button';
 import ReactEcharts from "echarts-for-react"
+import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 
 export default function GradeDistribution({grades}) {
 
@@ -52,7 +54,7 @@ export default function GradeDistribution({grades}) {
     if(grades === "not found"){
         return (
             <div>
-                <button onClick={()=>handleClick()}>Grade Distribution</button>
+                 <Button variant="outlined" onClick={handleClick} endIcon={<BarChartOutlinedIcon/>}size="small" color="inherit" style={{color: 'black'}}>Grade Distribution</Button>
                     
                 <div className = {showGrade ? "Grade_show" : "Grade_notshow"}>
                     Grades Not Found
@@ -64,7 +66,7 @@ export default function GradeDistribution({grades}) {
     else{
         return (
             <div>
-                <button onClick={()=>handleClick()}>Grade Distribution</button>
+                <Button variant="outlined" onClick={handleClick} endIcon={<BarChartOutlinedIcon/>}size="small" color="inherit" style={{color: 'black'}}>Grade Distribution</Button>
                     
                 <div className = {showGrade ? "Grade_show" : "Grade_notshow"}>
                     <ReactEcharts option={option} className="chart"/>
