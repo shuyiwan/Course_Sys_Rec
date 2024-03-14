@@ -20,7 +20,7 @@ export default function RMPresult({RMPinfo}) {
         return (
             <div>
                 {/* need someone to work one the css for RMF button */}
-                <Button variant="outlined" onClick={showRMP} endIcon={<PsychologyAltIcon />}size="small" color="inherit" style={{color: 'black'}}>
+                <Button variant="outlined" onClick={showRMP} endIcon={<PsychologyAltIcon fontSize="small"/>}size="small" color="inherit" style={{color: 'black'}}>
                     Rate My Professor
                 </Button>
                     
@@ -35,7 +35,7 @@ export default function RMPresult({RMPinfo}) {
         return (
             <div>
                 {/* need someone to work one the css for RMF button */}
-                <Button variant="outlined" onClick={showRMP} endIcon={<PsychologyAltIcon />}size="small" color="inherit" style={{color: 'black'}}>
+                <Button variant="outlined" onClick={showRMP} endIcon={<PsychologyAltIcon fontSize="small"/>}size="small" color="inherit" style={{color: 'black'}}>
                     Rate My Professor
                 </Button>
                     

@@ -54,7 +54,7 @@ export default function GradeDistribution({grades}) {
     if(grades === "not found"){
         return (
             <div>
-                 <Button variant="outlined" onClick={handleClick} endIcon={<BarChartOutlinedIcon/>}size="small" color="inherit" style={{color: 'black'}}>Grade Distribution</Button>
+                 <Button variant="outlined" onClick={handleClick} endIcon={<BarChartOutlinedIcon fontSize="small"/>}size="small" color="inherit" style={{color: 'black'}}>Grade Distribution</Button>
                     
                 <div className = {showGrade ? "Grade_show" : "Grade_notshow"}>
                     Grades Not Found
@@ -66,7 +66,7 @@ export default function GradeDistribution({grades}) {
     else{
         return (
             <div>
-                <Button variant="outlined" onClick={handleClick} endIcon={<BarChartOutlinedIcon/>}size="small" color="inherit" style={{color: 'black'}}>Grade Distribution</Button>
+                <Button variant="outlined" onClick={handleClick} endIcon={<BarChartOutlinedIcon fontSize="small"/>}size="small" color="inherit" style={{color: 'black'}}>Grade Distribution</Button>
                     
                 <div className = {showGrade ? "Grade_show" : "Grade_notshow"}>
                     <ReactEcharts option={option} className="chart"/>

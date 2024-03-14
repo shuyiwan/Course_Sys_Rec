@@ -8,7 +8,7 @@ import "../Styles/SearchPageList.css";
 
 export default function Filter({ courses, setCourses, setSubjectCodes, subjectCodes }) {
     const [allCourses, setAllCourses] = useState(courses);
-    const [ShowSubjectCode, setShowSubjectCode] = useState('');
+    const [ShowSubjectCode, setShowSubjectCode] = useState(false);
 
     const filterItem = (target) => {
         const newList = allCourses.filter((course) => course.subject_code === target);
