@@ -8,7 +8,7 @@ import "../Styles/SearchPageList.css";
 
 export default function Filter({ courses, setCourses, setSubjectCodes, subjectCodes }) {
     const [allCourses, setAllCourses] = useState(courses);
-    const [ShowSubjectCode, setShowSubjectCode] = useState(false);
+    const [subjectCode, setSubjectCode] = useState('');
 
     const filterItem = (target) => {
         const newList = allCourses.filter((course) => course.subject_code === target);
@@ -17,7 +17,7 @@ export default function Filter({ courses, setCourses, setSubjectCodes, subjectCo
 
     const handleChange = (event) => {
         const target = event.target.value;
-        setShowSubjectCode(target);
+        setSubjectCode(target);
 
         if (target === "All") {
             showAll();
@@ -37,7 +37,7 @@ export default function Filter({ courses, setCourses, setSubjectCodes, subjectCo
                 <Select
                     labelId="filter-select-label"
                     id="filter-select"
-                    value={ShowSubjectCode}
+                    value={subjectCode}
                     label="Filter"
                     onChange={handleChange}
                 >
