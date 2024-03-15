@@ -9,7 +9,7 @@ import ProfTag from "../Components/ProfTag.js";
 import { color } from "echarts";
 
 
-export default function Course(){
+export default function SearchProfessor(){
     let location = useLocation();
     let keyword = " "
     const [results, setResults] = useState({name: 'downloading'})
