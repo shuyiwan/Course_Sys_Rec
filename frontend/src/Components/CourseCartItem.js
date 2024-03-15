@@ -5,6 +5,7 @@ import YoutubeRecommend from './YoutubeRecommend.js';
 import GradeDistribution from "./GradeDistribution.js";
 import '../Styles/SearchPageResult.css';
 import NoteBox from './NoteBox.js';
+import TimeLocation from "./TimeLocation.js";
 
 export default function CourseCartItem( props ) {
 
@@ -16,19 +17,7 @@ export default function CourseCartItem( props ) {
             <br/>
             <p>Instructor: {props.course.instructor}</p>
 
-            {props.course.timeLocations.map((info, id) => (
-                <div key={id}>
-                    <div>
-                        {info.days}
-                        {info.beginTime + " - "}
-                        {info.endTime}
-                        <br/>
-                        {info.building + " "}
-                        {info.room}
-                    </div>
-                </div>
-            ))}
-            
+            <TimeLocation timeLocations={props.course.timeLocations} />
             <RMPresult RMPinfo={props.course.rmf}></RMPresult>
             <GradeDistribution grades = {props.course.grades}/>
             <br/>
