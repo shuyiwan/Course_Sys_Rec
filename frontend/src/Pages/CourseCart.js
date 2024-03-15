@@ -74,6 +74,21 @@ export default function CourseCart() {
                 
             )
         }
+        if (cartItems.Failure) {
+            return (
+                // need someone to work on the css for this message 
+                <div> 
+                    <div className="emptyCartContainer">
+                        <img src={emptyCartIcon} alt="The cart is empty" style={{ maxWidth: '120px' }}/>
+                        <p className="NothingInCart">Nothing in the cart...</p>   
+                    </div>
+                    <div className="searchButtonContainer">
+                        <Link to="/" className="searchButton">Back to Search</Link>
+                    </div>
+                </div>
+            )
+        }
+
         else{ 
             const updateVideoData = (newData, newID, newShowState) => {
                 setVideoData(newData);
