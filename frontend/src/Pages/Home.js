@@ -24,13 +24,13 @@ export default function Home() {
                 <SearchBar/>
                 <div className="rectangle-blocks-container">
                     <div className="rectangle-block">
-                        <p>Search: Linear Algebra</p>
+                        <p>Try: Linear Algebra</p>
                     </div>
                     <div className="rectangle-block">
                         <p>Try: Software Engineer</p>
                     </div>
                     <div className="rectangle-block">
-                        <p>Try: Computer Science Teaching</p>
+                        <p>Try: Tobias Höllerer</p>
                     </div>
                     <div className="rectangle-block">
                         <p>Try: Nietzsche</p>

@@ -5,7 +5,7 @@ import GPTExplanation from './GPTExplain.js';
 import RMPresult from "./RMPresult.js"
 import GradeDistribution from "./GradeDistribution.js";
 import returnIcon from '../assets/return.png';
-import allAddedIcon from '../assets/addcart.png'; // Adjust the path according to your project structure
+import allAddedIcon from '../assets/addcart.png';
 
 
 export default function SearchPageResult({ result}) {

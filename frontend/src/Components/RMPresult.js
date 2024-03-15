@@ -40,19 +40,27 @@ export default function RMPresult({RMPinfo}) {
                 </Button>
                     
                 <div className = {showRate ? "RMP_show" : "RMP_notshow"}>
-                    {RMPinfo.map((prof, id) => (
-                        <div key={id}>
-                            <h2>{prof.fullname}</h2>
-                            <p>Department: {prof.department}</p>
-                            <p>Diffculty: {prof.difficulty}</p>
-                            <p>Number of ratings: {prof.num_ratings}</p>
-                            <p>Rating: {prof.rating}</p>
-                            <p>Would take again: {prof.would_take_again}</p>
-                            <br/>
-                            <p>Professor tags:</p>
-                            <ProfTag Tags = {prof.tags}/>
-                        </div>
-                    ))} 
+                    {
+                        RMPinfo.map((prof, id) => (
+                            <div key={id}>
+                                <h2>{prof.fullname}</h2>
+                                <p><strong>Department:</strong> {prof.department}</p>
+                                <p><strong>Difficulty: </strong>{prof.difficulty}</p>
+                                <p><strong>Number of ratings: </strong>{prof.num_ratings}</p>
+                                <p><strong>Rating: </strong>{prof.rating}</p>
+                                <p><strong>Would take again: </strong>{prof.would_take_again}</p>
+                                <br/>
+                                <p><strong> Professor tags:</strong></p>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '4px'}}>
+                                    {prof.tags.map((tag, tagId) => (
+                                        <Button key={tagId} size = 'small' variant="contained" color="inherit" style={{ marginBottom: '10px', backgroundColor: 'lightgrey', color: 'black'}}>
+                                            {tag}
+                                        </Button>
+                                    ))}
+                                </div>
+                            </div>
+                        ))
+                    } 
                     
                     
                 </div> 
