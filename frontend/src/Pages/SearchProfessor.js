@@ -47,7 +47,7 @@ export default function SearchProfessor(){
     }
     
     else{
-        console.log(results)
+        // console.log(results)
         if (results.name === "downloading"){
             return (
                 <Loading />
@@ -57,9 +57,11 @@ export default function SearchProfessor(){
         if(results[0] === "There is no professor that matches this name."){
             return(
                 <div>
-                    <p style={{color: "white"}}>
-                        There is no professor that matches this name
-                    </p>
+                    <div className='noResultsIconContainer'>
+                        <img src={noResultsIcon} alt="No Results Found" style={{ maxWidth: '120px' }}/>
+                        <p className="courseNotFound">No Professor Matches this Name</p>
+                        <p className="tryDifferent">Try again with different names</p>
+                    </div>
                 </div>
             )
         }
@@ -69,7 +71,6 @@ export default function SearchProfessor(){
               {results.map((prof, id) => {
                   return (
                     <div key = {id} className="SearchPageList">
-                        <p> Name: {prof.name}</p>
                         <p> Fullname: {prof.fullname}</p>
                         <p> Department: {prof.department}</p>
                         <p> Rating: {prof.rating}</p>

@@ -12,8 +12,8 @@ import TimeLocation from "./TimeLocation.js";
 export default function SearchProfResult({ result}) {
     // retrieve the user's email from localStorage + store here
     //console.log(result)
-    const userEmail = localStorage.getItem("email");  
-    const [addedToCart, setAddedToCart] = useState(false); // State to track if added to cart
+    const userEmail = localStorage.getItem("email"); 
+    const loginStatus = localStorage.getItem('loginStatus'); 
     const [showMessage, setShowMessage] = useState(false); // State to show added message
 
 
@@ -58,7 +58,6 @@ export default function SearchProfResult({ result}) {
                 throw new Error('Network response was not ok');
             }
 
-            setAddedToCart(true); // Update state to indicate item is added to cart
             setShowMessage(true); // Show confirmation message
             setTimeout(() => setShowMessage(false), 1500); // Hide message after 1.5 seconds
         } 
@@ -83,24 +82,25 @@ export default function SearchProfResult({ result}) {
         return (
             <div>
                 <Link to="/" style={{ backgroundImage: `url(${returnIcon})` }} className="ReturnButton"></Link>
-                {addedToCart ? ( // Conditionally render based on addedToCart state
-                    showMessage && <div className="confirmationMessage">Course added to cart!</div>
-                ) : (
-                    <div className="SearchPageResult">
-                        <p>{result.courseID}</p>
-                        <br />
-                        <p>{result.title}</p>
-                        <br />
-                        <p>Description: {result.description}</p>
-                        <br />
-                        <p>Instructor: {result.instructor}</p>
-                        <TimeLocation timeLocations={result.timeLocations} />
-                        <button className="AddToCartButton" onClick={addToCart}>+</button>
-                        <RMPresult RMPinfo={result.rmf} />
-                        <GPTExplanation input={result.description} />
-                        <GradeDistribution grades = {result.grades}/>
-                    </div>
-                )}
+                {// Conditionally render based on addedToCart state
+                showMessage && (( loginStatus === "true" ) ? 
+                <div className="confirmationMessage">Course added to cart!</div> : 
+                <div className="confirmationMessage">Failed, please log in to add to cart.</div>)
+                }
+                <div className="SearchPageResult">
+                    <p>{result.courseID}</p>
+                    <br />
+                    <p>{result.title}</p>
+                    <br />
+                    <p>Description: {result.description}</p>
+                    <br />
+                    <p>Instructor: {result.instructor}</p>
+                    <TimeLocation timeLocations={result.timeLocations} />
+                    <button className="AddToCartButton" onClick={addToCart}>+</button>
+                    <RMPresult RMPinfo={result.rmf} />
+                    <GPTExplanation input={result.description} />
+                    <GradeDistribution grades = {result.grades}/>
+                </div>       
             </div>
         );
     }

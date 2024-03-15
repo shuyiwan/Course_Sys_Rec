@@ -12,7 +12,7 @@ export default function Course(){
     const [results, setResults] = useState({name: 'downloading'})
    
     useEffect(()=> {
-        console.log(123)
+        // console.log(123)
         const fetchData = async (value) =>{
             let url = 'https://intermittence.pythonanywhere.com/search/?keyword=' + value +'&quarter=20241';
             await fetch(url)
@@ -51,7 +51,7 @@ export default function Course(){
             )
         }
         
-        return (
+        return (        
             <div>
                 <SearchPageList results={results}/> 
             </div> 

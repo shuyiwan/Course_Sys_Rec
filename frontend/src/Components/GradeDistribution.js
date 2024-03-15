@@ -18,7 +18,7 @@ export default function GradeDistribution({grades}) {
                 return grade.quarter === grades[0].quarter; 
             });
             
-            console.log(newList);
+            // console.log(newList);
             let chartOption = {
                 title:{
                     text: grades[0].quarter,
