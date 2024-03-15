@@ -67,7 +67,7 @@ export default function SearchProfResult({ result}) {
         }
     }
 
-    console.log(result)
+    //console.log(result)
     if(result === "There is no classes for this professor in quarter 20241."){
         return(
             <div>

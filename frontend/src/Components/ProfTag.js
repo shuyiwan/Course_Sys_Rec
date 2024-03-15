@@ -1,26 +1,19 @@
 import React from "react";
+import Button from '@mui/material/Button';
 
 export default function ProfTag({Tags}) {
     
-    if(Tags === "could not find tags for this professor"){
-        return (
-            <div>   
-                Tags Not Found
-            </div> 
-        );  
-    }
-
-    else{
-        return (
-            <div>
-                {Tags.map((tag, id) => (
-                <div key={id} style={{ margin: '5px'}}>
+    
+    return (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '4px'}}>
+            {Tags.map((tag, tagId) => (
+                <Button key={tagId} size = 'small' variant="contained" color="inherit" style={{ marginBottom: '10px', backgroundColor: 'lightgrey', color: 'black'}}>
                     {tag}
-                </div>
-                ))}
-            </div>
-        );
-    }
+                </Button>
+            ))}
+        </div>
+    );
+    
    
 }
 
