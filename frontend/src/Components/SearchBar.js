@@ -44,7 +44,7 @@ export default function SearchBar(){
 
     return (
         <div className="inputWrapper">
-            <Button onClick={changeMode} variant="contained" color="primary" size="small" style={{backgroundColor: 'white', color: 'black'}}>
+            <Button onClick={(e) => changeMode()} variant="contained" color="primary" size="small" style={{backgroundColor: 'white', color: 'black'}}>
                 <AutorenewIcon />
             </Button>
             <input placeholder={barMsg}
