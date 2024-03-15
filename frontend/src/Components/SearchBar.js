@@ -52,6 +52,7 @@ export default function SearchBar(){
                 onChange={(e) => handleChange(e.target.value)}
                 onKeyDown={(e) => handleEnter(userInput, e)}>
             </input>
+            <FaSearch id="searchIcon" />
         </div>
     )
 }

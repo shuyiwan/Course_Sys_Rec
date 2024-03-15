@@ -8,6 +8,8 @@
     padding-left: 20px;
     width: 400px;
     margin: 0 auto;
+    position: relative; /* Added for relative positioning of the search icon */
+
 }
 
 .inputWrapper input{
@@ -24,7 +26,11 @@ input:focus{
 }
 
 #searchIcon{
-    color: royalblue
+    color: royalblue;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 
