@@ -152,7 +152,7 @@ def search_professor_from_backend(name: str, quarter: str, selected: list) -> No
     and find their classes
     """
     # Prepare the regex pattern for searching name
-    name_pattern = re.compile(name, re.IGNORECASE)
+    name_pattern = re.compile(name.strip(), re.IGNORECASE)
 
     # Go through each professor in the database and find all professors that match
     # the input name
