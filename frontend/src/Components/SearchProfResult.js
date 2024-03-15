@@ -14,7 +14,6 @@ export default function SearchProfResult({ result}) {
     //console.log(result)
     const userEmail = localStorage.getItem("email"); 
     const loginStatus = localStorage.getItem('loginStatus'); 
-    const [addedToCart, setAddedToCart] = useState(false); // State to track if added to cart
     const [showMessage, setShowMessage] = useState(false); // State to show added message
 
 
@@ -59,7 +58,6 @@ export default function SearchProfResult({ result}) {
                 throw new Error('Network response was not ok');
             }
 
-            setAddedToCart(true); // Update state to indicate item is added to cart
             setShowMessage(true); // Show confirmation message
             setTimeout(() => setShowMessage(false), 1500); // Hide message after 1.5 seconds
         } 
@@ -89,7 +87,6 @@ export default function SearchProfResult({ result}) {
                 <div className="confirmationMessage">Course added to cart!</div> : 
                 <div className="confirmationMessage">Failed, please log in to add to cart.</div>)
                 }
-
                 <div className="SearchPageResult">
                     <p>{result.courseID}</p>
                     <br />
@@ -98,24 +95,12 @@ export default function SearchProfResult({ result}) {
                     <p>Description: {result.description}</p>
                     <br />
                     <p>Instructor: {result.instructor}</p>
-                    {/* time location should change into a component to handle null cases */}
-                    {result.timeLocations.map((info, id) => (
-                        <div key={id}>
-                            <div>
-                                {info.days}
-                                {info.beginTime + " - "}
-                                {info.endTime}
-                                <br/>
-                                {info.building + " "}
-                                {info.room}
-                            </div>
-                        </div>
-                    ))}
+                    <TimeLocation timeLocations={result.timeLocations} />
                     <button className="AddToCartButton" onClick={addToCart}>+</button>
                     <RMPresult RMPinfo={result.rmf} />
                     <GPTExplanation input={result.description} />
                     <GradeDistribution grades = {result.grades}/>
-                </div>
+                </div>       
             </div>
         );
     }

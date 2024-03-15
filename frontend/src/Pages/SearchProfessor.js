@@ -71,7 +71,6 @@ export default function SearchProfessor(){
               {results.map((prof, id) => {
                   return (
                     <div key = {id} className="SearchPageList">
-                        <p> Name: {prof.name}</p>
                         <p> Fullname: {prof.fullname}</p>
                         <p> Department: {prof.department}</p>
                         <p> Rating: {prof.rating}</p>
