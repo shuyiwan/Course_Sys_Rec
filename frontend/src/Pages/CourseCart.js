@@ -38,7 +38,7 @@ export default function CourseCart() {
         let ID = cartItems[index].courseID
         let sqlID = cartItems[index].sql_id
         // ID = ID.replace(/\s/g, '')
-        console.log(ID)
+        // console.log(ID)
         //http://127.0.0.1:8000/shoppingCart/delete/?email=test@ucsb.edu&courseID=CS148
         const response = await fetch('https://intermittence.pythonanywhere.com/shoppingCart/delete/?email='
             + localStorage.getItem("email") + '&courseID=' + ID + '&sql_id=' + sqlID, {

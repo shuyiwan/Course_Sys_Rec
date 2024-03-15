@@ -11,7 +11,8 @@ import allAddedIcon from '../assets/addcart.png'; // Adjust the path according t
 export default function SearchProfResult({ result}) {
     // retrieve the user's email from localStorage + store here
     //console.log(result)
-    const userEmail = localStorage.getItem("email");  
+    const userEmail = localStorage.getItem("email"); 
+    const loginStatus = localStorage.getItem('loginStatus'); 
     const [addedToCart, setAddedToCart] = useState(false); // State to track if added to cart
     const [showMessage, setShowMessage] = useState(false); // State to show added message
 
@@ -83,7 +84,9 @@ export default function SearchProfResult({ result}) {
             <div>
                 <Link to="/" style={{ backgroundImage: `url(${returnIcon})` }} className="ReturnButton"></Link>
                 {addedToCart ? ( // Conditionally render based on addedToCart state
-                    showMessage && <div className="confirmationMessage">Course added to cart!</div>
+                showMessage && (( loginStatus === "true" ) ? 
+                <div className="confirmationMessage">Course added to cart!</div> : 
+                <div className="confirmationMessage">Failed, please log in to add to cart.</div>)
                 ) : (
                     <div className="SearchPageResult">
                         <p>{result.courseID}</p>
