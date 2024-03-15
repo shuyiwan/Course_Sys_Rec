@@ -13,13 +13,13 @@ export default function GPTExplanation ( {input} ){
         
         const chatCompletion = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
-            messages: [{"role": "system", "content": "You are an assistant to explain given description in 100 tokens."},
+            messages: [{"role": "system", "content": 
+            "You are an assistant to explain given course description in 130 tokens."},
             {"role": "user", "content": 
-            "what would be prerequisite and takeaway of the course by the given description: " + GPTinput}],
-            max_tokens: 100,
+            "what would be prerequisite and preparation needed to be successful in this course by the given description: " + GPTinput}],
+            max_tokens: 140,
         });
     
-        // console.log(chatCompletion.choices[0].message.content);
         setCourseExp(chatCompletion.choices[0].message.content);
     };
 

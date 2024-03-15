@@ -6,7 +6,6 @@ import Search from './Pages/Search';
 import Clients from './Pages/Clients';
 import CourseCart from './Pages/CourseCart';
 import Home from './Pages/Home'
-import LoginButton from './Components/LoginButton'
 import SearchProfessor from './Pages/SearchProfessor'
 import {Route, Routes} from 'react-router-dom'
 import Loading from './Pages/Loading'; 
