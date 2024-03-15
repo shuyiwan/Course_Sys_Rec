@@ -51,13 +51,7 @@ export default function RMPresult({RMPinfo}) {
                                 <p><strong>Would take again: </strong>{prof.would_take_again}</p>
                                 <br/>
                                 <p><strong> Professor tags:</strong></p>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '4px'}}>
-                                    {prof.tags.map((tag, tagId) => (
-                                        <Button key={tagId} size = 'small' variant="contained" color="inherit" style={{ marginBottom: '10px', backgroundColor: 'lightgrey', color: 'black'}}>
-                                            {tag}
-                                        </Button>
-                                    ))}
-                                </div>
+                                <ProfTag Tags = {prof.tags}/>
                             </div>
                         ))
                     } 
