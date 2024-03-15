@@ -6,7 +6,7 @@ import "../Styles/SearchBar.css"
 export default function SearchBar(){
     const [userInput, setUserInput] = useState("")
     const [searchByCourse, setSearchByCourse] = useState(true)
-    const [barMsg, setBarMsg] = useState("Search by course name")
+    const [barMsg, setBarMsg] = useState("Search by course keyword")
     const navigate = useNavigate();
     //backend API call for search page
     const changeMode = () =>{
@@ -16,7 +16,7 @@ export default function SearchBar(){
         }
         else{
             setSearchByCourse(true);
-            setBarMsg("Search by course name")
+            setBarMsg("Search by course keyword")
         }
     }
 

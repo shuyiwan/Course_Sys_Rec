@@ -5,6 +5,7 @@ import Loading from '../Pages/Loading.js'; // Import the Loading component
 import noResultsIcon from '../assets/no-results.png';
 import "../Styles/SearchPageList.css"
 import SearchProfList from '../Components/SearchProfList.js';
+import ProfTag from "../Components/ProfTag.js";
 import { color } from "echarts";
 
 
@@ -34,7 +35,7 @@ export default function Course(){
     },[])
 
     const isJsonEmpty = Object.keys(results).length === 0;
-    console.log(results)
+    
     if(isJsonEmpty){
         return (
             <div className='noResultsIconContainer'>
@@ -46,6 +47,7 @@ export default function Course(){
     }
     
     else{
+        console.log(results)
         if (results.name === "downloading"){
             return (
                 <Loading />
@@ -72,6 +74,7 @@ export default function Course(){
                         <p> Department: {prof.department}</p>
                         <p> Rating: {prof.rating}</p>
                         <p> Difficulty: {prof.difficulty}</p>
+                        <ProfTag Tags={prof.tags}/>
                         <SearchProfList results={prof.classes}/>
                     </div>
                   )
