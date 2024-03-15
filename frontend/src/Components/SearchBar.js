@@ -2,6 +2,8 @@ import {FaSearch} from "react-icons/fa"
 import React, {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 import "../Styles/SearchBar.css"
+import Button from '@mui/material/Button';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 export default function SearchBar(){
     const [userInput, setUserInput] = useState("")
@@ -42,7 +44,9 @@ export default function SearchBar(){
 
     return (
         <div className="inputWrapper">
-            <button onClick={(e) => changeMode()}>Change Mode</button>
+            <Button onClick={changeMode} variant="contained" color="primary" size="small" style={{backgroundColor: 'white', color: 'black'}}>
+                <AutorenewIcon />
+            </Button>
             <input placeholder={barMsg}
                 value={userInput}
                 onChange={(e) => handleChange(e.target.value)}
