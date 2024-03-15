@@ -12,7 +12,7 @@
 }
 
 .SearchPageResult:hover {
-    background-color: #efefef;
+    
     transform: scale(1.02); 
 }
 
@@ -117,14 +117,14 @@
     position: fixed; /* Fixed positioning relative to the viewport */
     right: 20px; /* 20px from the right edge of the viewport */
     top: 120px; /* 20px from the top edge of the viewport */
-    background-color: black; /* Background color of the message */
-    color: white; /* Text color */
+    background-color: black;
+    color: white; 
     padding: 10px 20px; /* Padding around the text */
     border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for a bit of depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
     z-index: 1000; /* Ensure it's above other content */
-    font-size: 0.9rem; /* Text size */
-    animation: slideIn 0.5s ease-out forwards; /* Animation for sliding in */
+    font-size: 0.9rem;
+    animation: slideIn 0.5s ease-out forwards;
 }
 
 @keyframes slideIn {
