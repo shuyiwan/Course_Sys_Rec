@@ -97,9 +97,9 @@ export default function SearchProfResult({ result}) {
                     <p>Instructor: {result.instructor}</p>
                     <TimeLocation timeLocations={result.timeLocations} />
                     <button className="AddToCartButton" onClick={addToCart}>+</button>
-                    <RMPresult RMPinfo={result.rmf} />
-                    <GPTExplanation input={result.description} />
+                    <RMPresult RMPinfo={result.rmf} />        
                     <GradeDistribution grades = {result.grades}/>
+                    <GPTExplanation input={result.description} />
                 </div>       
             </div>
         );
