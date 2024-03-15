@@ -83,38 +83,39 @@ export default function SearchProfResult({ result}) {
         return (
             <div>
                 <Link to="/" style={{ backgroundImage: `url(${returnIcon})` }} className="ReturnButton"></Link>
-                {addedToCart ? ( // Conditionally render based on addedToCart state
+                {// Conditionally render based on addedToCart state
                 showMessage && (( loginStatus === "true" ) ? 
                 <div className="confirmationMessage">Course added to cart!</div> : 
                 <div className="confirmationMessage">Failed, please log in to add to cart.</div>)
-                ) : (
-                    <div className="SearchPageResult">
-                        <p>{result.courseID}</p>
-                        <br />
-                        <p>{result.title}</p>
-                        <br />
-                        <p>Description: {result.description}</p>
-                        <br />
-                        <p>Instructor: {result.instructor}</p>
-                        {/* time location should change into a component to handle null cases */}
-                        {result.timeLocations.map((info, id) => (
-                            <div key={id}>
-                                <div>
-                                    {info.days}
-                                    {info.beginTime + " - "}
-                                    {info.endTime}
-                                    <br/>
-                                    {info.building + " "}
-                                    {info.room}
-                                </div>
+                }
+
+                <div className="SearchPageResult">
+                    <p>{result.courseID}</p>
+                    <br />
+                    <p>{result.title}</p>
+                    <br />
+                    <p>Description: {result.description}</p>
+                    <br />
+                    <p>Instructor: {result.instructor}</p>
+                    {/* time location should change into a component to handle null cases */}
+                    {result.timeLocations.map((info, id) => (
+                        <div key={id}>
+                            <div>
+                                {info.days}
+                                {info.beginTime + " - "}
+                                {info.endTime}
+                                <br/>
+                                {info.building + " "}
+                                {info.room}
                             </div>
-                        ))}
-                        <button className="AddToCartButton" onClick={addToCart}>+</button>
-                        <RMPresult RMPinfo={result.rmf} />
-                        <GPTExplanation input={result.description} />
-                        <GradeDistribution grades = {result.grades}/>
-                    </div>
-                )}
+                        </div>
+                    ))}
+                    <button className="AddToCartButton" onClick={addToCart}>+</button>
+                    <RMPresult RMPinfo={result.rmf} />
+                    <GPTExplanation input={result.description} />
+                    <GradeDistribution grades = {result.grades}/>
+                </div>
+                
             </div>
         );
     }

@@ -10,12 +10,9 @@ import allAddedIcon from '../assets/addcart.png';
 
 export default function SearchPageResult({ result}) {
     // retrieve the user's email from localStorage + store here
-
     const userEmail = localStorage.getItem("email");
     const loginStatus = localStorage.getItem('loginStatus');
-    const [addedToCart, setAddedToCart] = useState(false); // State to track if added to cart
     const [showMessage, setShowMessage] = useState(false); // State to show added message
-
 
 
     async function getCsrfToken() {
@@ -58,7 +55,6 @@ export default function SearchPageResult({ result}) {
                 throw new Error('Network response was not ok');
             }
 
-            setAddedToCart(true); // Update state to indicate item is added to cart
             setShowMessage(true); // Show confirmation message
             setTimeout(() => setShowMessage(false), 1500); // Hide message after 1.5 seconds
         } 
@@ -72,11 +68,11 @@ export default function SearchPageResult({ result}) {
     return (
         <div>
             <Link to="/" style={{ backgroundImage: `url(${returnIcon})` }} className="ReturnButton"></Link>
-            {addedToCart ? ( // Conditionally render based on addedToCart state
+            { // Conditionally render based on addedToCart state
                 showMessage && (( loginStatus === "true" ) ? 
                 <div className="confirmationMessage">Course added to cart!</div> : 
                 <div className="confirmationMessage">Failed, please log in to add to cart.</div>)
-            ) : (
+            }
                 <div className="SearchPageResult">
                     <p>{result.courseID}</p>
                     <br />
@@ -103,7 +99,7 @@ export default function SearchPageResult({ result}) {
                     <GradeDistribution grades = {result.grades}/>
                     <GPTExplanation input={result.description} />
                 </div>
-            )}
+            
         </div>
     );
 }
