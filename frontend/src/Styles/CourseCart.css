@@ -93,10 +93,6 @@ h1 {
     border-radius: 4px;
 }
 
-.remove-item:hover {
-    background-color: #c82333;
-}
-
 a {
     display: block;
     margin-top: 20px;

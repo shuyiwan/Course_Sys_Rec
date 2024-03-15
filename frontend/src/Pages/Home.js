@@ -30,7 +30,7 @@ export default function Home() {
                         <p>Try: Software Engineer</p>
                     </div>
                     <div className="rectangle-block">
-                        <p>Try: Tobias Höllerer</p>
+                        <p>Try: Tobias Hollerer</p>
                     </div>
                     <div className="rectangle-block">
                         <p>Try: Nietzsche</p>

@@ -6,6 +6,7 @@ import RMPresult from "./RMPresult.js"
 import GradeDistribution from "./GradeDistribution.js";
 import returnIcon from '../assets/return.png';
 import allAddedIcon from '../assets/addcart.png'; // Adjust the path according to your project structure
+import TimeLocation from "./TimeLocation.js";
 
 
 export default function SearchProfResult({ result}) {
@@ -115,7 +116,6 @@ export default function SearchProfResult({ result}) {
                     <GPTExplanation input={result.description} />
                     <GradeDistribution grades = {result.grades}/>
                 </div>
-                
             </div>
         );
     }
