@@ -97,8 +97,8 @@ export default function SearchPageResult({ result}) {
                     ))}
                     <button className="AddToCartButton" onClick={addToCart}>+</button>
                     <RMPresult RMPinfo={result.rmf} />
-                    <GPTExplanation input={result.description} />
                     <GradeDistribution grades = {result.grades}/>
+                    <GPTExplanation input={result.description} />
                 </div>
             )}
         </div>
