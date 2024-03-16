@@ -64,7 +64,7 @@ const userTestimonials = [
     name: 'Claire Pemberton',
     /* occupation: 'Backend Engineer', */
     testimonial:
-      'Hope you can enjoy our web app!',
+      'Error 4:04 sleep not found',
   },
   {
     avatar: <Avatar alt="Mariana Rosillo" src={marianaImage} />,
