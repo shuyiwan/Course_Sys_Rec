@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import SearchBar from '../Components/SearchBar';
 import ProcessSteps from '../Components/ProcessSteps';
 import "../Styles/Pages.css";
+import Features from '../Components/Features'; 
 
 
 export default function Home() {
