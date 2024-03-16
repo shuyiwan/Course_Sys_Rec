@@ -71,7 +71,7 @@ const userTestimonials = [
     name: 'Mariana Rosillo',
     /* occupation: 'Backend Engineer', */
     testimonial:
-      'Hey everyone! Please check out our new web app and let us know what you all think! Have fun!',
+      'If you ever get stuck, just git rebase —abort',
   },
   {
     avatar: <Avatar alt="Ivan Hernandez" src={ivanImage} />,
