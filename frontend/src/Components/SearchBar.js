@@ -7,17 +7,20 @@ import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 export default function SearchBar(){
     const [userInput, setUserInput] = useState("")
-    const [searchByCourse, setSearchByCourse] = useState(true)
-    const [barMsg, setBarMsg] = useState("Search by course keyword")
+    const course_mode = localStorage.getItem("SearchByCourse")
+    const [searchByCourse, setSearchByCourse] = useState((course_mode === "true" || course_mode === null) ? true : false)
+    const [barMsg, setBarMsg] = useState((course_mode === "true" || course_mode === null) ? "Search by course keyword" : "Search by professor")
     const navigate = useNavigate();
     //backend API call for search page
     const changeMode = () =>{
         if(searchByCourse === true){
             setSearchByCourse(false);
+            localStorage.setItem("SearchByCourse", "false");
             setBarMsg("Search by professor")
         }
         else{
             setSearchByCourse(true);
+            localStorage.setItem("SearchByCourse", "true");
             setBarMsg("Search by course keyword")
         }
     }
