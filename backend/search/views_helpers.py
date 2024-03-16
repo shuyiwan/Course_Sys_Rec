@@ -197,10 +197,10 @@ def process_raw_name(name: str) -> tuple:
     # the full name in the database
     if  len(split_name) == 1:
         # there is only a last name
-        return (name, re.compile('\\w*' + '\\s*' + split_name[0] + '\\b', re.IGNORECASE))
+        return (name, re.compile('\\w*' + '\\s*' + '\\b' +split_name[0] + '\\b', re.IGNORECASE))
     else:
         # there is a last name and the initial of the first name
-        return (name, re.compile(split_name[1] + '\\w*' + '\\s*' + split_name[0] + '\\b', re.IGNORECASE))
+        return (name, re.compile(split_name[1] + '\\w*' + '\\s+' + '\\b' +split_name[0] + '\\b', re.IGNORECASE))
 
 def search_classes_for_prof(prof_object: models.Professor, UCSB_quarter: str) -> list: 
     """
