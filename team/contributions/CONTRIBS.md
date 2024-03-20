@@ -23,8 +23,9 @@
 - Testing the POST function in Search List
 - Wrote the frontend testing for home page routing.
 - Implemented GPT (GPTExplain.js) in Search list to get more detailed course description.
-- Worked on implementing Youtube video recommendations in coursecart.
 - Restructured code of CourseCart and created coursecartItem.js
+- Implement youtube video recommendation festure that integrated GPT keywords extracting.
+- Implement adding note feature in CourseCart that connecting with backend.
   
 ### Deployment
 - Deploy the website and finish the documentation.
