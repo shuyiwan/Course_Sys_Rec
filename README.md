@@ -1,7 +1,6 @@
 # Course Organization and Recommendation System https://platinum-plus.netlify.app/
 
-This system is a website application where users can enter their course plan, course topic, course calendar, etc., 
-and get relevant topic recommendations based on current learning topics the user interacts with.
+This system is a website application which aims to help student to pick the right course and succeed later in the class.
 
 ## Team Members: ##
 | Name             | Github ID           |
@@ -18,7 +17,7 @@ and get relevant topic recommendations based on current learning topics the user
 ## Descriptions: ##
 **Tech Stack**: We use React for the frontend, and the backend is implemented with Django. 
 
-This web app aims to help student to pick the right course and succeed later in the class. Students can enter the course titles and see the detailed descriptions of the class.They can also typed in keywords and get a series of class relevent to these topics. When the class begins, they can use this web to find a summary of topics to help them organize the materials and prepare for exams. It can recommend others courses that students may want to take in the following quarters based on their courses history. 
+This is a course recommendation website that integrates GPT, YouTube, and other features to provide users with better experiences in looking up the classes compared to GOLD. Students can get recommended classes from all the departments by entering the topics they like. They can see the class information,  the ratings for their instructors, and the grade distribution of this professor in the previous quarter. Students can also search for the names of the professors they like and see if they teach any classes this quarter.
 
  ## User Roles:
 
@@ -31,5 +30,5 @@ This web app aims to help student to pick the right course and succeed later in 
 The instructions to get the backend setup can be located [here](backend/README.md#setting-up-the-backend). <br>
 Here are the instructions to get the [frontend-setup](frontend/README.md) and here is the [documentation](frontend/Frontend_Documentation.md) for frontend.
 
-# Deployment:
+## Deployment:
 https://platinum-plus.netlify.app/
