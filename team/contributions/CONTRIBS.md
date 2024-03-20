@@ -14,6 +14,7 @@
 - Wrote the initial version of course carts functionalities in the backend(with Mariana and Ivan)
 - Wrote Django commands to populate the professor database using RateMyProfessorAPI and add the ratings to search results.
 - Wrote a small scraper to add professors’ tags to database+ add tags to search
+- Implement the search professor functionality
 - Worked with frontend developers to test some of these functionalities.
 
 ## Shuyi:
