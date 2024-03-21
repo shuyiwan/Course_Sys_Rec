@@ -9,8 +9,10 @@
     1. **Backend**
         * Search:
             1. Views:
-                * search_keywords [GET] returns related courses based on keywords
-                * search_professor [GET] return the professors and the their classes based on the input professor names
+                * [GET] returns related courses based on keywords
+                    * Internally uses GPT to generate extra keywords
+                * Professor [GET]
+                    * returns related courses based on professor name
             2. Models:
                 * CachedCourses: stores course information
                     * courseID = CharField
@@ -70,13 +72,12 @@
                     * sql_id = IntegerField
                     * note = CharField
 
-
     2. **Frontend**
         1. Pages
             * Search Page
                 * Rending result(Built-in GPT)
                 * Add button to add course to cart
-                * Gpt button to generate course description explanation
+                * GPT button to generate course description explanation
             * Home
                 * Search bar
             * About
@@ -85,7 +86,7 @@
                 * enable each user’s course cart using Google OAuth
             * CourseCart
                 * Add/remove/delete courses in the cart
-        
+                * Youtube API recommendations based on GPT processing of course description
 
     3. **Design process documentation section**
         1. Backend
@@ -103,7 +104,6 @@
             * Connect with backend in course cart(sprint06)
             * Implement GPT on course description(sprint07)
 
-
     4. **UI/UX considerations**
         * The purpose of Platinum is to allow users to search for UCSB courses in a streamlined way.
         * Users can use this platform as a course organization tool to save their course plan, add personal information.
@@ -112,13 +112,5 @@
         * (Plan) Youtube api is used to recommend videos for relevant courses.
         * [Link to Architecture Overview Diagram](https://miro.com/app/board/uXjVNmFvuas=/?share_link_id=192027045456)
 
-
-
-
 ### Architecture Overview Diagram
 ![Architecture overview diagram](arch-diagram.png)
-
-
-
-        
-
