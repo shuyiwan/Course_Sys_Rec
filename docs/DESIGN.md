@@ -97,7 +97,7 @@
             * Transition to requirements.txt for dependency management (decided in sprint04)
             * Allow for saving courses in a shopping cart (performed in sprint05, finished lect10)
             * Decide on adding OpenAI functionality (decided in sprint07)
-            * Decide on adding Youtube functionality (decided in sprint07)
+              
         2. Frontend
             * Decide using React (sprint02) for the frontend
             * Using Google Oauth login to recognize each user (sprint02). 
@@ -105,6 +105,7 @@
             * Implement component and unit test in search page (sprint05)
             * Connect with backend in course cart(sprint06)
             * Implement GPT on course description(sprint07)
+            * Decide on adding Youtube functionality (decided in sprint07)
 
     4. **UI/UX considerations**
         * The purpose of Platinum is to allow users to search for UCSB courses in a streamlined way.
