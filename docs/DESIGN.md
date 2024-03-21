@@ -113,6 +113,9 @@
             * The app is expected to be used mainly for students, although it is open to everyone.
         * OpenAI api is used to improve user experience on course selection with giving detailed course descriptions and suggestions.
         * (Plan) Youtube api is used to recommend videos for relevant courses.
+        * A filter for search results to save user's time
+        * A search bar with 2 modes to search for courses keyword or UCSB professors
+        * Dark theme to protect eyes
         * [Link to Architecture Overview Diagram](https://miro.com/app/board/uXjVNmFvuas=/?share_link_id=192027045456)
 
 ### Architecture Overview Diagram
