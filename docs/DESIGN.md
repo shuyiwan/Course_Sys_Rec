@@ -15,6 +15,8 @@
                     * returns related courses based on professor name
             2. Models:
                 * CachedCourses: stores course information
+                    * instructor = ForeignKey
+                        * (ID of Professor model)
                     * courseID = CharField
                     * department = CharField
                     * quarter = IntegerField
