@@ -39,6 +39,8 @@
 - Implemented the search function on the search page
 - Write CSS for some pages and component
 - Implement the rate my professor in the frontend
+- Implement the filter in the frontend
+- Implement SearchByProfessor.js in the frontend
 
 ## Leo:
 ### Backend
