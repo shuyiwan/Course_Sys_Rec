@@ -9,7 +9,8 @@
     1. **Backend**
         * Search:
             1. Views:
-                * [GET] returns related courses based on keywords
+                * search_keywords [GET] returns related courses based on keywords
+                * search_professor [GET] return the professors and the their classes based on the input professor names
             2. Models:
                 * CachedCourses: stores course information
                     * courseID = CharField
@@ -19,8 +20,34 @@
                     * year = IntegerField
                     * data = JSONField
                         * Contains all misc. info
+                * Professor:
+                    * fullname = CharField
+                       * the full name shown the ratemyprofessor website
+                    * name = CharField
+                       * the partial name used to query ratemyprofessor api
+                    * department = CharField
+                        * the department shown on ratemyprofessor website
+                    * rating = FloatField
+                    * num_ratings = IntegerField
+                    * difficulty = FloatField
+                    * would_take_again = CharField
+                    * tags = JSONField
+                 * FullGrade:
+                    * quarter = CharField
+                    * course_level = CharField
+                    * course = CharField
+                    * instructor = CharField
+                    * grade = CharField
+                    * student_count = IntegerField
+          
+          
+              
             3. Commands:
                 * populate_course_dbs: separately scrapes the UCSB API in order to cache course information
+                * populate_professor_dbs: scrapes the RateMyProfessor API in order to cache the ratings of professors
+                * populate_prof_tags_column_dbs: scrapes the tags of the professor that already stored in the databases
+                * populate_full_grades_dbs: store the graded distribution data to the database from full_grades.csv
+                  (need to download this file from https://github.com/dailynexusdata/grades-data)
         
         * ShoppingCart:
             1. Views:
@@ -34,13 +61,14 @@
                     * Removes a course from a user’s shopping cart
             2. Models
                 * User: Associates an email with a User
-                    * email=EmailField
+                    * email = EmailField
                 * SavedCourse: Stores each unique shopping cart entry
-                    * user=ForeignKey
+                    * user = ForeignKey
                         * (ID of User model)
-                    * courseID=CharField
-                    * instructor=CharField
-                    * sql_id=IntegerField
+                    * courseID = CharField
+                    * instructor = CharField
+                    * sql_id = IntegerField
+                    * note = CharField
 
 
     2. **Frontend**
