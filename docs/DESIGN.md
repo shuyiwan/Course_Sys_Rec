@@ -15,6 +15,8 @@
                     * returns related courses based on professor name
             2. Models:
                 * CachedCourses: stores course information
+                    * instructor = ForeignKey
+                        * (ID of Professor model)
                     * courseID = CharField
                     * department = CharField
                     * quarter = IntegerField
@@ -22,8 +24,34 @@
                     * year = IntegerField
                     * data = JSONField
                         * Contains all misc. info
+                * Professor:
+                    * fullname = CharField
+                       * the full name shown the ratemyprofessor website
+                    * name = CharField
+                       * the partial name used to query ratemyprofessor api
+                    * department = CharField
+                        * the department shown on ratemyprofessor website
+                    * rating = FloatField
+                    * num_ratings = IntegerField
+                    * difficulty = FloatField
+                    * would_take_again = CharField
+                    * tags = JSONField
+                 * FullGrade:
+                    * quarter = CharField
+                    * course_level = CharField
+                    * course = CharField
+                    * instructor = CharField
+                    * grade = CharField
+                    * student_count = IntegerField
+          
+          
+              
             3. Commands:
                 * populate_course_dbs: separately scrapes the UCSB API in order to cache course information
+                * populate_professor_dbs: scrapes the RateMyProfessor API in order to cache the ratings of professors
+                * populate_prof_tags_column_dbs: scrapes the tags of the professor that already stored in the databases
+                * populate_full_grades_dbs: store the graded distribution data to the database from full_grades.csv
+                  (need to download this file from https://github.com/dailynexusdata/grades-data)
         
         * ShoppingCart:
             1. Views:
@@ -37,13 +65,14 @@
                     * Removes a course from a user’s shopping cart
             2. Models
                 * User: Associates an email with a User
-                    * email=EmailField
+                    * email = EmailField
                 * SavedCourse: Stores each unique shopping cart entry
-                    * user=ForeignKey
+                    * user = ForeignKey
                         * (ID of User model)
-                    * courseID=CharField
-                    * instructor=CharField
-                    * sql_id=IntegerField
+                    * courseID = CharField
+                    * instructor = CharField
+                    * sql_id = IntegerField
+                    * note = CharField
 
     2. **Frontend**
         1. Pages
@@ -68,7 +97,7 @@
             * Transition to requirements.txt for dependency management (decided in sprint04)
             * Allow for saving courses in a shopping cart (performed in sprint05, finished lect10)
             * Decide on adding OpenAI functionality (decided in sprint07)
-            * Decide on adding Youtube functionality (decided in sprint07)
+              
         2. Frontend
             * Decide using React (sprint02) for the frontend
             * Using Google Oauth login to recognize each user (sprint02). 
@@ -76,6 +105,7 @@
             * Implement component and unit test in search page (sprint05)
             * Connect with backend in course cart(sprint06)
             * Implement GPT on course description(sprint07)
+            * Decide on adding Youtube functionality (decided in sprint07)
 
     4. **UI/UX considerations**
         * The purpose of Platinum is to allow users to search for UCSB courses in a streamlined way.
