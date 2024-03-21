@@ -76,19 +76,40 @@
 
     2. **Frontend**
         1. Pages
-            * Search Page
-                * Rending result(Built-in GPT)
-                * Add button to add course to cart
-                * GPT button to generate course description explanation
+            * Search Page (By keywords or by professor name)
+                * Rendering result(Built-in GPT)
+                * Add button to add course to cart, make POST request to backend
             * Home
                 * Search bar
+                    * Searching by course keywords
+                    * Searching by professor name
+                * Step Process
+                    * A brief instruction on how to use the website.
             * About
                 * Information of the team
             * Login
                 * enable each user’s course cart using Google OAuth
             * CourseCart
+                * Rendering received JSON for recognized user. Rendering the courses in the database.
                 * Add/remove/delete courses in the cart
                 * Youtube API recommendations based on GPT processing of course description
+        2. Components
+            * Home
+                * Search Bar: have two modes that link to different searching result page.
+            * Search
+                * Search List: map the returned JSON result from backend
+                * Filter: filt the courses by departments.
+                * Search Item: each search item is a course that containing basic course information such as description and time.
+                * Rate My Professor: contains professor's rating score, diffculty and tags from RMP.
+                * Grade Distribution: distribution for corresponding course and render using E Chart.
+                * GPT Explain: using GPT api that send the course description and render the generated text.
+            * Course Cart 
+                * Cart Item: each course that contains basic course information.
+                * Youtube: using GPT api receive corresponding course description, extract the keywords and send the keywords to youtube search api. Render the received JSON in Course Cart page.
+                * Note Box: A note box where user can write up to 500 character's notes and click save button to make POST request to backend to store the note information.
+            * Login
+                * Login Button: using Google Oauth and store user's email information in LocalStorage.     
+                    
 
     3. **Design process documentation section**
         1. Backend
@@ -106,6 +127,9 @@
             * Connect with backend in course cart(sprint06)
             * Implement GPT on course description(sprint07)
             * Decide on adding Youtube functionality (decided in sprint07)
+            * Decide on adding Note feature (decided in sprint 08)
+            * Implement filter component in seach page (sprint 08)
+            * Implement searching by professor name page (sprint 09)
 
     4. **UI/UX considerations**
         * The purpose of Platinum is to allow users to search for UCSB courses in a streamlined way.
